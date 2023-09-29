@@ -15,42 +15,52 @@
     <link rel="icon" href="multimedia/favicon-spidey.ico">
 </head>
 
-
 <body>
-    <!-- Seccion Header que agrupa la cabezera de la página web-->
+    <!-- Seccion Header que agrupa la cabezera de la página web -->
     <header>
         <h1>Escritorio Virtual</h1>
-
-        <nav>
-            <a title="Página principal" href="index.html" accesskey="I" tabindex="1">Inicio</a>
-            <a title="Sobre mi" href="sobremi.html" accesskey="S" tabindex="2">Sobre mi</a>
-            <a title="Noticias relevantes" href="noticias.html" accesskey="N" tabindex="3">Noticias</a>
-            <a title="Agenda" href="agenda.html" accesskey="A" tabindex="4">Agenda</a>
-            <a title="Meteorología" href="meteorologia.html" accesskey="M" tabindex="5">Meteorología</a>
-            <a title="Viajes" href="viajes.html" accesskey="V" tabindex="6">Viajes</a>
-            <a title="Juegos" href="juegos.html" accesskey="J" tabindex="7">Juegos</a>
-        </nav>
-
+        <h2>Sobre mi</h2>
     </header>
+
+    <!-- Seccion Nav que agrupa enlaces a otras páginas web -->
+    <nav>
+        <a title="Página principal" href="index.html" accesskey="I" tabindex="1">Inicio</a>
+        <a title="Sobre mi" href="sobremi.html" accesskey="S" tabindex="2">Sobre mi</a>
+        <a title="Noticias relevantes" href="noticias.html" accesskey="N" tabindex="3">Noticias</a>
+        <a title="Agenda" href="agenda.html" accesskey="A" tabindex="4">Agenda</a>
+        <a title="Meteorología" href="meteorologia.html" accesskey="M" tabindex="5">Meteorología</a>
+        <a title="Viajes" href="viajes.html" accesskey="V" tabindex="6">Viajes</a>
+        <a title="Juegos" href="juegos.html" accesskey="J" tabindex="7">Juegos</a>
+    </nav>
 
     <!-- Agrupacion main que agrupa los contenidos principales de la página -->
     <main>
 
-        <!-- Seccion article que contiene toda la informacion personal -->
+        <!-- Seccion article que contiene la Informacion personal -->
         <article>
-            <h2>Sobre mi</h2>
 
-            <h3>Nombres y Apellidos</h3>
+            <header>
+                <h3>Información personal</h3>
+            </header>
+
+            <h4>Nombres y Apellidos</h4>
             <p>Didier Yamil Reyes Castro</p>
 
-            <h3>Información universitaria</h3>
-            <h4>Identificador</h4>
+            <h4>Información universitaria</h4>
+            <h5>Identificador</h5>
             <p>UO287866</p>
 
-            <h4>Correo electrónico</h4>
+            <h5>Correo electrónico</h5>
             <p>uo287866@uniovi.es</p>
 
-            <h3>Presentación</h3>
+        </article>
+
+        <!-- Seccion article que contiene la Presentacion -->
+        <article>
+            <header>
+                <h3>Presentación</h3>
+            </header>
+
             <p>
                 Un joven de 20 años nacido en la impresionante tierra de Perú.
                 Actualmente en mi tercer año de Ingeniería de Software. Soy un estudiante curioso y apasionado,
@@ -61,10 +71,10 @@
                 En cada proyecto invierto no solo tiempo, sino una parte de mí mismo, esforzándome por crear con
                 excelencia.
             </p>
-            <p>
-                Gracias por llegar a este página web, espero que lo encuentres interesante :)
-            </p>
+        </article>
 
+        <!-- Seccion generica con la Imagen del autor-->
+        <section>
             <h3>He aquí yo...</h3>
             <picture>
                 <source media="(max-width: 465px)" srcset="multimedia/myself-220.jpeg">
@@ -72,9 +82,14 @@
                 <source media="(min-width: 800px)" srcset="multimedia/myself.jpeg">
                 <img src="multimedia/myself.jpeg" alt="Foto del rostro del autor">
             </picture>
+        </section>
 
+        <!-- Seccion article que contiene Informacion adicional -->
+        <article>
 
-            <h3>Información personal adicional</h3>
+            <header>
+                <h3>Más sobre mi</h3>
+            </header>
 
             <h4>Aficiones: Me gusta...</h4>
             <ul>
@@ -177,32 +192,33 @@
                     <td headers="minima noviembre">17</td>
                     <td headers="minima diciembre">19</td>
                 </tr>
-
             </table>
         </section>
 
-
         <!-- Seccion article que contiene multimedia de utilidad -->
         <article>
-            <h3>Un video que te puede gustar...</h3>
+
+            <header>
+                <h3>Multimedia que te puede gustar :)</h3>
+            </header>
+
+            <h4>Un video</h4>
             <video controls preload>
                 <source src="multimedia/video.mp4" type="video/mp4">
                 <source src="multimedia/video.webm" type="video/webm">
             </video>
 
-            <h3>Un audio que te puede gustar...</h3>
+            <h4>Un audio</h4>
             <audio controls>
                 <source src="multimedia/musica.mp3" type="audio/mpeg">
                 <source src="multimedia/musica.wav" type="audio/wav">
             </audio>
         </article>
 
-
     </main>
 
     <!-- La sección aside separa los elementos que están relacionados con el main content -->
     <aside>
-
         <h3>Recursos externos de utilidad</h3>
         <ul>
             <li>
@@ -217,15 +233,7 @@
                 </a>
             </li>
         </ul>
-
-
     </aside>
-
-    <!-- La sección footer separa los elementos de informacion sobre el contenido (copyright, autor, links a
-        otros documentos...) -->
-    <footer>
-        <a title="Volver a página principal" href="index.html" accesskey="V">Volver a Inicio...</a>
-    </footer>
 
 </body>
 
