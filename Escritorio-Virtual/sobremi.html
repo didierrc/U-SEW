@@ -16,51 +16,44 @@
 </head>
 
 <body>
-    <!-- Seccion Header que agrupa la cabezera de la página web -->
+    <!-- Seccion Header que agrupa la cabezera de la página web (Cosas que se repiten en todas las páginas Web) -->
     <header>
         <h1>Escritorio Virtual</h1>
-        <h2>Sobre mi</h2>
+
+        <!-- Seccion Nav que agrupa enlaces a otras páginas web -->
+        <nav>
+            <a title="Página principal" href="index.html" accesskey="I" tabindex="1">Inicio</a>
+            <a title="Sobre mi" href="sobremi.html" accesskey="S" tabindex="2">Sobre mi</a>
+            <a title="Noticias relevantes" href="noticias.html" accesskey="N" tabindex="3">Noticias</a>
+            <a title="Agenda" href="agenda.html" accesskey="A" tabindex="4">Agenda</a>
+            <a title="Meteorología" href="meteorologia.html" accesskey="M" tabindex="5">Meteorología</a>
+            <a title="Viajes" href="viajes.html" accesskey="V" tabindex="6">Viajes</a>
+            <a title="Juegos" href="juegos.html" accesskey="J" tabindex="7">Juegos</a>
+        </nav>
     </header>
 
-    <!-- Seccion Nav que agrupa enlaces a otras páginas web -->
-    <nav>
-        <a title="Página principal" href="index.html" accesskey="I" tabindex="1">Inicio</a>
-        <a title="Sobre mi" href="sobremi.html" accesskey="S" tabindex="2">Sobre mi</a>
-        <a title="Noticias relevantes" href="noticias.html" accesskey="N" tabindex="3">Noticias</a>
-        <a title="Agenda" href="agenda.html" accesskey="A" tabindex="4">Agenda</a>
-        <a title="Meteorología" href="meteorologia.html" accesskey="M" tabindex="5">Meteorología</a>
-        <a title="Viajes" href="viajes.html" accesskey="V" tabindex="6">Viajes</a>
-        <a title="Juegos" href="juegos.html" accesskey="J" tabindex="7">Juegos</a>
-    </nav>
-
-    <!-- Agrupacion main que agrupa los contenidos principales de la página -->
+    <!-- Agrupacion main que agrupa los contenidos principales de la página - It may change!! (if aside is inside it'll change) -->
     <main>
 
-        <!-- Seccion article que contiene la Informacion personal -->
-        <article>
+        <h2>Sobre mi</h2>
 
-            <header>
-                <h3>Información personal</h3>
-            </header>
+        <p>Nombres y Apellidos: Didier Yamil Reyes Castro</p>
+        <p>Identificador universitario: UO287866</p>
+        <p>Correo electrónico: uo287866@uniovi.es</p>
 
-            <h4>Nombres y Apellidos</h4>
-            <p>Didier Yamil Reyes Castro</p>
+        <picture>
+            <source media="(max-width: 465px)" srcset="multimedia/myself-220.jpeg">
+            <source media="(max-width: 799px)" srcset="multimedia/myself-500.jpeg">
+            <source media="(min-width: 800px)" srcset="multimedia/myself.jpeg">
+            <img src="multimedia/myself.jpeg" alt="Foto del rostro del autor">
+        </picture>
 
-            <h4>Información universitaria</h4>
-            <h5>Identificador</h5>
-            <p>UO287866</p>
-
-            <h5>Correo electrónico</h5>
-            <p>uo287866@uniovi.es</p>
-
-        </article>
-
-        <!-- Seccion article que contiene la Presentacion -->
-        <article>
-            <header>
-                <h3>Presentación</h3>
-            </header>
-
+        <!-- 
+            Seccion article que contiene la Presentacion del autor 
+            Si se saca a otra web tiene sentido ya que se ve que es una presentación de alguien en una página web 
+        -->
+        <article> 
+            <h3>Me presento Soy...</h3>
             <p>
                 Un joven de 20 años nacido en la impresionante tierra de Perú.
                 Actualmente en mi tercer año de Ingeniería de Software. Soy un estudiante curioso y apasionado,
@@ -71,27 +64,19 @@
                 En cada proyecto invierto no solo tiempo, sino una parte de mí mismo, esforzándome por crear con
                 excelencia.
             </p>
+
+            <h4> </h4>
+
+            <audio controls>
+                <source src="multimedia/musica.mp3" type="audio/mpeg">
+                <source src="multimedia/musica.wav" type="audio/wav">
+            </audio>
+
         </article>
 
-        <!-- Seccion generica con la Imagen del autor-->
+        <!-- Seccion que agrupa contenidos para conocer más al autor -->
         <section>
-            <h3>He aquí yo...</h3>
-            <picture>
-                <source media="(max-width: 465px)" srcset="multimedia/myself-220.jpeg">
-                <source media="(max-width: 799px)" srcset="multimedia/myself-500.jpeg">
-                <source media="(min-width: 800px)" srcset="multimedia/myself.jpeg">
-                <img src="multimedia/myself.jpeg" alt="Foto del rostro del autor">
-            </picture>
-        </section>
-
-        <!-- Seccion article que contiene Informacion adicional -->
-        <article>
-
-            <header>
-                <h3>Más sobre mi</h3>
-            </header>
-
-            <h4>Aficiones: Me gusta...</h4>
+            <h3>Aficiones: Me gusta...</h3>
             <ul>
                 <li>
                     Jugar
@@ -101,14 +86,19 @@
                         <li> al tenis</li>
                     </ol>
                 </li>
-
                 <li>Nadar en la playa</li>
                 <li>Programar</li>
                 <li>Comer</li>
                 <li>Mirar descuentos</li>
             </ul>
 
-            <h4>Gustos musicales</h4>
+            <h4>Puedes mirar un gol muy famoso:</h4>
+            <video controls preload>
+                <source src="multimedia/video.mp4" type="video/mp4">
+                <source src="multimedia/video.webm" type="video/webm">
+            </video>
+
+            <h3>Gustos musicales</h3>
             <ol type="a">
                 <li>
                     Compositores
@@ -123,25 +113,44 @@
                 <li>Grupo 5</li>
                 <li>Bad Bunny</li>
             </ol>
-
-            <h4>Asignaturas que más me han gustado</h4>
+            <p>
+                Una canción de Maroon5 que te puede gustar...
+                <a title="Canción favorita de Maroon 5" href="https://www.youtube.com/watch?v=Qh3mdwaI-XM"> 
+                    Aquí
+                </a>
+            </p>
+    
+            <h3>Asignaturas que más me han gustado</h3>
             <dl>
                 <dt>FI</dt>
-                <dd>Fundamentos de Informática</dd>
+                <dd>Fundamentos de Informática - Asignatura del primer año (primer cuatrimestre) del grado de Ingeniería Informática del Software cursado en la Universidad de Oviedo. 
+                    Trata de dar a conocer los conocimientos básicos de la programación iterativa usando el lenguaje de programación Python. 
+                    En resumen se ven contenidos como: Ifs, Fors, listas, Whiles, ....
+                </dd>
                 <dt>CPM</dt>
-                <dd>Comunicación Persona-Máquina</dd>
+                <dd>Comunicación Persona-Máquina - Asignatura del segundo año (primer cuatrimestre) del grado de Ingeniería Informática del Software cursado en la Universidad de Oviedo. 
+                    Trata de dar a conocer los conocimientos básicos de la creación de aplicaciones con Interfaz gráfica en Java. No solo se centra en la mera creación sino que también 
+                    se discuten muchos conceptos sobre la usabilidad, accesibilidad y adaptabilidad para dar una buena interacción con el usuario.
+                </dd>
                 <dt>ED</dt>
-                <dd>Estructuras de datos</dd>
+                <dd>Estructuras de datos - Asignatura del segundo año (primer cuatrimestre) del grado de Ingeniería Informática del Software cursado en la Universidad de Oviedo.
+                    
+                </dd>
                 <dt>MP</dt>
                 <dd>Metodologías de la programación</dd>
                 <dt>TPP</dt>
                 <dd>Tecnologías y Paradigmas de la Progrmación</dd>
             </dl>
+            <p>
+                Si quieres saber más sobre las Asignaturas...
+                <a title="Asignaturas preferidas en detalle" href="https://ingenieriainformatica.uniovi.es/infoacademica/grado#asignaturas">
+                    Revisa la Web de mi Grado 
+                </a>
+            </p>
+        </section>
 
-        </article>
-
-        <!-- Section representa una seccion genérica. En este caso las temperaturas de Lima-->
-        <section>
+        <!-- Article que representa las temperaturas anuales de Lima -->
+        <article>
             <h3>Temperaturas medias anuales de Lima en los últimos diez años</h3>
             <table>
                 <caption>Temperatura promedio en &deg;C </caption>
@@ -193,47 +202,9 @@
                     <td headers="minima diciembre">19</td>
                 </tr>
             </table>
-        </section>
-
-        <!-- Seccion article que contiene multimedia de utilidad -->
-        <article>
-
-            <header>
-                <h3>Multimedia que te puede gustar :)</h3>
-            </header>
-
-            <h4>Un video</h4>
-            <video controls preload>
-                <source src="multimedia/video.mp4" type="video/mp4">
-                <source src="multimedia/video.webm" type="video/webm">
-            </video>
-
-            <h4>Un audio</h4>
-            <audio controls>
-                <source src="multimedia/musica.mp3" type="audio/mpeg">
-                <source src="multimedia/musica.wav" type="audio/wav">
-            </audio>
         </article>
 
     </main>
-
-    <!-- La sección aside separa los elementos que están relacionados con el main content -->
-    <aside>
-        <h3>Recursos externos de utilidad</h3>
-        <ul>
-            <li>
-                <a title="Asignaturas preferidas en detalle"
-                    href="https://ingenieriainformatica.uniovi.es/infoacademica/grado#asignaturas">
-                    Asignaturas que más me han gustado en detalle
-                </a>
-            </li>
-            <li>
-                <a title="Canción favorita de Maroon 5" href="https://www.youtube.com/watch?v=Qh3mdwaI-XM">
-                    Maroon 5 at its finest!!!
-                </a>
-            </li>
-        </ul>
-    </aside>
 
 </body>
 
