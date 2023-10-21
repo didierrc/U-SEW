@@ -1,1 +1,205 @@
 /* Datos personales: Didier Reyes Castro - UO287866 */
+/* Color palette: https://www.canva.com/colors/color-palettes/summer-splash/ */
+
+/* Especificidad: 001 */
+body {
+    /* Estos estilos se va a aplicar a todos los elementos HTML gracias a la herencia */
+    font-family: "Trebuchet MS", Verdana, Helvetica, Arial, sans-serif;
+    background-color: #D4F1F4;
+    color: black;
+    margin: 0;
+}
+
+/* Especificidad: 003 */
+header nav a {
+    margin-right: 0.5em;
+}
+
+/* Especificidad: 001 */
+main {
+    margin: 1.5em;
+}
+
+/* Especificidad: 001,001,001,001,002 */
+h1,
+h2,
+h3,
+h4,
+table>caption {
+    /* Warning en el Validador CSS: "Ningún background-color establecido pero si un color"
+    Herencia de background-color:#D4F1F4 de body (en el caso de h1 su background viene dado
+    por herencia de header de layout.css) 
+    */
+    color: #05435e;
+}
+
+/* Especificidad: 001,001*/
+h1,
+h2 {
+    text-transform: capitalize;
+}
+
+/* Especificidad: 001 */
+h1 {
+    font-size: 2.6em;
+    font-style: oblique;
+    font-weight: 900;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+    margin-right: 0.5em;
+}
+
+/* Especificidad: 001 */
+h2 {
+    font-size: 2em;
+    font-weight: 800;
+}
+
+/* Especificidad: 001 */
+h3 {
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+/* Especificidad: 001 */
+h4 {
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+/* Especificidad: 001 */
+a {
+    /* propiedad outline se divide en <outline-color> || <outline-style> || <outline-width> */
+    outline: none;
+    text-decoration: none;
+}
+
+/* Especificidad: 011 */
+a:link {
+    color: #0000D6;
+    /* Warning en el Validador CSS: "Ningún background-color establecido pero si un color"
+    Herencia de background-color:#D4F1F4 de body
+    */
+}
+
+/* Especificidad: 011 */
+a:visited {
+    color: #0000ac;
+    /* Warning en el Validador CSS: "Ningún background-color establecido pero si un color"
+    Herencia de background-color:#D4F1F4 de body
+    */
+}
+
+/* Especificidad: 011,011,011 */
+a:focus,
+a:hover,
+a:active {
+    background: #1fb7d6;
+    /* Warning en el Validador CSS: "Ningún color establecido pero si un background-color"
+    Herencia de color:#0000D6 o color:0000ac dependiendo del estado del elemento a
+    */
+}
+
+/* Especificidad: 011,011 */
+a:focus,
+a:hover {
+    border-bottom: 1px solid;
+}
+
+/* Especificidad: 011 */
+a:active {
+    color: white;
+}
+
+/* Especificidad: 001,001,001,001 */
+ul,
+ol,
+dt,
+p {
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+/* Especificidad: 003,003 */
+ul ol li,
+ol ul li {
+    font-size: 0.9em;
+}
+
+/* Especificidad: 003 */
+ul ol li {
+    list-style-type: lower-greek;
+}
+
+/* Especificidad: 003 */
+ol ul li {
+    list-style-type: square;
+}
+
+/* Especificidad: 013 */
+h3+ul>li:nth-child(3) {
+    color: #8F0081;
+    /* Warning en el Validador CSS: "Ningún background-color establecido pero si un color"
+    Herencia de background-color:#D4F1F4 de body
+    */
+    font-style: italic;
+}
+
+/* Especificidad: 001 */
+dd {
+    margin-bottom: 1.5em;
+    margin-top: 1em;
+}
+
+/* Especificidad: 001 */
+dt {
+    font-weight: bolder;
+    font-stretch: extra-expanded;
+    color: white;
+    background-color: #0B5B65;
+    padding-left: 0.5em;
+}
+
+/* Especificidad: 001 */
+table {
+    border-collapse: collapse;
+}
+
+/* Especificidad: 001 */
+caption {
+    font-weight: 700;
+    margin-bottom: 0.5em;
+    font-style: italic;
+    letter-spacing: 0.8px;
+}
+
+/* Especificidad: 001,001 */
+th,
+td {
+    border: 2.2px solid black;
+    color: white;
+    padding: 0.5em;
+}
+
+/* Especificidad: 001 */
+th {
+    background-color: #0B5B65;
+}
+
+/* Especificidad: 001 */
+td {
+    background-color: #595959;
+    font-weight: lighter;
+    text-align: center;
+}
+
+/* Especificidad: 001,001 */
+video,
+audio {
+    max-width: 90%;
+    height: auto;
+}
+
+/* Especificidad: 001 */
+img {
+    max-width: 80%;
+}
