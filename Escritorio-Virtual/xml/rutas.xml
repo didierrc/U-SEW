@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rutas SYSTEM "rutas.dtd">
+
+<rutas>
+    <ruta nombre="Ruta de la Cultura" tipo="Parques y monumentos" medioTransporte="A pie">
+        <duracion>1 día</duracion>
+        <agencia>Sin agencia</agencia>
+        <descripcion> Para comenzar con nuestro itinerario de viaje por Mónaco, puede participar en
+            la rica herencia y cultura de esta ciudad opulenta y lujosa. </descripcion>
+        <adecuaciones>
+            <adecuacion>Se puede ir con niños.</adecuacion>
+            <adecuacion>Tercera edad.</adecuacion>
+            <adecuacion>Se recomienda chaqueta.</adecuacion>
+            <adecuacion>Se recomienda unos eurillos para ciertos museos.</adecuacion>
+        </adecuaciones>
+        <inicio>
+            <lugar>Jardines Exóticos de Mónaco</lugar>
+            <direccion>62 Bd du Jardin Exotique, 98000 Monaco</direccion>
+            <coordenadas>
+                <longitud>43.73145045896493</longitud>
+                <latitud>7.413971315933003</latitud>
+                <altitud>33</altitud>
+            </coordenadas>
+        </inicio>
+        <referencias>
+            <referencia>https://www.iconicriviera.com/es/itinerario-de-viaje-a-m%C3%B3naco/</referencia>
+            <referencia>https://www.iconicriviera.com/es/jardines-famosos-de-los-parques-de-monacos/</referencia>
+            <referencia>https://mapcarta.com/es/18984022</referencia>
+        </referencias>
+        <recomendacion>10</recomendacion>
+        <hitos>
+            <hito nombre="Jardines Exoticos de Monaco">
+                <descripcion> Ábrete camino por los sinuosos senderos del Jardín Exótico. Puedes ver
+                    plantas exóticas y suculentas aquí en este jardín mientras disfrutas de
+                    impresionantes vistas de Mónaco y el mar. </descripcion>
+                <coordenadas>
+                    <longitud>43.73145045896493</longitud>
+                    <latitud>7.413971315933003</latitud>
+                    <altitud>33</altitud>
+                </coordenadas>
+                <distanciaHitoAnterior unidades="m">0</distanciaHitoAnterior>
+                <galeria>
+                    <fotografias>
+                        <foto>jardin-exotico.jpg</foto>
+                    </fotografias>
+                </galeria>
+            </hito>
+
+            <hito nombre="Museo de Antropologia Prehistorica">
+                <descripcion> A continuación, diríjase al Musée d'Anthropologie Préhistorique. La
+                    exhibición incluye hallazgos arqueológicos, artefactos y fósiles. El Museo es
+                    también un instituto de investigación, realizando trabajos de excavación y
+                    estudios de laboratorio. Las colecciones recorren, a lo largo de la era de los
+                    períodos glacial e interglacial, las principales etapas de la evolución de la
+                    raza humana. Muestran que la Costa Azul también fue un gran lugar para vivir
+                    para nuestros antepasados, incluso hace un millón de años. </descripcion>
+                <coordenadas>
+                    <longitud>43.73299964859884</longitud>
+                    <latitud>7.413838226346861</latitud>
+                    <altitud>105</altitud>
+                </coordenadas>
+                <distanciaHitoAnterior unidades="m">90</distanciaHitoAnterior>
+                <galeria>
+                    <fotografias>
+                        <foto>museo-antropologia.jpg</foto>
+                    </fotografias>
+                </galeria>
+            </hito>
+
+            <hito nombre="Museo de Arte Villa Paloma">
+                <descripcion> Cerca de la ladera del Jardín Exótico se encuentra esta villa con un
+                    tono blanco perla. Es parte del Nouveau Museé National de Monaco. Alberga
+                    exhibiciones de arte contemporáneo, a menudo con temas que se centran en
+                    cuestiones ambientales. </descripcion>
+                <coordenadas>
+                    <longitud>43.73310718294016</longitud>
+                    <latitud>7.413854434367271</latitud>
+                    <altitud>105</altitud>
+                </coordenadas>
+                <distanciaHitoAnterior unidades="m">160</distanciaHitoAnterior>
+                <galeria>
+                    <fotografias>
+                        <foto>villa-paloma.jpg</foto>
+                    </fotografias>
+                </galeria>
+            </hito>
+
+            <hito nombre="Parque Princesa Antonieta">
+                <descripcion> Experimente la diversión y la relajación en este hermoso parque
+                    ajardinado. Los niños pueden jugar en el parque infantil o con animales de
+                    granja en el zoológico infantil, mientras juegas al minigolf. Ábrete camino
+                    desde la parte superior del parque hasta el fondo. </descripcion>
+                <coordenadas>
+                    <longitud>43.73387668126409</longitud>
+                    <latitud>7.414786991590456</latitud>
+                    <altitud>110</altitud>
+                </coordenadas>
+                <distanciaHitoAnterior unidades="m">54</distanciaHitoAnterior>
+                <galeria>
+                    <fotografias>
+                        <foto>parque-antonieta.jpg</foto>
+                    </fotografias>
+                </galeria>
+            </hito>
+
+            <hito nombre="Palacio del Principe de Monaco">
+                <descripcion> El palacio real de Mónaco se encuentra en la cima de The Rock, con
+                    vistas al Mediterráneo.El palacio, que fue construido como fortaleza en 1162,
+                    originalmente estaba destinado a convertirse en una fortaleza de la República de
+                    Génova. Este edificio ha conocido durante su historia, bombardeos y asedios por
+                    parte de muchas fuerzas extranjeras. </descripcion>
+                <coordenadas>
+                    <longitud>43.7312942143363</longitud>
+                    <latitud>7.420374316022112</latitud>
+                    <altitud>60</altitud>
+                </coordenadas>
+                <distanciaHitoAnterior unidades="km">1</distanciaHitoAnterior>
+                <galeria>
+                    <fotografias>
+                        <foto>palacio-principe.jpg</foto>
+                    </fotografias>
+                </galeria>
+            </hito>
+
+            <hito nombre="Catedral de San Nicolas">
+                <descripcion> Una iglesia histórica de la fe católica romana, también alberga un
+                    gran órgano de cuatro teclados. Los conciertos y servicios espirituales están
+                    acompañados por las armonías de este magnífico gran órgano. Fíjese en el retablo
+                    del pintor niçois Louis Bréa que data de 1500 y el Trono Episcopal realizado en
+                    mármol blanco de Carrara de la Toscana, Italia. </descripcion>
+                <coordenadas>
+                    <longitud>43.730170543591086</longitud>
+                    <latitud>7.422502949329255</latitud>
+                    <altitud>60</altitud>
+                </coordenadas>
+                <distanciaHitoAnterior unidades="m">230</distanciaHitoAnterior>
+                <galeria>
+                    <fotografias>
+                        <foto>catedral-monaco.jpg</foto>
+                    </fotografias>
+                </galeria>
+            </hito>
+
+
+        </hitos>
+
+    </ruta>
+
+    <ruta nombre="Ruta de la Lujuria" tipo="Casinos, centros comerciales y jardines"
+        medioTransporte="A pie">
+
+        <duracion>1 día</duracion>
+        <agencia>Sin agencia</agencia>
+        <descripcion> Después de ver los lugares emblemáticos de la ciudad, pase el día siguiente en
+            nuestro itinerario de viaje disfrutando de la vida lujoa que ofrece Mónaco. Escaparate
+            de lo extravagante centro comercial, con sus glamurosas boutiques. Luego, experimente la
+            emoción de jugar un juego o tomar una copa en el casino después. </descripcion>
+        <adecuaciones>
+            <adecuacion>No es recomendado para niños</adecuacion>
+            <adecuacion>Llevar dinero. Souvenirs y copas por todos lados.</adecuacion>
+        </adecuaciones>
+        <inicio>
+            <lugar>One Monte-Carlo</lugar>
+            <direccion>1 Pl. du Casino, 98000 Monaco</direccion>
+            <coordenadas>
+                <longitud>43.739831590811484</longitud>
+                <latitud>7.426558332086158</latitud>
+                <altitud>124</altitud>
+            </coordenadas>
+        </inicio>
+        <referencias>
+            <referencia>https://www.iconicriviera.com/es/itinerario-de-viaje-a-m%C3%B3naco/</referencia>
+            <referencia>https://mapcarta.com/es/W308214647</referencia>
+            <referencia>https://www.iconicriviera.com/es/centros-comerciales-m%C3%B3naco/</referencia>
+        </referencias>
+        <recomendacion>3</recomendacion>
+        <hitos>
+            <hito nombre="One Monte-Carlo">
+                <descripcion> Comience su día en Casino Square, con un hermoso paseo comercial
+                    marcado por varios edificios curvos y modernos. Es un lugar para ver las mejores
+                    marcas del mundo con las tiendas más opulentas y exclusivas del distrito. </descripcion>
+                <coordenadas>
+                    <longitud>43.739831590811484</longitud>
+                    <latitud>7.426558332086158</latitud>
+                    <altitud>60</altitud>
+                </coordenadas>
+                <distanciaHitoAnterior unidades="m">0</distanciaHitoAnterior>
+                <galeria>
+                    <fotografias>
+                        <foto>one-monte.jpg</foto>
+                    </fotografias>
+                </galeria>
+            </hito>
+
+            <hito nombre="Pequeños Jardines de Africa">
+                <descripcion> Puede seguir con un poco de observación de aves en el exótico Jardins
+                    de la Petite Afrique (pequeños jardines de Africa) </descripcion>
+                <coordenadas>
+                    <longitud>43.74046879152208</longitud>
+                    <latitud>7.42674260023213</latitud>
+                    <altitud>58</altitud>
+                </coordenadas>
+                <distanciaHitoAnterior unidades="m">210</distanciaHitoAnterior>
+                <galeria>
+                    <fotografias>
+                        <foto>pequeña-africa.jpg</foto>
+                    </fotografias>
+                </galeria>
+            </hito>
+
+            <hito nombre="Centro comercial Metropole">
+                <descripcion> El centro comercial Métropole es un centro comercial glamoroso con e
+                    scaleras de mármol y candelabros impresionantes. Este centro comercial cuenta
+                    con 80 tiendas de alta gama, desde ropa de moda hasta marcas de decoración del
+                    hogar. La diferencia es que se mezclan marcas exclusivas, pero menos conocidas,
+                    por lo que puede encontrar una oferta aquí y allá si busca lo suficiente. Una
+                    cafetería y varios restaurantes ofrecen cocina gourmet bajo candelabros de
+                    cristal gigantes. </descripcion>
+                <coordenadas>
+                    <longitud>43.741076547469255</longitud>
+                    <latitud>7.427973061045685</latitud>
+                    <altitud>40</altitud>
+                </coordenadas>
+                <distanciaHitoAnterior unidades="m">20</distanciaHitoAnterior>
+                <galeria>
+                    <fotografias>
+                        <foto>metropole-mall.jpg</foto>
+                    </fotografias>
+                </galeria>
+            </hito>
+
+            <hito nombre="Los jardines japoneses">
+                <descripcion> Un sueño de la princesa Grace, el estilizado jardín japonés es un
+                    oasis de vegetación. Aquí todo es simbólico. Algunos de los arreglos respetan
+                    los principios sintoístas, como el puente de arco rojo sobre estanques koi que
+                    conducen a las islas que representan a los Dioses. El jardín zen, cuyo mar de
+                    grava forma una eclipse, simboliza el movimiento perpetuo. Estos preciosos
+                    jardines de estilo japonés se encuentran a pocos pasos de Metropolé, junto al
+                    mar. Tiene varias casas de meditación y té con bancos en los que puedes sentarte
+                    y relajarte. Los faroles de piedra y toda la madera para la casa de té y la
+                    terraza cubierta se ensamblaron en Japón y luego se transportaron a Mónaco. Este
+                    jardín detallado brinda un poco de tranquilidad entre las luces brillantes y el
+                    bullicio de la ciudad. Esté atento a las linternas de piedra, las vallas de
+                    bambú y la idílica zona de meditación, donde los visitantes pueden disfrutar de
+                    la serenidad del jardín durante horas. </descripcion>
+                <coordenadas>
+                    <longitud>43.74242050378655</longitud>
+                    <latitud>7.430837452072432</latitud>
+                    <altitud>7</altitud>
+                </coordenadas>
+                <distanciaHitoAnterior unidades="m">650</distanciaHitoAnterior>
+                <galeria>
+                    <fotografias>
+                        <foto>jardin-japones.jpg</foto>
+                    </fotografias>
+                </galeria>
+            </hito>
+
+            <hito nombre="Casino de Monte-Carlo">
+                <descripcion> Ya sea que apueste o no, echar un vistazo al legendario casino belle
+                    époque de mármol y oro de Montecarlo es esencial en Mónaco. Las paredes y techos
+                    del Casino de Monte Carlo son un espectáculo para la vista. El Casino fue
+                    diseñado en 1893 por Charles Garnier, el arquitecto de la Ópera de París, y ha
+                    recibido a todos, desde Napoleón hasta Churchill. Su fachada exterior
+                    ostentosamente hermosa prácticamente parece sutil en comparación con los salones
+                    lujosamente decorados, las columnas altísimas, las estatuas de mármol y los
+                    candelabros resplandecientes en el interior. Su “atrio” pavimentado de mármol
+                    está rodeado de 28 columnas jónicas hechas de ónix. La serie de “Gaming Rooms”
+                    del casino está maravillosamente decorada con vitrales, esculturas y pinturas
+                    alegóricas.Si se siente afortunado (y rico), pruebe una máquina tragamonedas o
+                    un juego en el Casino. Si te apetece un poco de aire fresco, sube a la terraza;
+                    perder dinero siempre es un poco menos doloroso cuando se contempla el mar. </descripcion>
+                <coordenadas>
+                    <longitud>43.73947254981822</longitud>
+                    <latitud>7.427956301884329</latitud>
+                    <altitud>50</altitud>
+                </coordenadas>
+                <distanciaHitoAnterior unidades="m">700</distanciaHitoAnterior>
+                <galeria>
+                    <fotografias>
+                        <foto>casino.jpg</foto>
+                    </fotografias>
+                </galeria>
+            </hito>
+
+        </hitos>
+
+
+    </ruta>
+
+    <ruta nombre="Ruta de la Vida" tipo="Gastronómica, Cotidianeidad y Mar"
+        medioTransporte="A pie">
+
+        <duracion>1 día</duracion>
+        <agencia>Sin agencia</agencia>
+        <descripcion> Observe y participe en la vibrante forma de vida de Mónaco en el tercer día de
+            nuestro itinerario de viaje. Vea los lugares locales donde la gente se reúne y hace sus
+            negocios cotidianos. Después, disfrute de las vistas y del mar en una hermosa playa. </descripcion>
+        <adecuaciones>
+            <adecuacion>Recomendado para niños</adecuacion>
+            <adecuacion>Recomendado equipación para playa.</adecuacion>
+            <adecuacion>Tercera edad</adecuacion>
+        </adecuaciones>
+        <inicio>
+            <lugar>El mercado de agricultores</lugar>
+            <direccion>11 Rue Terrazzani, 98000 Monaco</direccion>
+            <coordenadas>
+                <longitud>43.73288414467913</longitud>
+                <latitud>7.420021352247552</latitud>
+                <altitud>124</altitud>
+            </coordenadas>
+        </inicio>
+        <referencias>
+            <referencia>https://www.iconicriviera.com/es/itinerario-de-viaje-a-m%C3%B3naco/</referencia>
+            <referencia>https://mapcarta.com/es/W4227203</referencia>
+            <referencia>
+                https://www.iconicriviera.com/es/mercado-de-eventos-navide%C3%B1os-de-monaco-monte-carlo/</referencia>
+        </referencias>
+        <recomendacion>3</recomendacion>
+        <hitos>
+
+            <hito nombre="El mercado de agricultores">
+                <descripcion>El Mercado de La Condamine se inauguró el 18 de noviembre de 1880 y
+                    desde entonces no ha parado de crecer. El mercado es parte del patrimonio de
+                    Mónaco. Representa el auténtico corazón del Principado, donde la población de
+                    Mónaco gusta de reunirse. Dé un paseo por el mercado de agricultores de la
+                    mañana. Mézclese con los lugareños y compre productos frescos. Es uno de los
+                    lugares favoritos de los verdaderos monegascos. </descripcion>
+                <coordenadas>
+                    <longitud>43.73288414467913</longitud>
+                    <latitud>7.420021352247552</latitud>
+                    <altitud>20</altitud>
+                </coordenadas>
+                <distanciaHitoAnterior unidades="m">0</distanciaHitoAnterior>
+                <galeria>
+                    <fotografias>
+                        <foto>mercado.jpg</foto>
+                    </fotografias>
+                </galeria>
+            </hito>
+
+            <hito nombre="Puerto Hércules">
+                <descripcion>En el puerto se pueden ver de cerca los yates más grandes e
+                    impresionantes del mundo. Es una bahía natural y el único puerto de aguas
+                    profundas de la localidad. El circuito de Mónaco recorre el puerto, donde el
+                    famoso Grand Prix tiene lugar. En los meses más cálidos, también puedes nadar en
+                    el Stade Nautique Ranier III. Construida en 1961, la piscina olímpica de agua
+                    salada climatizada tiene múltiples plataformas de buceo y un tobogán de agua
+                    gigante. La piscina se convierte en pista de patinaje desde diciembre hasta
+                    principios de marzo. De noviembre a enero, esta zona también acoge el Mercado de
+                    Navidad. </descripcion>
+                <coordenadas>
+                    <longitud>43.734873335717495</longitud>
+                    <latitud>7.422493760698305</latitud>
+                    <altitud>3</altitud>
+                </coordenadas>
+                <distanciaHitoAnterior unidades="m">600</distanciaHitoAnterior>
+                <galeria>
+                    <fotografias>
+                        <foto>puerto.jpg</foto>
+                    </fotografias>
+                </galeria>
+            </hito>
+
+            <hito nombre="Iglesia de San Carlos">
+                <descripcion>En el camino desde el puerto hasta Eglise Saint-Charles, pasará por la
+                    Oficina de Turismo de Mónaco claramente señalizada, donde podrá obtener más
+                    información sobre la zona. La iglesia de San Carlos es un edificio de estilo
+                    renacentista. El campanario tiene 30 metros de altura. Su inauguración fue en
+                    1883. Cuenta con diecinueve vitrales. </descripcion>
+                <coordenadas>
+                    <longitud>43.74345778984802</longitud>
+                    <latitud>7.427470521968926</latitud>
+                    <altitud>78</altitud>
+                </coordenadas>
+                <distanciaHitoAnterior unidades="km">1.4</distanciaHitoAnterior>
+                <galeria>
+                    <fotografias>
+                        <foto>sancarlos.jpg</foto>
+                    </fotografias>
+                </galeria>
+            </hito>
+
+            <hito nombre="La playa">
+                <descripcion>Uno de los mejores lugares de Mónaco, Playa Larvotto es un tramo de
+                    arena de playa artificial. Tiene un gran paseo marítimo, con varios restaurantes
+                    sobre la arena. Es muy adecuado para nadar y tomar el sol, ¡pero solo en un
+                    traje de baño de diseñador, por supuesto! Si no quiere mirar el telón de fondo
+                    de los rascacielos, puede ver todos los lujosos yates en el agua. Si la playa
+                    públic está abarrotada puede consultar las playas privadas adyacentes. </descripcion>
+                <coordenadas>
+                    <longitud>43.746448211840864</longitud>
+                    <latitud>7.4339262911998265</latitud>
+                    <altitud>0</altitud>
+                </coordenadas>
+                <distanciaHitoAnterior unidades="km">1</distanciaHitoAnterior>
+                <galeria>
+                    <fotografias>
+                        <foto>playa.jpg</foto>
+                    </fotografias>
+                </galeria>
+            </hito>
+        </hitos>
+
+
+    </ruta>
+
+</rutas>
