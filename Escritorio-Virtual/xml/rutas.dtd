@@ -25,6 +25,7 @@
 <!ELEMENT fotografias (foto,foto?,foto?,foto?,foto?)>
 <!ELEMENT foto (#PCDATA)>
 <!ELEMENT videos (video?,video?,video?)>
+<!ELEMENT video (#PCDATA)>
 
 <!ATTLIST distanciaHitoAnterior unidades CDATA #REQUIRED>
 <!ATTLIST hito nombre CDATA #REQUIRED>
