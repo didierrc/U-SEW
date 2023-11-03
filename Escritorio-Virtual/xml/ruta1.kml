@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+<Placemark>
+<name>Ruta de la Cultura</name>
+<LineString>
+<extrude>1</extrude>
+<tessellate>1</tessellate>
+<coordinates>
+7.413971315933003,43.73145045896493,33
+7.413838226346861,43.73299964859884,105
+7.413854434367271,43.73310718294016,105
+7.414786991590456,43.73387668126409,110
+7.420374316022112,43.7312942143363,60
+7.422502949329255,43.730170543591086,60
+</coordinates>
+<altitudeMode>relativeToGround</altitudeMode>
+</LineString>
+<Style id='redLine'>
+<LineStyle>
+<color>#ff0000ff</color>
+<width>5</width>
+</LineStyle>
+</Style>
+</Placemark>
+</Document>
+</kml>

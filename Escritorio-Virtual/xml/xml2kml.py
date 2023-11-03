@@ -1,83 +1,117 @@
 import xml.etree.ElementTree as ET
+import os
 
-def epilogoKML(archivo):
-    """ Escribe en el archivo de salida el epílogo del archivo KML"""
+def epilogueKML(output):
+    """ Writes the epilogue for the KML file """
 
-    archivo.write("</coordinates>\n")
-    archivo.write("<altitudeMode>relativeToGround</altitudeMode>\n")
-    archivo.write("</LineString>\n")
-    archivo.write("<Style> id='lineaRoja'>\n") 
-    archivo.write("<LineStyle>\n") 
-    archivo.write("<color>#ff0000ff</color>\n")
-    archivo.write("<width>5</width>\n")
-    archivo.write("</LineStyle>\n")
-    archivo.write("</Style>\n")
-    archivo.write("</Placemark>\n")
-    archivo.write("</Document>\n")
-    archivo.write("</kml>\n")
+    output.write("</coordinates>\n")
+    output.write("<altitudeMode>relativeToGround</altitudeMode>\n")
+    output.write("</LineString>\n")
+    output.write("<Style id='redLine'>\n") 
+    output.write("<LineStyle>\n") 
+    output.write("<color>#ff0000ff</color>\n")
+    output.write("<width>5</width>\n")
+    output.write("</LineStyle>\n")
+    output.write("</Style>\n")
+    output.write("</Placemark>\n")
+    output.write("</Document>\n")
+    output.write("</kml>\n")
 
-def prologoKML(archivo, nombre):
-    """ Escribe en el archivo de salida el prólogo del archivo KML"""
+def prologueKML(output, routeName):
+    """ Writes the prologue for the KML file """
 
-    archivo.write('<?xml version="1.0" encoding="UTF-8"?>\n')
-    archivo.write('<kml xmlns="http://www.opengis.net/kml/2.2">\n')
-    archivo.write("<Document>\n")
-    archivo.write("<Placemark>\n")
-    archivo.write("<name>"+nombre+"</name>\n")    
-    archivo.write("<LineString>\n")
-    #la etiqueta <extrude> extiende la línea hasta el suelo 
-    archivo.write("<extrude>1</extrude>\n")
-    # La etiqueta <tessellate> descompone la línea en porciones pequeñas
-    archivo.write("<tessellate>1</tessellate>\n")
-    archivo.write("<coordinates>\n")
+    output.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+    output.write('<kml xmlns="http://www.opengis.net/kml/2.2">\n')
+    output.write("<Document>\n")
+    output.write("<Placemark>\n")
+    output.write("<name>"+routeName+"</name>\n")    
+    output.write("<LineString>\n")
+    output.write("<extrude>1</extrude>\n")
+    output.write("<tessellate>1</tessellate>\n")
+    output.write("<coordinates>\n")
+
+def contentKML(output, coordinates):
+    for coordinate in coordinates:
+        longitude = coordinate.find("./{https://www.uniovi.es}longitud").text
+        latitude = coordinate.find("./{https://www.uniovi.es}latitud").text
+        altitude = coordinate.find("./{https://www.uniovi.es}altitud").text
+
+        output.write(longitude+","+latitude+","+altitude+"\n")
+
+
 
 def main():
-    """Procesado de archivos de GPS de la cámara Nikon y generación de un archivo KML (Keyhole Markup Language)
-KML es un formato de archivo que se utiliza para mostrar datos geográficos en un navegador terrestre.
-Se utiliza por Google Earth, Google Maps y Google Maps para móviles.
-KML utiliza una estructura basada en etiquetas con atributos y elementos anidados y está basado en el estándar XML
+    """
 
-Versión 1.0 20/Noviembre/2016
-Juan Manuel Cueva Lovelle. Universidad de Oviedo
+    Processing XML files that use the following schema:
+    <rutas xmlns="https://www.uniovi.es" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://www.uniovi.es rutas.xsd">
+
+    This XML represents different tourist routes in one or more countries. From it, N files in KML format 
+    (Keyhole Markup Language) are generated, which can then be used in various tools like Google Earth to 
+    view their planimetry.
+
+    Version 1.0 2023-11-03
+    Didier Yamil Reyes Castro.
 
     """
+
     print(main.__doc__)
-    nombreArchivo = input("Introduzca el nombre del archivo Nikon    = ")
+
+    # Getting the XML file and generating its DOM tree
+
+    xml = input("Introduce the name of the XML file (full path) = ")
 
     try:
-        archivo = open(nombreArchivo,'r')
+        tree = ET.parse(xml)
     except IOError:
-        print ('No se encuentra el archivo ', nombreArchivo)
+        print ("File not found: ", xml)
+        exit()  
+    except ET.ParseError:
+        print("Error while processing XML file: ", xml)
         exit()
+       
+    # Getting the root
+    
+    root = tree.getroot()
+
+    # Info for file generation
+    dirPath = input("Introduce the directory of your output (ex. c:/rutas/): ")
+    i = 1
+    defaultOutputName = dirPath + "ruta"
+    extensionOutput = ".kml"
+
+    # Getting all the different routes in the XML file
+    # For each route...
+    for route in root.findall(".//{https://www.uniovi.es}ruta"): # XPath expression
         
+        # Open file
+        try:
+            outputFileName = defaultOutputName + str(i) + extensionOutput
+            output = open( outputFileName,"a")
+        except IOError:
+            print ("Error while creating output file: ", outputFileName)
+            exit()
+
+        # Obtaining route name
+        routeName = route.attrib["nombre"]
+        # Obtaining coordinates
+        coordinates = route.findall("./{https://www.uniovi.es}hitos/{https://www.uniovi.es}hito/{https://www.uniovi.es}coordenadas")
+
+
+
+        # Generate prologue
+        prologueKML(output, routeName)
+        # Generate KML content
+        contentKML(output, coordinates)
+        # Generate epilogue
+        epilogueKML(output)
+
+        # Close file
+        output.close()
+
+        i += 1
     
-    nombreSalida  = input("Introduzca el nombre del archivo generado (*.kml) = ")
-
-    try:
-        salida = open(nombreSalida + ".kml",'w')
-    except IOError:
-        print ('No se puede crear el archivo ', nombreSalida + ".kml")
-        exit()
-
-    # Procesamiento y generación del archivo kml
-    
-    nLinea=0
-    
-    # Lectura de la cabecera
-    cabecera=archivo.readline()
-
-    # Escribe la cabecera del archivo de salida
-    prologoKML(salida, nombreArchivo)
-
-    # Lectura de datos de GPS en formato NMEA
-    while True:
-        linea = archivo.readline()
-        if not linea: break
-        salida.write(decodificaNMEAlonlat(linea))
-    archivo.close()
-
-    epilogoKML(salida)
-    salida.close()
+    print("Thank you for using xml2kml. Hope you have a great day :)")
 
 if __name__ == "__main__":
     main()

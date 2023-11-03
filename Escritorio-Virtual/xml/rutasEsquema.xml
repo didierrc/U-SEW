@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rutas xmlns="https://www.uniovi.es" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://www.uniovi.es rutas.xsd">
+<rutas xmlns="https://www.uniovi.es" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://www.uniovi.es rutas.xsd">
     <ruta nombre="Ruta de la Cultura" tipo="Parques y monumentos" medioTransporte="A pie">
         <duracion>P1D</duracion>
         <agencia>Sin agencia</agencia>
@@ -15,8 +16,8 @@
             <lugar>Jardines Exóticos de Mónaco</lugar>
             <direccion>62 Bd du Jardin Exotique, 98000 Monaco</direccion>
             <coordenadas>
-                <longitud>43.73145045896493</longitud>
-                <latitud>7.413971315933003</latitud>
+                <longitud>7.413971315933003</longitud>
+                <latitud>43.73145045896493</latitud>
                 <altitud>33</altitud>
             </coordenadas>
         </inicio>
@@ -32,8 +33,8 @@
                     plantas exóticas y suculentas aquí en este jardín mientras disfrutas de
                     impresionantes vistas de Mónaco y el mar. </descripcion>
                 <coordenadas>
-                    <longitud>43.73145045896493</longitud>
-                    <latitud>7.413971315933003</latitud>
+                    <longitud>7.413971315933003</longitud>
+                    <latitud>43.73145045896493</latitud>
                     <altitud>33</altitud>
                 </coordenadas>
                 <distanciaHitoAnterior unidades="m">0</distanciaHitoAnterior>
@@ -53,8 +54,8 @@
                     raza humana. Muestran que la Costa Azul también fue un gran lugar para vivir
                     para nuestros antepasados, incluso hace un millón de años. </descripcion>
                 <coordenadas>
-                    <longitud>43.73299964859884</longitud>
-                    <latitud>7.413838226346861</latitud>
+                    <longitud>7.413838226346861</longitud>
+                    <latitud>43.73299964859884</latitud>
                     <altitud>105</altitud>
                 </coordenadas>
                 <distanciaHitoAnterior unidades="m">90</distanciaHitoAnterior>
@@ -71,8 +72,8 @@
                     exhibiciones de arte contemporáneo, a menudo con temas que se centran en
                     cuestiones ambientales. </descripcion>
                 <coordenadas>
-                    <longitud>43.73310718294016</longitud>
-                    <latitud>7.413854434367271</latitud>
+                    <longitud>7.413854434367271</longitud>
+                    <latitud>43.73310718294016</latitud>
                     <altitud>105</altitud>
                 </coordenadas>
                 <distanciaHitoAnterior unidades="m">160</distanciaHitoAnterior>
@@ -89,8 +90,8 @@
                     granja en el zoológico infantil, mientras juegas al minigolf. Ábrete camino
                     desde la parte superior del parque hasta el fondo. </descripcion>
                 <coordenadas>
-                    <longitud>43.73387668126409</longitud>
-                    <latitud>7.414786991590456</latitud>
+                    <longitud>7.414786991590456</longitud>
+                    <latitud>43.73387668126409</latitud>
                     <altitud>110</altitud>
                 </coordenadas>
                 <distanciaHitoAnterior unidades="m">54</distanciaHitoAnterior>
@@ -108,8 +109,8 @@
                     Génova. Este edificio ha conocido durante su historia, bombardeos y asedios por
                     parte de muchas fuerzas extranjeras. </descripcion>
                 <coordenadas>
-                    <longitud>43.7312942143363</longitud>
-                    <latitud>7.420374316022112</latitud>
+                    <longitud>7.420374316022112</longitud>
+                    <latitud>43.7312942143363</latitud>
                     <altitud>60</altitud>
                 </coordenadas>
                 <distanciaHitoAnterior unidades="km">1</distanciaHitoAnterior>
@@ -127,8 +128,8 @@
                     del pintor niçois Louis Bréa que data de 1500 y el Trono Episcopal realizado en
                     mármol blanco de Carrara de la Toscana, Italia. </descripcion>
                 <coordenadas>
-                    <longitud>43.730170543591086</longitud>
-                    <latitud>7.422502949329255</latitud>
+                    <longitud>7.422502949329255</longitud>
+                    <latitud>43.730170543591086</latitud>
                     <altitud>60</altitud>
                 </coordenadas>
                 <distanciaHitoAnterior unidades="m">230</distanciaHitoAnterior>
@@ -161,8 +162,8 @@
             <lugar>One Monte-Carlo</lugar>
             <direccion>1 Pl. du Casino, 98000 Monaco</direccion>
             <coordenadas>
-                <longitud>43.739831590811484</longitud>
-                <latitud>7.426558332086158</latitud>
+                <longitud>7.426558332086158</longitud>
+                <latitud>43.739831590811484</latitud>
                 <altitud>124</altitud>
             </coordenadas>
         </inicio>
@@ -178,8 +179,8 @@
                     marcado por varios edificios curvos y modernos. Es un lugar para ver las mejores
                     marcas del mundo con las tiendas más opulentas y exclusivas del distrito. </descripcion>
                 <coordenadas>
-                    <longitud>43.739831590811484</longitud>
-                    <latitud>7.426558332086158</latitud>
+                    <longitud>7.426558332086158</longitud>
+                    <latitud>43.739831590811484</latitud>
                     <altitud>60</altitud>
                 </coordenadas>
                 <distanciaHitoAnterior unidades="m">0</distanciaHitoAnterior>
@@ -194,8 +195,8 @@
                 <descripcion> Puede seguir con un poco de observación de aves en el exótico Jardins
                     de la Petite Afrique (pequeños jardines de Africa) </descripcion>
                 <coordenadas>
-                    <longitud>43.74046879152208</longitud>
-                    <latitud>7.42674260023213</latitud>
+                    <longitud>7.42674260023213</longitud>
+                    <latitud>43.74046879152208</latitud>
                     <altitud>58</altitud>
                 </coordenadas>
                 <distanciaHitoAnterior unidades="m">210</distanciaHitoAnterior>
@@ -215,8 +216,8 @@
                     cafetería y varios restaurantes ofrecen cocina gourmet bajo candelabros de
                     cristal gigantes. </descripcion>
                 <coordenadas>
-                    <longitud>43.741076547469255</longitud>
-                    <latitud>7.427973061045685</latitud>
+                    <longitud>7.427973061045685</longitud>
+                    <latitud>43.741076547469255</latitud>
                     <altitud>40</altitud>
                 </coordenadas>
                 <distanciaHitoAnterior unidades="m">20</distanciaHitoAnterior>
@@ -242,8 +243,8 @@
                     bambú y la idílica zona de meditación, donde los visitantes pueden disfrutar de
                     la serenidad del jardín durante horas. </descripcion>
                 <coordenadas>
-                    <longitud>43.74242050378655</longitud>
-                    <latitud>7.430837452072432</latitud>
+                    <longitud>7.430837452072432</longitud>
+                    <latitud>43.74242050378655</latitud>
                     <altitud>7</altitud>
                 </coordenadas>
                 <distanciaHitoAnterior unidades="m">650</distanciaHitoAnterior>
@@ -269,8 +270,8 @@
                     un juego en el Casino. Si te apetece un poco de aire fresco, sube a la terraza;
                     perder dinero siempre es un poco menos doloroso cuando se contempla el mar. </descripcion>
                 <coordenadas>
-                    <longitud>43.73947254981822</longitud>
-                    <latitud>7.427956301884329</latitud>
+                    <longitud>7.427956301884329</longitud>
+                    <latitud>43.73947254981822</latitud>
                     <altitud>50</altitud>
                 </coordenadas>
                 <distanciaHitoAnterior unidades="m">700</distanciaHitoAnterior>
@@ -303,8 +304,8 @@
             <lugar>El mercado de agricultores</lugar>
             <direccion>11 Rue Terrazzani, 98000 Monaco</direccion>
             <coordenadas>
-                <longitud>43.73288414467913</longitud>
-                <latitud>7.420021352247552</latitud>
+                <longitud>7.420021352247552</longitud>
+                <latitud>43.73288414467913</latitud>
                 <altitud>124</altitud>
             </coordenadas>
         </inicio>
@@ -325,8 +326,8 @@
                     mañana. Mézclese con los lugareños y compre productos frescos. Es uno de los
                     lugares favoritos de los verdaderos monegascos. </descripcion>
                 <coordenadas>
-                    <longitud>43.73288414467913</longitud>
-                    <latitud>7.420021352247552</latitud>
+                    <longitud>7.420021352247552</longitud>
+                    <latitud>43.73288414467913</latitud>
                     <altitud>20</altitud>
                 </coordenadas>
                 <distanciaHitoAnterior unidades="m">0</distanciaHitoAnterior>
@@ -348,8 +349,8 @@
                     principios de marzo. De noviembre a enero, esta zona también acoge el Mercado de
                     Navidad. </descripcion>
                 <coordenadas>
-                    <longitud>43.734873335717495</longitud>
-                    <latitud>7.422493760698305</latitud>
+                    <longitud>7.422493760698305</longitud>
+                    <latitud>43.734873335717495</latitud>
                     <altitud>3</altitud>
                 </coordenadas>
                 <distanciaHitoAnterior unidades="m">600</distanciaHitoAnterior>
@@ -367,8 +368,8 @@
                     renacentista. El campanario tiene 30 metros de altura. Su inauguración fue en
                     1883. Cuenta con diecinueve vitrales. </descripcion>
                 <coordenadas>
-                    <longitud>43.74345778984802</longitud>
-                    <latitud>7.427470521968926</latitud>
+                    <longitud>7.427470521968926</longitud>
+                    <latitud>43.74345778984802</latitud>
                     <altitud>78</altitud>
                 </coordenadas>
                 <distanciaHitoAnterior unidades="km">1.4</distanciaHitoAnterior>
@@ -387,8 +388,8 @@
                     de los rascacielos, puede ver todos los lujosos yates en el agua. Si la playa
                     públic está abarrotada puede consultar las playas privadas adyacentes. </descripcion>
                 <coordenadas>
-                    <longitud>43.746448211840864</longitud>
-                    <latitud>7.4339262911998265</latitud>
+                    <longitud>7.4339262911998265</longitud>
+                    <latitud>43.746448211840864</latitud>
                     <altitud>0</altitud>
                 </coordenadas>
                 <distanciaHitoAnterior unidades="km">1</distanciaHitoAnterior>
