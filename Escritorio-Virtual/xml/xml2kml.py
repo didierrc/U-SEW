@@ -87,7 +87,7 @@ def main():
         # Open file
         try:
             outputFileName = defaultOutputName + str(i) + extensionOutput
-            output = open( outputFileName,"a")
+            output = open( outputFileName,"a", encoding="utf-8")
         except IOError:
             print ("Error while creating output file: ", outputFileName)
             exit()

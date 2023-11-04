@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="2.0">
+
+<polyline points="10.0,160 50.0,110 90.0,110 130.0,114 170.0,152 210.0,101 250.0,160 10.0,160" style="fill:white;stroke:red;stroke-width:2" />
+<text x="10.0" y="170" style="writing-mode: tb; glyph-orientation-vertical: 0;">Inicio</text>
+<text x="50.0" y="170" style="writing-mode: tb; glyph-orientation-vertical: 0;">One Monte-Carlo</text>
+<text x="90.0" y="170" style="writing-mode: tb; glyph-orientation-vertical: 0;">Pequeños Jardines de Africa</text>
+<text x="130.0" y="170" style="writing-mode: tb; glyph-orientation-vertical: 0;">Centro comercial Metropole</text>
+<text x="170.0" y="170" style="writing-mode: tb; glyph-orientation-vertical: 0;">Los jardines japoneses</text>
+<text x="210.0" y="170" style="writing-mode: tb; glyph-orientation-vertical: 0;">Casino de Monte-Carlo</text>
+<text x="250.0" y="170" style="writing-mode: tb; glyph-orientation-vertical: 0;">Final</text>
+</svg>

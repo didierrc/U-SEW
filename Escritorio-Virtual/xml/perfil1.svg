@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="2.0">
+
+<polyline points="10.0,160 50.0,31 90.0,49 130.0,31 170.0,50 210.0,96 250.0,94 290.0,160 10.0,160" style="fill:white;stroke:red;stroke-width:2" />
+<text x="10.0" y="170" style="writing-mode: tb; glyph-orientation-vertical: 0;">Inicio</text>
+<text x="50.0" y="170" style="writing-mode: tb; glyph-orientation-vertical: 0;">Jardines Exoticos de Monaco</text>
+<text x="90.0" y="170" style="writing-mode: tb; glyph-orientation-vertical: 0;">Museo de Antropologia Prehistorica</text>
+<text x="130.0" y="170" style="writing-mode: tb; glyph-orientation-vertical: 0;">Museo de Arte Villa Paloma</text>
+<text x="170.0" y="170" style="writing-mode: tb; glyph-orientation-vertical: 0;">Parque Princesa Antonieta</text>
+<text x="210.0" y="170" style="writing-mode: tb; glyph-orientation-vertical: 0;">Palacio del Principe de Monaco</text>
+<text x="250.0" y="170" style="writing-mode: tb; glyph-orientation-vertical: 0;">Catedral de San Nicolas</text>
+<text x="290.0" y="170" style="writing-mode: tb; glyph-orientation-vertical: 0;">Final</text>
+</svg>
