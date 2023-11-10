@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
     <link rel="stylesheet" type="text/css" href="estilo/layout.css">
     <link rel="icon" href="multimedia/favicon-spidey.ico">
+    <script src="js/pais.js"></script>
 </head>
 
 <body>
@@ -35,7 +36,19 @@
 
     <main>
         <h2>Meteorologia</h2>
-        <p>En desarrollo...</p>
+
+        <article>
+            <h3>Información sobre un país usando el estándar ECMAScript</h3>
+            <script>
+                document.write("<p> Nombre: " + monaco.nombre + "</p>");
+                document.write("<p> Capital: " + monaco.capital + "</p>");
+                monaco.writeCoordenadasCapital();
+                document.write("<p>Información adicional: </p>")
+                document.write(monaco.getSecondaryInfoHTML());
+            </script>
+        </article>
+
+
     </main>
 
 </body>
