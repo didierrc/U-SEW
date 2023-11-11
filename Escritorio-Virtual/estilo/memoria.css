@@ -61,8 +61,7 @@ main>section article>h3 {
 main>section article>img {
     transform: rotateY(180deg);
 
-    /* Hereda de estilo.css pero asignamos un valor nulo para que la imagen ocupe todo el
-    ancho de las cartas -> Cascada!!*/
+    /* Hereda de estilo.css y lo sobreescribimos Cascada!!*/
     max-width: none;
 }
 

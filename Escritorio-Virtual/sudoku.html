@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Datos que describe el documento -->
+    <title>Escritorio Virtual - Juegos</title>
+
+    <meta charset="UTF-8">
+    <meta name="author" content="Didier Yamil Reyes Castro">
+    <meta name="description" content="Documento con los juegos disponibles.">
+    <meta name="keywords" content="juegos,jugar,entretenimiento,diversion">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
+    <link rel="stylesheet" type="text/css" href="estilo/layout.css">
+    <link rel="stylesheet" type="text/css" href="estilo/juegos.css">
+    <link rel="stylesheet" type="text/css" href="estilo/sudoku.css">
+
+    <script src="js/sudoku.js"></script>
+    <link rel="icon" href="multimedia/favicon-spidey.ico">
+</head>
+
+<body>
+    <!-- Seccion Header que agrupa la cabezera de la página web (Cosas que se repiten en todas las páginas Web) -->
+    <header>
+        <h1>Escritorio Virtual</h1>
+
+        <!-- Seccion Nav que agrupa enlaces a otras páginas web -->
+        <nav>
+            <a title="Página principal" href="index.html" accesskey="I" tabindex="1">Inicio</a>
+            <a title="Sobre mi" href="sobremi.html" accesskey="S" tabindex="2">Sobre mi</a>
+            <a title="Noticias relevantes" href="noticias.html" accesskey="N" tabindex="3">Noticias</a>
+            <a title="Agenda" href="agenda.html" accesskey="A" tabindex="4">Agenda</a>
+            <a title="Meteorología" href="meteorologia.html" accesskey="M" tabindex="5">Meteorología</a>
+            <a title="Viajes" href="viajes.html" accesskey="V" tabindex="6">Viajes</a>
+            <a title="Juegos" href="juegos.html" accesskey="J" tabindex="7">Juegos</a>
+        </nav>
+    </header>
+
+    <!-- Section que representa la barra de navegacion a los diferentes juegos. Fuera del main ya que lo
+     comparten los distintos HTML que componen los juegos -->
+    <section>
+        <h2>Juegos:</h2>
+        <nav>
+            <a title="Juego de memoria" href="memoria.html" accesskey="M" tabindex="8">Memoria</a>
+            <a title="Sudoku" href="sudoku.html" accesskey="S" tabindex="9">Sudoku</a>
+        </nav>
+    </section>
+
+    <main>
+
+        <h3>Sudoku</h3>
+        <section>
+            <script>
+                var sudoku = new Sudoku();
+                sudoku.paintSudoku();
+                window.addEventListener("keydown", (ev) => sudoku.keyDownHandler(ev));
+            </script>
+        </section>
+
+    </main>
+
+
+</body>
+
+
+
+</html>
