@@ -1,0 +1,42 @@
+/* Datos personales: Didier Reyes Castro - UO287866 */
+/* Color palette: https://www.canva.com/colors/color-palettes/summer-splash/ */
+
+/* Especificidad: 002 - Representa el menu de juegos*/
+body>section {
+    display: flex;
+    align-items: center;
+    border-style: dotted;
+    border-width: 0.2em;
+    border-color: #05435e;
+    padding: 0.1em 2em;
+}
+
+/* Especificidad: 003 */
+body>section>h2 {
+    margin-right: 1.5em;
+}
+
+/* Especificidad: 004 */
+body>section>nav>a {
+    margin-right: 0.5em;
+}
+
+@media all and (max-width: 465px) {
+
+    /*Especificidad: 002*/
+    body>section {
+        /* En pantallas pequeñas la direccion del flexbox se cambia de row a
+        column */
+        flex-direction: column;
+    }
+
+    /* Especificidad: 003 */
+    body>section>h2 {
+        margin-right: 0;
+    }
+
+    /* Especificidad: 003 */
+    body>section>nav {
+        margin-bottom: 0.5em;
+    }
+}

@@ -14,6 +14,8 @@
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
     <link rel="stylesheet" type="text/css" href="estilo/layout.css">
     <link rel="stylesheet" type="text/css" href="estilo/juegos.css">
+    <link rel="stylesheet" type="text/css" href="estilo/memoria.css">
+
     <link rel="icon" href="multimedia/favicon-spidey.ico">
 </head>
 
@@ -34,7 +36,8 @@
         </nav>
     </header>
 
-    <!-- Section que representa la barra de navegacion a los diferentes juegos -->
+    <!-- Section que representa la barra de navegacion a los diferentes juegos. Fuera del main ya que lo
+     comparten los distintos HTML que componen los juegos -->
     <section>
         <h2>Juegos:</h2>
         <nav>
@@ -44,7 +47,13 @@
     </section>
 
     <main>
-        <p>Haz click en uno de los enlaces de arriba para jugar!!</p>
+
+        <!-- Section que representa el juego en sí-->
+        <section>
+            <h3>Juego de Memoria</h3>
+            <script src="js/memoria.js"></script>
+        </section>
+
     </main>
 
 
