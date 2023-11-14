@@ -36,4 +36,8 @@ main>section p[data-state="correct"] {
     main>section p {
         padding: 1em;
     }
+
+    main>section {
+        margin: 1em;
+    }
 }
