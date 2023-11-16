@@ -170,9 +170,10 @@ class Memoria {
         setTimeout(() => {
             temp1.removeAttribute('data-state');
             temp2.removeAttribute('data-state');
+            this.resetBoard();
         }, 800);
 
-        this.resetBoard();
+
     }
 
     resetBoard() {
