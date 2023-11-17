@@ -13,6 +13,7 @@
 
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
     <link rel="stylesheet" type="text/css" href="estilo/layout.css">
+    <link rel="stylesheet" type="text/css" href="estilo/meteorologia.css">
     <link rel="icon" href="multimedia/favicon-spidey.ico">
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
@@ -38,10 +39,10 @@
     </header>
 
     <main>
-        <h2>Meteorologia</h2>
+        <h2>Meteorologia de Mónaco</h2>
 
         <article>
-            <h3>Información sobre un país usando el estándar ECMAScript</h3>
+            <h3>Información del país:</h3>
             <script>
                 document.write("<p> Nombre: " + monaco.nombre + "</p>");
                 document.write("<p> Capital: " + monaco.capital + "</p>");
@@ -53,6 +54,7 @@
 
         <!-- Representa el container del forecast de Monaco -->
         <article>
+            <h3>Pronóstico para los siguientes días:</h3>
             <script> monaco.consultaMeteo();</script>
         </article>
 
