@@ -56,7 +56,7 @@ class Pais {
         var lang = "&lang=es";
         var latitud = this.coordenadasCapital.split(",")[0];
         var longitud = this.coordenadasCapital.split(",")[1];
-        var openWeatherAPI = "http://api.openweathermap.org/data/2.5/forecast?lat="
+        var openWeatherAPI = "https://api.openweathermap.org/data/2.5/forecast?lat="
             + latitud + "&lon=" + longitud + units + lang + "&appid=5b4e304cb2042d8fdd3b883201af3d82";
 
         var forecast5Days = new Array();
@@ -160,7 +160,7 @@ class Pais {
             insertaSeccionInfo(imageUrl, imageAlt, t);
 
             // Añadiendo seccion de temperatura minima
-            t = "<p>Max: " + forecast["main"]["temp_min"] + "º</p>";
+            t = "<p>Min: " + forecast["main"]["temp_min"] + "º</p>";
             imageUrl = "multimedia/minTemp_icon.png";
             imageAlt = "Icono de temperatura minima";
             insertaSeccionInfo(imageUrl, imageAlt, t);
@@ -169,11 +169,11 @@ class Pais {
             // Puede que no haya la propiedad lluvia en el JSON
             var rainAmount;
             try {
-                rainAmount = parseFloat(forecast["rain"]["3h"]) * 100;
+                rainAmount = parseFloat(forecast["rain"]["3h"]);
             } catch (error) {
                 rainAmount = "";
             }
-            t = "<p>Probabilidad de Lluvia: " + (rainAmount === "" ? "0" : rainAmount) + "%";
+            t = "<p>Cantidad de Lluvia: " + (rainAmount === "" ? "0" : rainAmount) + "mm";
             imageUrl = "multimedia/rain_icon.png";
             imageAlt = "Icono de  probabilidad de lluvia";
             insertaSeccionInfo(imageUrl, imageAlt, t);

@@ -13,7 +13,12 @@
 
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
     <link rel="stylesheet" type="text/css" href="estilo/layout.css">
+    <link rel="stylesheet" type="text/css" href="estilo/agenda.css">
     <link rel="icon" href="multimedia/favicon-spidey.ico">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="js/agenda.js"></script>
 </head>
 
 <body>
@@ -37,7 +42,10 @@
     <!-- Agrupacion main que agrupa los contenidos principales de la página - It may change!! (if aside is inside it'll change) -->
     <main>
         <h2>Agenda</h2>
-        <p>En desarrollo...</p>
+        <button type="button">Calendario de F1-2023</button>
+        <script>
+            document.querySelector("button").addEventListener("click", () => m.consultaSchedule());
+        </script>
     </main>
 
 </body>

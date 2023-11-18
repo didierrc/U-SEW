@@ -1,0 +1,73 @@
+button {
+    display: block;
+    margin-bottom: 2em;
+}
+
+main>section:first-of-type {
+    display: flex;
+    align-items: center;
+}
+
+main>section:first-of-type img {
+    width: 100%;
+    height: auto;
+    max-width: 10em;
+    margin-right: 2em;
+}
+
+main>section:first-of-type p {
+    font-size: 2em;
+    color: #ee0000;
+    font-weight: bold;
+}
+
+main>section:nth-of-type(2) {
+    display: grid;
+    row-gap: 1em;
+}
+
+main>section:nth-of-type(2)>section {
+    border: solid 2px black;
+    background-color: white;
+    display: flex;
+    max-width: 50em;
+    max-height: 10em;
+}
+
+main>section:nth-of-type(2)>section>section:first-child {
+    background-color: #ee0000;
+    font-size: 1.2em;
+    color: white;
+    font-weight: bold;
+    flex: 1 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1em;
+}
+
+main>section:nth-of-type(2)>section>section:nth-child(2) {
+    flex: 1 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-flow: row wrap;
+}
+
+main>section:nth-of-type(2)>section>section:nth-child(2)>img {
+    max-width: 5em;
+    height: auto;
+}
+
+
+main>section:nth-of-type(2)>section>section:nth-child(2)>section>p {
+    margin: 0.5em;
+}
+
+@media all and (max-width: 700px) {
+
+    main>section:nth-of-type(2)>section {
+        max-height: 11em;
+    }
+
+}

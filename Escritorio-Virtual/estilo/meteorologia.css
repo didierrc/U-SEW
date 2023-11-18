@@ -40,6 +40,7 @@ main>article:last-child>section>img {
 main>article:last-child>section>section {
     display: flex;
     align-items: center;
+    width: 10em;
     flex-flow: row nowrap;
 }
 
