@@ -59,8 +59,6 @@ class Pais {
         var openWeatherAPI = "https://api.openweathermap.org/data/2.5/forecast?lat="
             + latitud + "&lon=" + longitud + units + lang + "&appid=5b4e304cb2042d8fdd3b883201af3d82";
 
-        var forecast5Days = new Array();
-
         // Llamada AJAX
         $.ajax({
             dataType: "json",
@@ -68,6 +66,7 @@ class Pais {
             method: 'GET',
             success: (datos) => {
                 console.log("SUCCESS");
+                var forecast5Days = new Array();
 
                 var currentDateTime = new Date();
                 var currentHour = currentDateTime.getHours();
@@ -76,6 +75,13 @@ class Pais {
                 for (var f of datos["list"]) {
 
                     var dateForecast = new Date(f["dt_txt"]);
+
+                    // Si son mas de las 21:00, enseña el forecast del dia que viene
+                    // a las 00:00 (24:00)
+                    if (currentHour >= 21) {
+                        currentHour = 0;
+                        currentDateTime.setDate(currentDateTime.getDate() + 1);
+                    }
 
                     // Si estamos en el mismo dia y la hora es igual o mayor
                     if (dateForecast.getDate() === currentDateTime.getDate()
@@ -105,8 +111,6 @@ class Pais {
                 console.log(JSON.stringify(e));
             }
         });
-
-        return forecast5Days;
     }
 
     insertaMeteoEnHtml(forecasts) {
@@ -131,7 +135,7 @@ class Pais {
         }
 
         var insertaImagenForecast = (forecast) => {
-            var imageUrl = "http://openweathermap.org/img/w/"
+            var imageUrl = "https://openweathermap.org/img/w/"
                 + forecast["weather"][0]["icon"] + ".png";
             var imageAlt = "Representación de: " + forecast["weather"][0]["description"];
 
@@ -194,4 +198,4 @@ class Pais {
 }
 
 var monaco = new Pais("Monaco", "Monaco", "36 686");
-monaco.fillSecondaryAttributes("Monarquia Constitucional", "43.734238659378725,7.421688705466854", "Catolica");
+monaco.fillSecondaryAttributes("Monarquia Constitucional", "43.737414330497565,7.421303172016904", "Catolica");

@@ -14,6 +14,12 @@
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
     <link rel="stylesheet" type="text/css" href="estilo/layout.css">
     <link rel="stylesheet" type="text/css" href="estilo/juegos.css">
+    <link rel="stylesheet" type="text/css" href="estilo/crucigrama.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="js/crucigrama.js"></script>
+
     <link rel="icon" href="multimedia/favicon-spidey.ico">
 </head>
 
@@ -34,7 +40,8 @@
         </nav>
     </header>
 
-    <!-- Section que representa la barra de navegacion a los diferentes juegos -->
+    <!-- Section que representa la barra de navegacion a los diferentes juegos. Fuera del main ya que lo
+     comparten los distintos HTML que componen los juegos -->
     <section>
         <h2>Juegos:</h2>
         <nav>
@@ -44,11 +51,21 @@
         </nav>
     </section>
 
+    <h3>Crucigrama matemático</h3>
     <main>
-        <p>Haz click en uno de los enlaces de arriba para jugar!!</p>
+
+
+
+
+
     </main>
 
 
 </body>
+
+<script>
+    juego.paintMathword();
+</script>
+
 
 </html>

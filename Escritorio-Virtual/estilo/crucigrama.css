@@ -1,0 +1,22 @@
+h3 {
+    text-align: center;
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(11, 1fr);
+    gap: 0;
+}
+
+main>p {
+    background-color: white;
+    margin: 0;
+    text-align: center;
+    border: solid;
+    border-width: 0.01em;
+}
+
+main>p[data-state="empty"] {
+    background-color: black;
+}

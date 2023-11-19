@@ -72,7 +72,7 @@ class Sudoku {
         game.cellClicked = this;
     }
 
-    keyDownHandler(ev) {
+    keyUpHandler(ev) {
 
         if (!isFinite(ev.key))
             return;
