@@ -53,11 +53,6 @@
 
     <h3>Crucigrama matemático</h3>
     <main>
-
-
-
-
-
     </main>
 
 
@@ -65,6 +60,27 @@
 
 <script>
     juego.paintMathword();
+    window.addEventListener("keydown", (event) => {
+
+        var isANum = event.keyCode >= 49 && event.keyCode <= 57
+        var isADiv = event.keyCode === 111;
+        var isAMult = event.keyCode === 106;
+        var isASum = event.keyCode === 107;
+        var isASub = event.keyCode === 109;
+
+        // Teclas aceptadas
+        if (isANum || isADiv || isAMult || isASum || isASub) {
+
+            if (!juego.isACellClicked) {
+                alert("A cell must be selected!!");
+            } else {
+                juego.introduceElement(event.key);
+            }
+
+        }
+
+
+    });
 </script>
 
 
