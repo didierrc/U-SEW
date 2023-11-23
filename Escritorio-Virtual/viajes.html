@@ -13,7 +13,12 @@
 
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
     <link rel="stylesheet" type="text/css" href="estilo/layout.css">
+    <link rel="stylesheet" type="text/css" href="estilo/viajes.css">
     <link rel="icon" href="multimedia/favicon-spidey.ico">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="js/viajes.js"></script>
 </head>
 
 <body>
@@ -35,7 +40,26 @@
 
     <main>
         <h2>Viajes</h2>
-        <p>En desarrollo...</p>
+
+        <script>
+            var viaje = new Viajes();
+            viaje.showStaticMap();
+            var initMap = () => viaje.showDynamicMap(); // Requerido hacer esta funcion ya que la URL solo recibe funciones
+        </script>
+
+        <!-- Usando la forma "legacy" de obtener las librerias de la API 
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQHMvNMIE31xvj292ywRrpOOss9JWVv9k&callback=initMap"></script>
+        -->
+        <!-- Usando libreria dinamicamente siguiendo la documentacion de Google JS API 
+            Leer el DISCLAIMER de showDynamicMap()
+        <script>
+            (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
+                ({ key: "AIzaSyCQHMvNMIE31xvj292ywRrpOOss9JWVv9k", v: "weekly" });
+        </script>
+        -->
+
+
     </main>
 
 </body>
