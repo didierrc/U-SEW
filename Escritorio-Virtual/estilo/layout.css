@@ -3,15 +3,15 @@
 
 /*Especificidad: 001*/
 header {
+    /* Warning en el Validador CSS: "Ningún color establecido pero si un background"
+    Esto se resuleve con la herencia de estilo.css donde se establece el color de la fuente 
+    */
     background-color: #75E6DA;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 1.5em;
     flex-wrap: nowrap;
-    /* Warning en el Validador CSS: "Ningún color establecido pero si un background"
-    Esto se resuleve con la herencia de estilo.css donde se establece el color de la fuente 
-    */
 }
 
 @media all and (max-width: 465px) {

@@ -13,7 +13,8 @@ class Fondo {
 
         // Este atributo es solo para colocar la foto deseada en la página web
         // Ya que cada vez que se llama al API devuelve una imagen distinta
-        this.desiredURL = "https://live.staticflickr.com/65535/53336094769_5fd8a43ac4_b.jpg"
+        // Otra foto de interes: https://live.staticflickr.com/65535/53349302913_1a1c147e49_b.jpg
+        this.desiredURL = "https://live.staticflickr.com/65535/53349518320_f15245ecba_b.jpg"
     }
 
     consultaFlickr() {
@@ -37,17 +38,16 @@ class Fondo {
                 var url = "https://live.staticflickr.com/" + photoMonaco["server"] + "/" + photoMonaco["id"]
                     + "_" + photoMonaco["secret"] + "_b.jpg";
 
-                // Si se quiere obtener directamente la imagen simplemente
+                // Si se quiere obtener directamente la imagen del API simplemente
                 // comentar este if
                 if (this.desiredURL != url)
                     url = this.desiredURL;
 
                 // Asociamos la imagen obtenida a nuestro documento html
-                $("html").css("background", "url(" + url + ") no-repeat center center fixed")
-                    .css('background-size', 'cover')
-                    .css("-moz-background-size", "cover");
+                $("body").css("background", "no-repeat url(" + url + ")  center center fixed")
+                    .css('background-size', 'cover');
             } else
-                console.error("Invalid response");
+                console.error("Invalid response"); // Si no existen las fotos, muestra error en consola
         });
 
 
@@ -56,4 +56,5 @@ class Fondo {
 
 }
 
+// Creacion de la clase fondo
 var fondo = new Fondo("Mónaco", "Mónaco", "43.73097,7.424815");
