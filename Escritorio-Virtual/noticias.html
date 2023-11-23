@@ -13,7 +13,13 @@
 
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
     <link rel="stylesheet" type="text/css" href="estilo/layout.css">
+    <link rel="stylesheet" type="text/css" href="estilo/noticias.css">
     <link rel="icon" href="multimedia/favicon-spidey.ico">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="js/noticias.js"></script>
+
 </head>
 
 <body>
@@ -35,7 +41,8 @@
 
     <main>
         <h2>Noticias</h2>
-        <p>En desarrollo...</p>
+        <script>var n = new Noticias();</script>
+        <input type="file" onchange="n.readInputFile(this.files);">
     </main>
 
 </body>

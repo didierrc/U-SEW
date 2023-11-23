@@ -1,0 +1,31 @@
+main>article{
+    border: solid;
+    border-width: 0.1em;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    margin-top: 1em;
+    display: grid;
+    background-color: #75E6DA;
+}
+
+main>article>p{
+    background-color: white;
+    margin: 0;
+    padding: 2em;
+}
+
+
+main>article>h3,
+main>article>h4{
+    text-align: center;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+main>article>h4{
+    margin-top: 0.1em;
+}
+
+
+main>article>p:last-child{
+    text-align: end;
+}
