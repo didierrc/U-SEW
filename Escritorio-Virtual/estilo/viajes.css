@@ -1,6 +1,11 @@
-main>section:last-of-type {
-    height: 400px;
+main>section:nth-of-type(2) section,
+main>section:nth-of-type(4) section {
+    height: 25em;
     /* The height is 400 pixels */
     width: 100%;
     /* The width is the width of the web page */
+}
+
+main>section:nth-of-type(4) input {
+    margin-bottom: 2em;
 }
