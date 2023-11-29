@@ -14,12 +14,10 @@
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
     <link rel="stylesheet" type="text/css" href="estilo/layout.css">
     <link rel="stylesheet" type="text/css" href="estilo/juegos.css">
-    <link rel="stylesheet" type="text/css" href="estilo/crucigrama.css">
+    <link rel="stylesheet" type="text/css" href="estilo/api.css">
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="js/crucigrama.js"></script>
-
     <link rel="icon" href="multimedia/favicon-spidey.ico">
 </head>
 
@@ -52,37 +50,58 @@
         </nav>
     </section>
 
-    <h3>Crucigrama matemático</h3>
+    <!-- Para esta aplicacion se ha utlizado las APIs de:
+        Drag and Drop: Se puede arrastrar archivos multimedia del SO a la zona de Playlist 
+        File: En vez de arrastrar se puede buscar los archivos directamente y seleccionar varios 
+        Web Audio: Se puede Pausar,Reproducir,Subir volumen y Cambiar el stereo 
+    -->
     <main>
+
+        <h3>Reproductor de Música </h3>
+        <p>Arrastra tu música a la zona de "Playlist" o selecciona directamente desde tu buscador de archivos.</p>
+
+        <!-- Reproductor -->
+        <section>
+
+            <!-- Cabezera -->
+            <section>
+                <img src="multimedia/logo.png" alt="Logo del reproductor de musica">
+                <!-- Ganancia: Puede ser el doble o mutearse -->
+                <input type="range" min="0" max="2" value="1" step="0.01" />
+                <section>
+                    <p>Vol:</p>
+                    <p>100%</p>
+                </section>
+            </section>
+
+            <!-- Drag and Drop o Seleccion -->
+            <section>
+                <p>&sung; Playlist:</p>
+                <input type="file" onchange="musica.addTrackFile(this.files);" multiple>
+                <section></section>
+            </section>
+
+            <!-- Actions section -->
+            <section>
+                <p>&sharp; Acciones:</p>
+                <button>Previous</button>
+                <button data-playing="false">Play</button>
+                <button>Next</button>
+            </section>
+
+            <!-- Stereo -->
+            <section>
+                <p>&diams; Modifica el stereo!!</p>
+                <input type="range" min="-1" max="1" value="0" step="0.01">
+            </section>
+
+        </section>
+
+        <!-- Elemento de audio escondido y usado como el reproductor -->
+        <audio controls></audio>
+        <script src="js/api.js"></script>
+
     </main>
-
-
 </body>
-
-<script>
-    juego.paintMathword();
-    window.addEventListener("keydown", (event) => {
-
-        var isANum = event.keyCode >= 49 && event.keyCode <= 57
-        var isADiv = event.keyCode === 111;
-        var isAMult = event.keyCode === 106;
-        var isASum = event.keyCode === 107;
-        var isASub = event.keyCode === 109;
-
-        // Teclas aceptadas
-        if (isANum || isADiv || isAMult || isASum || isASub) {
-
-            if (!juego.isACellClicked) {
-                alert("A cell must be selected!!");
-            } else {
-                juego.introduceElement(event.key);
-            }
-
-        }
-
-
-    });
-</script>
-
 
 </html>

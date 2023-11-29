@@ -1,0 +1,108 @@
+main {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+main>h3+p {
+    margin: 0;
+}
+
+main>section {
+    margin-top: 1.2em;
+    display: grid;
+    background-color: rgb(0, 0, 0);
+    padding: 1.5em;
+    border: solid #df823a 0.2em;
+    border-radius: 1em;
+    color: #df823a;
+    font-size: 1.2em;
+    max-width: 50em;
+}
+
+audio {}
+
+input[type="file"] {
+    margin-bottom: 1em;
+    font-size: 0.8em;
+}
+
+main>section>section:first-of-type {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 2em;
+}
+
+
+input[type="range"] {
+    width: 15em;
+}
+
+main>section>section:first-of-type>img {
+    max-width: 8em;
+    max-height: 4em;
+}
+
+main>section>section:first-of-type>section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    font-size: 1.8em;
+    column-gap: 0.2em;
+}
+
+main>section>section:first-of-type>section>p:last-of-type {
+    color: white;
+}
+
+main>section>section:nth-of-type(2) {
+    display: flex;
+    flex-direction: column;
+    column-gap: 2em;
+}
+
+main>section>section:nth-of-type(2)>section {
+    margin-top: 0.5em;
+    border: solid #df823a 0.2em;
+    scroll-behavior: auto;
+    overflow-y: scroll;
+    height: 18em;
+}
+
+main>section>section:nth-of-type(2)>section>p {
+    color: white;
+    border: solid #df823a 0.1em;
+    margin: 0;
+    padding: 1em;
+}
+
+main>section>section:nth-of-type(2)>section>p[data-playingSong="true"] {
+    color: red;
+}
+
+main>section>section:nth-of-type(2)>section>p:hover {
+    cursor: pointer;
+    color: blue;
+}
+
+main>section>section:nth-of-type(3) {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-flow: row wrap;
+}
+
+main>section>section:nth-of-type(3) p {
+    flex: 1 100%;
+}
+
+main>section>section:nth-of-type(3) button {
+    padding: 1em;
+    border: none;
+    border-radius: 1em;
+    font-size: 0.8em;
+    font-weight: 600;
+    font-stretch: expanded;
+    background-color: #df823a;
+}
