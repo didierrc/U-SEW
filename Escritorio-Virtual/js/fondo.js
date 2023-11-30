@@ -1,7 +1,3 @@
-// Key: ddbe51fd442c70e2750078a38b9f3ae0
-// Secret: 41ce02adccff2ee6
-// flickr.photos.search
-
 "use strict";
 class Fondo {
 

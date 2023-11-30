@@ -1,6 +1,3 @@
-// Key: 5b4e304cb2042d8fdd3b883201af3d82
-// Example of call: api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=5b4e304cb2042d8fdd3b883201af3d82
-// API documentation: https://openweathermap.org/forecast5
 "use strict";
 class Pais {
 
@@ -135,8 +132,8 @@ class Pais {
         }
 
         var insertaImagenForecast = (forecast) => {
-            var imageUrl = "https://openweathermap.org/img/w/"
-                + forecast["weather"][0]["icon"] + ".png";
+            var imageUrl = "https://openweathermap.org/img/wn/"
+                + forecast["weather"][0]["icon"] + "@2x.png";
             var imageAlt = "Representación de: " + forecast["weather"][0]["description"];
 
             $("main article:last-child>section:last-child").append("<img>");
@@ -169,8 +166,11 @@ class Pais {
             imageAlt = "Icono de temperatura minima";
             insertaSeccionInfo(imageUrl, imageAlt, t);
 
-            // Añadiendo seccion de lluvia
-            // Puede que no haya la propiedad lluvia en el JSON
+            // Añadiendo seccion de lluvia: Puede que no haya la propiedad lluvia en el JSON
+            // API Docs: If you do not see some of the parameters in your API response it means that these weather 
+            // phenomena are just not happened for the time of measurement for the city or location chosen. 
+            // Only really measured or calculated data is displayed in API response.
+
             var rainAmount;
             try {
                 rainAmount = parseFloat(forecast["rain"]["3h"]);
@@ -183,13 +183,13 @@ class Pais {
             insertaSeccionInfo(imageUrl, imageAlt, t);
 
             // Añadiendo seccion de humedad
-            t = "<p>Humedad:" + forecast["main"]["humidity"] + "%</p>";
+            t = "<p>Humedad: " + forecast["main"]["humidity"] + "%</p>";
             imageUrl = "multimedia/humidity_icon.png";
             imageAlt = "Icono de humedad en ambiente";
             insertaSeccionInfo(imageUrl, imageAlt, t);
 
             // Añadiendo seccion de viento
-            t = "<p>Viento:" + forecast["wind"]["speed"] + "km/h</p>";
+            t = "<p>Viento: " + forecast["wind"]["speed"] + "km/h</p>";
             imageUrl = "multimedia/wind_icon.png";
             imageAlt = "Icono de viento";
             insertaSeccionInfo(imageUrl, imageAlt, t);

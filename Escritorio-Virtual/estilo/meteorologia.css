@@ -34,6 +34,10 @@ main>article:last-child>section>p {
 }
 
 main>article:last-child>section>img {
+    /* background-color: #1c7dcc6d; */
+    background-color: #9be5ed;
+    border-radius: 5em;
+    box-shadow: 0.01em 0.01em 0.5em rgba(0, 0, 0, 0.5);
     flex: 1 100%;
 }
 
