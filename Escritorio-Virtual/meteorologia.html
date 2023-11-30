@@ -22,7 +22,7 @@
 </head>
 
 <body>
-    <!-- Seccion Header que agrupa la cabezera de la página web (Cosas que se repiten en todas las páginas Web) -->
+    <!-- Seccion Header que agrupa la cabezera de la página web -->
     <header>
         <h1>Escritorio Virtual</h1>
 
@@ -39,13 +39,13 @@
     </header>
 
     <main>
-        <h2>Meteorologia de Mónaco</h2>
+        <h2>Meteorología de Mónaco</h2>
 
         <article>
             <h3>Información del país:</h3>
             <script>
-                document.write("<p> Nombre: " + monaco.nombre + "</p>");
-                document.write("<p> Capital: " + monaco.capital + "</p>");
+                document.write("<p> Nombre: " + monaco.getNombre() + "</p>");
+                document.write("<p> Capital: " + monaco.getCapital() + "</p>");
                 monaco.writeCoordenadasCapital();
                 document.write("<p>Información adicional: </p>")
                 document.write(monaco.getSecondaryInfoHTML());

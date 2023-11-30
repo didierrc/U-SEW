@@ -1,12 +1,20 @@
 /* Datos personales: Didier Reyes Castro - UO287866 */
 /* Color palette: https://www.canva.com/colors/color-palettes/summer-splash/ */
 
+/* Especificidad: 001 */
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* Especificidad: 002 */
 main>section {
     display: flex;
     align-items: center;
     flex-flow: row wrap;
     gap: 1em;
+    max-width: 50em;
 }
 
 /* Especificidad: 003 */
@@ -28,7 +36,7 @@ main>section article {
     cursor: pointer;
     transform-style: preserve-3d;
     transition: transform .5s;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0.1em 0.1em 0.1em rgba(0, 0, 0, 0.5);
 }
 
 /* Especificidad: 013-013 */
@@ -38,7 +46,7 @@ main>section article[data-state="revealed"] {
     transform: rotateY(180deg);
 }
 
-/* Especificidad: 003-003 */
+/* Especificidad: 004-004 */
 main>section article>h3,
 main>section article>img {
     width: 100%;
@@ -60,17 +68,16 @@ main>section article>h3 {
 /* Especificidad: 004 */
 main>section article>img {
     transform: rotateY(180deg);
-
     /* Hereda de estilo.css y lo sobreescribimos Cascada!!*/
     max-width: none;
 }
 
-
+/* Modificacion para dispositivos con resolucion baja (moviles) */
 @media all and (max-width: 520px) {
 
     /* Especificidad: 004 */
     main>section article>h3 {
-        font-size: 1.1em;
+        font-size: 1em;
     }
 
     /* Especificidad: 003 */

@@ -38,7 +38,7 @@ class Pais {
 
     getSecondaryInfoHTML() {
 
-        var liPoblacion = "<li> Poblacion: " + this.poblacion + "</li>";
+        var liPoblacion = "<li> Población: " + this.poblacion + "</li>";
         var liFormaGobierno = "<li> Forma de gobierno: " + this.formaGobierno + "</li>";
         var liReligion = "<li> Religión mayoritaria: " + this.religion + "</li>";
 
@@ -197,5 +197,5 @@ class Pais {
     }
 }
 
-var monaco = new Pais("Monaco", "Monaco", "36 686");
-monaco.fillSecondaryAttributes("Monarquia Constitucional", "43.737414330497565,7.421303172016904", "Catolica");
+var monaco = new Pais("Mónaco", "Mónaco", "36 686");
+monaco.fillSecondaryAttributes("Monarquía Constitucional", "43.737414330497565,7.421303172016904", "Católica");

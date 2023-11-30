@@ -68,17 +68,17 @@ class Memoria {
 
     shuffleElements() {
 
-        // Number of JSON elements
-        var i = this.getNumberCards() - 1; // From i = 11
+        // Numero total de elementos dentro del JSON
+        var i = this.getNumberCards() - 1; // Desde i = 11
         var randomIndex;
 
         while (i > 0) {
 
-            // Choose a remaining random element
+            // Escogemos un index random
             randomIndex = Math.floor(Math.random() * i);
             i--;
 
-            // Swap it with current element
+            // Cambiamos el elemento actual por el index elegido
             var temp = this.elements["carta" + i];
             this.elements["carta" + i] = this.elements["carta" + randomIndex];
             this.elements["carta" + randomIndex] = temp;
@@ -92,23 +92,23 @@ class Memoria {
 
     createElements() {
 
-        // Number of JSON elements
+        // Numero total de elementos dentro del JSON
         var len = this.getNumberCards();
         var i = 0;
+        var gameSection = document.querySelector("main>section");
 
         for (i; i < len; i++) {
 
             var elementString = this.elements["carta" + i]["element"];
             var imgString = this.elements["carta" + i]["source"];
+            var articleToInsert = '<article data-element="';
+            articleToInsert += elementString + '">';
+            articleToInsert += "<h3>Tarjeta de memoria</h3>";
+            articleToInsert += '<img alt="Imagen de la carta ' + elementString + '" src="';
+            articleToInsert += imgString + '">';
+            articleToInsert += "</article>";
 
-            document.write('<article data-element="');
-            document.write(elementString);
-            document.write('">');
-            document.write("<h3>Tarjeta de memoria</h3>");
-            document.write('<img alt="Imagen de la carta ' + elementString + '" src="')
-            document.write(imgString);
-            document.write('">');
-            document.write("</article>");
+            gameSection.innerHTML += articleToInsert;
         }
     }
 
@@ -123,12 +123,11 @@ class Memoria {
 
     flipCard(game) {
 
-
         // Si tarjeta ya estaba revelada, no se hace nada.
         if (this.getAttribute('data-state') === 'revealed')
             return;
 
-        // Si tarjeta es pulsada cuando el juego está bloqueada, no se hace nada.
+        // Si tarjeta es pulsada cuando el juego está bloqueado, no se hace nada.
         if (game.lockBoard)
             return;
 
@@ -150,7 +149,6 @@ class Memoria {
     }
 
     checkForMatch() {
-
         this.firstCard.getAttribute("data-element") === this.secondCard.getAttribute("data-element") ?
             this.disableCards() : this.unflipCards();
     }
@@ -164,16 +162,11 @@ class Memoria {
     unflipCards() {
         this.lockBoard = true;
 
-        var temp1 = this.firstCard;
-        var temp2 = this.secondCard;
-
         setTimeout(() => {
-            temp1.removeAttribute('data-state');
-            temp2.removeAttribute('data-state');
+            this.firstCard.removeAttribute('data-state');
+            this.secondCard.removeAttribute('data-state');
             this.resetBoard();
         }, 800);
-
-
     }
 
     resetBoard() {

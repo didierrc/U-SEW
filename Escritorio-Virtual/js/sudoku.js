@@ -14,7 +14,6 @@ class Sudoku {
         for (var i = 0; i < this.board.length; i++)
             this.board[i] = new Array(this.columns);
 
-
         this.start();
     }
 
@@ -25,37 +24,60 @@ class Sudoku {
         for (var i = 0; i < this.rows; i++) {
             for (var j = 0; j < this.columns; j++) {
                 this.boardString.charAt(charToPush) === "." ?
-                    this.board[i][j] = 0 : this.board[i][j] = parseInt(this.boardString.charAt(charToPush), 10);
+                    this.board[i][j] = 0 : this.board[i][j] = parseInt(this.boardString.charAt(charToPush));
                 charToPush++;
             }
         }
     }
 
     createStructure() {
+
+        var gameSection = document.querySelector("main>section");
+
         for (var i = 0; i < this.rows; i++) {
             for (var j = 0; j < this.columns; j++) {
 
+                // Simplemente creando la estructura de parrafos. 
+                //
+                // Si la celda es un 0 -> Se añade data-i,data-j.
+                // Si la celda es != 0 -> Se añade ademas el data-state=blocked
                 if (this.board[i][j] === 0) {
-                    document.write('<p data-i="' + i + '" data-j="' + j + '"></p>');
+                    gameSection.innerHTML += '<p data-i="' + i + '" data-j="' + j + '"></p>';
                 } else {
-                    document.write('<p data-state="blocked">' + this.board[i][j] + '</p>')
+                    gameSection.innerHTML += '<p data-i="' + i + '" data-j="' + j + '" data-state="blocked"></p>';
                 }
-
-
-
             }
         }
     }
 
+    paintSudoku() {
+        this.createStructure();
+
+        // Poniendo el valor que corresponde a cada parrafo
+        for (var i = 0; i < this.rows; i++) {
+            for (var j = 0; j < this.columns; j++) {
+
+                if (this.board[i][j] === 0)
+                    continue
+
+                var pInGame = 'main>section p[data-i="' + i + '"][data-j="' + j + '"]';
+                var p = document.querySelector(pInGame);
+                p.innerHTML = this.board[i][j];
+            }
+        }
+
+        // Añadiendo el evento onClick a los elementos correspondientes
+        this.addOnClickHandler();
+
+    }
+
     addOnClickHandler() {
-        var ps = document.querySelectorAll("main>section p");
+        // Añadiendo el evento onclick a los p que no tienen el atributo data-state
+        var ps = document.querySelectorAll("main>section p:not([data-state])");
         var i = 0;
 
         for (i; i < ps.length; i++) {
-            if (!ps[i].getAttribute("data-state")) {
-                ps[i].onclick = this.clickCell.bind(ps[i], this);
-            }
-
+            ps[i].onclick = this.clickCell.bind(ps[i], this);
         }
     }
 
@@ -74,7 +96,8 @@ class Sudoku {
 
     keyUpHandler(ev) {
 
-        if (!isFinite(ev.key))
+        // Verificamos que es un numero
+        if (ev.keyCode < 49 || ev.keyCode > 57)
             return;
 
         if (this.isACellClicked) {
@@ -91,7 +114,8 @@ class Sudoku {
         if (!this.isAValidNumber(number, rowSelected, columnSelected))
             return;
 
-        // Si dejamos esto no seriamos capaces de modificar nuestras opciones anteriores
+        // Modificacion: No quitamos los eventos onclick de los parrafos para
+        // que el usuario pueda modificar opciones anteriores.
         // this.cellClicked.onclick = null;
         this.cellClicked.setAttribute('data-state', 'correct');
         this.cellClicked.textContent = number;
@@ -109,8 +133,9 @@ class Sudoku {
         }
 
         // Revisamos la columna
-        if (this.board.some(r => r[columnSelected] === number)) {
-            return false;
+        for (var i = 0; i < this.rows; i++) {
+            if (this.board[i][columnSelected] === number)
+                return false;
         }
 
         // Revisamos la subcelda
@@ -129,20 +154,14 @@ class Sudoku {
 
     compruebaSudokuFinalizado() {
 
-        for (var i = 0; i < this.rows; i++) {
-            for (var j = 0; j < this.columns; j++) {
-                if (this.board[i][j] === 0 || !this.isAValidNumber(this.board[i][j], i, j))
-                    return false;
-            }
-        }
+        for (var i = 0; i < this.rows; i++)
+            if (this.board[i].includes(0))
+                return false;
 
         return true;
     }
 
-    paintSudoku() {
-        this.createStructure();
-        this.addOnClickHandler();
-    }
+
 
 
 }

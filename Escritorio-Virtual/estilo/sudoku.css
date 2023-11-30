@@ -1,3 +1,7 @@
+/* Datos personales: Didier Reyes Castro - UO287866 */
+/* Color palette: https://www.canva.com/colors/color-palettes/summer-splash/ */
+
+/* Especificidad: 001 */
 main {
     display: flex;
     flex-direction: column;
@@ -5,11 +9,13 @@ main {
     justify-content: center;
 }
 
+/* Especificidad: 002 */
 main>h3 {
     flex: 1 100%;
     text-align: center;
 }
 
+/* Especificidad: 002 */
 main>section {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
@@ -17,27 +23,59 @@ main>section {
     border: 0.3em solid black;
 }
 
+/* Especificidad: 003 */
 main>section p {
     padding: 1.5em;
     text-align: center;
     margin: 0;
-    border: 1px solid gray;
+    border: 0.01em solid gray;
 }
 
+/* Estilos para dar mejor visualizacion a los bordes del sudoku */
+
+/* Especificidad: 023 */
+main>section p:nth-of-type(3n):not(:nth-of-type(9n)) {
+    border-right: 0.3em solid black;
+}
+
+/* Especificidad: 023-023 */
+main>section p:nth-child(n+19):not(:nth-of-type(n+28)),
+main>section p:nth-child(n+46):not(:nth-of-type(n+55)) {
+    border-bottom: 0.3em solid black
+}
+
+/* Especificidad: 013-013 */
 main>section p[data-state="clicked"],
 main>section p[data-state="correct"] {
     border: solid;
-    border-width: 1px;
+    border-width: 0.02em;
     border-color: red;
 }
 
 @media all and (max-width: 550px) {
 
-    main>section p {
-        padding: 1em;
+    /* Especificidad: 002 */
+    main>section {
+        /* El tamaño de cada celda se reduce para su mejor visualizacion */
+        grid-template-columns: repeat(9, 2.4em);
+        border: 0.2em solid black
     }
 
-    main>section {
-        margin: 1em;
+    /* Especificidad: 003 */
+    main>section p {
+        padding: 0.8em;
     }
+
+    /* Especificidad: 023 */
+    main>section p:nth-of-type(3n):not(:nth-of-type(9n)) {
+        border-right: 0.2em solid black;
+    }
+
+    /* Especificidad: 023-023 */
+    main>section p:nth-child(n+19):not(:nth-of-type(n+28)),
+    main>section p:nth-child(n+46):not(:nth-of-type(n+55)) {
+        border-bottom: 0.2em solid black
+    }
+
+
 }

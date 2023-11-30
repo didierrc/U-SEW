@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="author" content="Didier Yamil Reyes Castro">
     <meta name="description" content="Documento con los juegos disponibles.">
-    <meta name="keywords" content="juegos,jugar,entretenimiento,diversion">
+    <meta name="keywords" content="juegos,jugar,sudoku,razonamiento,matemático">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
@@ -42,29 +42,28 @@
     <section>
         <h2>Juegos:</h2>
         <nav>
-            <a title="Juego de memoria" href="memoria.html" accesskey="M" tabindex="8">Memoria</a>
-            <a title="Sudoku" href="sudoku.html" accesskey="S" tabindex="9">Sudoku</a>
+            <a title="Juego de memoria" href="memoria.html" accesskey="E" tabindex="8">Memoria</a>
+            <a title="Sudoku" href="sudoku.html" accesskey="D" tabindex="9">Sudoku</a>
             <a title="Crucigrama" href="crucigrama.html" accesskey="C" tabindex="10">Crucigrama matemático</a>
-            <a title="Ejemplo de uso de APIs" href="api.html" accesskey="P" tabindex="10">Aplicacion con APIs</a>
+            <a title="Ejemplo de uso de APIs" href="api.html" accesskey="P" tabindex="11">Aplicacion con APIs</a>
         </nav>
     </section>
 
     <main>
 
         <h3>Sudoku</h3>
-        <section>
-            <script>
-                var sudoku = new Sudoku();
-                sudoku.paintSudoku();
-                window.addEventListener("keyup", (ev) => sudoku.keyUpHandler(ev));
-            </script>
-        </section>
+        <!-- Section que alberga el sudoku -->
+        <section></section>
 
     </main>
 
 
 </body>
 
-
+<script>
+    var sudoku = new Sudoku();
+    sudoku.paintSudoku();
+    window.addEventListener("keydown", (ev) => sudoku.keyUpHandler(ev));
+</script>
 
 </html>
