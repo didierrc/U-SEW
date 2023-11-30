@@ -1,3 +1,36 @@
+<?php
+
+/* Definicion de la clase Record */
+class Record{
+
+    private $server;
+    private $user;
+    private $pass;
+    private $dbname;
+
+    public function __construct(){
+        $this->server = "localhost";
+        $this->user = "DBUSER2023";
+        $this->pass = "DBPSWD2023";
+        $this->dbname = "records";
+    }
+
+
+}
+
+// Comprobamos que el usuario ha enviado los datos correspondientes
+if(count($_POST) > 0){
+    $recordUsuario = new Record(); // Creamos un nuevo record
+    
+
+}
+
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -47,7 +80,7 @@
         <nav>
             <a title="Juego de memoria" href="memoria.html" accesskey="E" tabindex="8">Memoria</a>
             <a title="Sudoku" href="sudoku.html" accesskey="D" tabindex="9">Sudoku</a>
-            <a title="Crucigrama" href="crucigrama.html" accesskey="C" tabindex="10">Crucigrama matemático</a>
+            <a title="Crucigrama" href="crucigrama.php" accesskey="C" tabindex="10">Crucigrama matemático</a>
             <a title="Ejemplo de uso de APIs" href="api.html" accesskey="P" tabindex="11">Aplicacion con APIs</a>
         </nav>
     </section>
@@ -55,7 +88,6 @@
     <h3>Crucigrama matemático</h3>
     <main>
     </main>
-
 
 </body>
 

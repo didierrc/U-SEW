@@ -14,7 +14,8 @@
 class Crucigrama {
 
     constructor() {
-        this.board = "4,.,.,=,36,#,#,#,25,#,#,*,#,.,#,#,#,.,.,-,.,=,.,#,15,#,.,*,#,=,#,=,#,.,#,=,.,#,18,#,6,*,.,=,30,=,#,#,#,#,#,=,#,#,56,#,9,-,.,=,3,#,.,#,#,*,#,+,#,#,#,*,20,.,.,=,18,#,#,#,.,#,#,=,#,=,#,#,#,=,#,#,18,#,24,.,.,=,72";
+        this.board = "4,*,.,=,12,#,#,#,5,#,#,*,#,/,#,#,#,*,4,-,.,=,.,#,15,#,.,*,#,=,#,=,#,/,#,=,.,#,3,#,4,*,.,=,20,=,#,#,#,#,#,=,#,#,8,#,9,-,.,=,3,#,.,#,#,-,#,+,#,#,#,*,6,/,.,=,.,#,#,#,.,#,#,=,#,=,#,#,#,=,#,#,6,#,8,*,.,=,16";
+        this.nivel = "Fácil";
 
         // Inicializando el array bidimensional
         this.cols = 9;
@@ -289,9 +290,32 @@ class Crucigrama {
         if (this.check_win_condition()) {
             this.end_time = new Date();
             alert("El juego ha terminado!!. Duración: " + this.calculate_date_difference());
+            this.createRecordForm();
         }
 
 
+    }
+
+    createRecordForm(){
+
+        // Introducimos el titulo del formulario
+        $("body").append("<h4>Introduce tus datos para guardar el tiempo</h4>");
+
+        // Introudcimos el formulario en sí
+        $("body").append('<form action="#" method="post" name="record"></form>');
+
+        // Introducimos todos los campos del formulario
+        var nombreField = '<p>Nombre: <input type="text" name="nombre" placeholder="Introduce aquí tu nombre" required></p>';
+        var apellidosField = '<p>Apellidos: <input type="text" name="apellidos" placeholder="Introduce aquí tus apellidos" required></p>';
+        var nivelField = '<p>Nivel: <input type="text" name="nivel" value="' + this.nivel + '" readonly></p>';
+        var tiempoField = '<p>Tiempo: <input type="text" name="tiempo" value="' + this.calculate_date_difference() +'" readonly></p>';
+        var submitField = '<input type="submit" value="Guardar el tiempo!!">';
+
+        $("form").append(nombreField);
+        $("form").append(apellidosField);
+        $("form").append(nivelField);
+        $("form").append(tiempoField);
+        $("form").append(submitField);
     }
 
 }
