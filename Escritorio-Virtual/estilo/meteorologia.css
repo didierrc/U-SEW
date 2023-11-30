@@ -1,3 +1,7 @@
+/* Datos personales: Didier Reyes Castro - UO287866 */
+/* Color palette: https://www.canva.com/colors/color-palettes/summer-splash/ */
+
+/* Especificidad: 012 */
 main>article:last-child {
     display: flex;
     align-items: center;
@@ -6,11 +10,13 @@ main>article:last-child {
     margin-top: 2em;
 }
 
+/* Especificidad: 013 */
 main>article:last-child>h3 {
     flex: 1 100%;
     margin-bottom: 2em;
 }
 
+/* Especificidad: 013 */
 main>article:last-child>section {
     display: flex;
     align-items: center;
@@ -21,11 +27,12 @@ main>article:last-child>section {
     background-color: rgb(238, 238, 238);
 
     margin-bottom: 2em;
-    border-radius: 5px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    border-radius: 0.5em;
+    box-shadow: 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.8);
 
 }
 
+/* Especificidad: 014 */
 main>article:last-child>section>p {
     flex: 1 100%;
     text-align: center;
@@ -33,14 +40,18 @@ main>article:last-child>section>p {
     font-weight: bold;
 }
 
+/* Especificidad: 014 */
 main>article:last-child>section>img {
     /* background-color: #1c7dcc6d; */
-    background-color: #9be5ed;
+    background-color: #92d4db;
     border-radius: 5em;
     box-shadow: 0.01em 0.01em 0.5em rgba(0, 0, 0, 0.5);
     flex: 1 100%;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
+/* Especificidad: 014 */
 main>article:last-child>section>section {
     display: flex;
     align-items: center;
@@ -48,10 +59,12 @@ main>article:last-child>section>section {
     flex-flow: row nowrap;
 }
 
+/* Especificidad: 015 */
 main>article:last-child>section>section>img {
     height: 2em;
 }
 
+/* Especificidad: 015 */
 main>article:last-child>section>section>p {
     margin-left: 1em;
 }

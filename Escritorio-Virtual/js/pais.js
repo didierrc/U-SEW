@@ -65,35 +65,36 @@ class Pais {
                 console.log("SUCCESS");
                 var forecast5Days = new Array();
 
-                var currentDateTime = new Date();
-                var currentHour = currentDateTime.getHours();
+                var targetDate = null;
+                var targetHour = null;
 
                 var nday = 0;
                 for (var f of datos["list"]) {
 
                     var dateForecast = new Date(f["dt_txt"]);
 
-                    // Si son mas de las 21:00, enseña el forecast del dia que viene
-                    // a las 00:00 (24:00)
-                    if (currentHour >= 21) {
-                        currentHour = 0;
-                        currentDateTime.setDate(currentDateTime.getDate() + 1);
+                    // Pillando el dia y hora del primer forecast como target para los siguientes forecast
+                    // Es decir: Los 5 forecast serán a la misma hora que el primer forecast devuelto por la
+                    // API (el inmediatamente mayor o igual a la hora del sistema)
+                    if (targetDate == null && targetHour == null) {
+                        targetDate = dateForecast;
+                        targetHour = dateForecast.getHours();
                     }
 
                     // Si estamos en el mismo dia y la hora es igual o mayor
-                    if (dateForecast.getDate() === currentDateTime.getDate()
-                        && dateForecast.getMonth() === currentDateTime.getMonth()
-                        && dateForecast.getFullYear() === currentDateTime.getFullYear()
-                        && dateForecast.getHours() >= currentHour) {
+                    if (dateForecast.getDate() === targetDate.getDate()
+                        && dateForecast.getMonth() === targetDate.getMonth()
+                        && dateForecast.getFullYear() === targetDate.getFullYear()
+                        && dateForecast.getHours() >= targetHour) {
 
                         // Para obtener la misma hora en todos los forecast
                         if (nday === 0)
-                            currentHour = dateForecast.getHours();
+                            targetHour = dateForecast.getHours();
 
                         // Añadimos a nuestro forecast array y actulizamos para obtener el siguiente dia
                         forecast5Days.push(f);
                         nday++;
-                        currentDateTime.setDate(currentDateTime.getDate() + 1);
+                        targetDate.setDate(targetDate.getDate() + 1);
                     }
 
                     // Si ya obtuvimos el numero de forecast necesario, salimos del bucle

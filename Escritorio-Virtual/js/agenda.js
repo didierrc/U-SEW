@@ -78,17 +78,17 @@ class Agenda {
             $("main>section:last-child>section:last-child>section:last-child").append("<section></section>");
 
             // Nombre de circuito
-            var circuitName = "<p>Circuit: " + $("CircuitName", race).text() + "</p>";
+            var circuitName = "<p>Circuito: " + $("CircuitName", race).text() + "</p>";
             $("main>section:last-child>section:last-child>section:last-child>section:last-child").append(circuitName);
 
             // Localizacion del circuito
             var circuitLocality = $("Locality", race).text();
             var countryLocality = $("Country", race).text();
-            var localisationCircuit = "<p>Location: " + countryLocality + " - " + circuitLocality + "</p>"
+            var localisationCircuit = "<p>Localización: " + countryLocality + " - " + circuitLocality + "</p>"
             $("main>section:last-child>section:last-child>section:last-child>section:last-child").append(localisationCircuit);
 
             // Coordenadas de circuito
-            var coordinates = "<p>Coordinates: " + $("Location", race).attr("lat") + "," + $("Location", race).attr("long") + "</p>";
+            var coordinates = "<p>Coordenadas: " + $("Location", race).attr("lat") + "," + $("Location", race).attr("long") + "</p>";
             $("main>section:last-child>section:last-child>section:last-child>section:last-child").append(coordinates);
         }
 
@@ -107,6 +107,7 @@ class Agenda {
             }
         };
 
+        // Si no se ha agregado el titulo de la seccion se agrega
         if (!this.calendarTitleAdded) {
             this.addCalendarTitle();
             this.calendarTitleAdded = true;
@@ -153,7 +154,7 @@ class Agenda {
         $("main>section>img").attr("alt", f1Alt);
 
         // Creando el titulo
-        $("main>section").append("<p>2023 Season Calendar</p>");
+        $("main>section").append("<p>Calendario de la Temporada 2023</p>");
 
         // Haciendo que el boton no se vuelva a llamar para no generar mas contenido
         $("button").attr("disabled", "disabled");

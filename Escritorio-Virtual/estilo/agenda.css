@@ -1,13 +1,19 @@
+/* Datos personales: Didier Reyes Castro - UO287866 */
+/* Color palette: https://www.canva.com/colors/color-palettes/summer-splash/ */
+
+/* Especificidad: 001 */
 button {
     display: block;
     margin-bottom: 2em;
 }
 
+/* Especificidad: 012 */
 main>section:first-of-type {
     display: flex;
     align-items: center;
 }
 
+/* Especificidad: 013 */
 main>section:first-of-type img {
     width: 100%;
     height: auto;
@@ -15,25 +21,29 @@ main>section:first-of-type img {
     margin-right: 2em;
 }
 
+/* Especificidad: 013 */
 main>section:first-of-type p {
     font-size: 2em;
     color: #ee0000;
     font-weight: bold;
 }
 
+/* Especificidad: 012 */
 main>section:nth-of-type(2) {
     display: grid;
     row-gap: 1em;
 }
 
+/* Especificidad: 013 */
 main>section:nth-of-type(2)>section {
-    border: solid 2px black;
+    border: solid 0.1em black;
     background-color: white;
     display: flex;
     max-width: 50em;
-    max-height: 10em;
+    height: auto;
 }
 
+/* Especificidad: 024 */
 main>section:nth-of-type(2)>section>section:first-child {
     background-color: #ee0000;
     font-size: 1.2em;
@@ -44,8 +54,10 @@ main>section:nth-of-type(2)>section>section:first-child {
     align-items: center;
     justify-content: center;
     margin-right: 1em;
+    border-right: solid 0.1em black;
 }
 
+/* Especificidad: 024 */
 main>section:nth-of-type(2)>section>section:nth-child(2) {
     flex: 1 90%;
     display: flex;
@@ -54,20 +66,38 @@ main>section:nth-of-type(2)>section>section:nth-child(2) {
     flex-flow: row wrap;
 }
 
+/* Especificidad: 025 */
 main>section:nth-of-type(2)>section>section:nth-child(2)>img {
     max-width: 5em;
     height: auto;
 }
 
-
+/* Especificidad: 026 */
 main>section:nth-of-type(2)>section>section:nth-child(2)>section>p {
     margin: 0.5em;
 }
 
-@media all and (max-width: 700px) {
 
+@media all and (max-width: 650px) {
+
+    /* Especificidad: 013 */
     main>section:nth-of-type(2)>section {
-        max-height: 11em;
+        flex-direction: column;
+    }
+
+    /* Especificidad: 024 */
+    main>section:nth-of-type(2)>section>section:first-child {
+        flex: 1 100%;
+        margin-right: 0;
+        border-right: none;
+        margin-bottom: 1em;
+        border-bottom: solid 0.1em black;
+        font-size: 1em;
+    }
+
+    /* Especificidad: 014 */
+    main>section:nth-of-type(2)>section p {
+        font-size: 0.9em;
     }
 
 }

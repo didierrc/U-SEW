@@ -40,8 +40,8 @@ if(count($_POST) > 0){
 
     <meta charset="UTF-8">
     <meta name="author" content="Didier Yamil Reyes Castro">
-    <meta name="description" content="Documento con los juegos disponibles.">
-    <meta name="keywords" content="juegos,jugar,entretenimiento,diversion">
+    <meta name="description" content="Documento con el juego Crucigrama Matemático.">
+    <meta name="keywords" content="juegos,matemática,razonamiento,agilidad">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css">

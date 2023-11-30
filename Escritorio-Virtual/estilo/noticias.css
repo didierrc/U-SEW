@@ -1,3 +1,7 @@
+/* Datos personales: Didier Reyes Castro - UO287866 */
+/* Color palette: https://www.canva.com/colors/color-palettes/summer-splash/ */
+
+/* Especificidad: 013 */
 main>section:first-of-type>article {
     box-shadow: 0.2em 0.2em 0.1em rgba(0, 0, 0, 0.5);
     margin-top: 1em;
@@ -6,13 +10,14 @@ main>section:first-of-type>article {
     max-width: 50em;
 }
 
+/* Especificidad: 014 */
 main>section:first-of-type>article>p {
     background-color: white;
     margin: 0;
     padding: 2em;
 }
 
-
+/* Especificidad: 014-014 */
 main>section:first-of-type>article>h3,
 main>section:first-of-type>article>h4 {
     text-align: center;
@@ -20,15 +25,17 @@ main>section:first-of-type>article>h4 {
     margin-right: 1em;
 }
 
+/* Especificidad: 014 */
 main>section:first-of-type>article>h4 {
     margin-top: 0.1em;
 }
 
-
+/* Especificidad: 024 */
 main>section:first-of-type>article>p:last-child {
     text-align: end;
 }
 
+/* Especificidad: 001 */
 button {
     padding: 1em;
     font-size: 1em;
@@ -38,6 +45,7 @@ button {
     box-shadow: 0.2em 0.2em 0.1em rgba(0, 0, 0, 0.5);
 }
 
+/* Especificidad: 011 */
 button:active {
     opacity: 0.7;
     margin-top: 0.2em;

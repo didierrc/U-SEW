@@ -1,13 +1,19 @@
+/* Datos personales: Didier Reyes Castro - UO287866 */
+/* Color palette: https://www.canva.com/colors/color-palettes/summer-splash/ */
+
+/* Especificidad: 001 */
 main {
     display: flex;
     flex-flow: column;
     align-items: center;
 }
 
+/* Especificidad: 003 */
 main>h3+p {
     margin: 0;
 }
 
+/* Especificidad: 002 */
 main>section {
     margin-top: 1.2em;
     display: grid;
@@ -20,13 +26,16 @@ main>section {
     max-width: 50em;
 }
 
+/* Especificidad: 001 */
 audio {}
 
+/* Especificidad: 011 */
 input[type="file"] {
     margin-bottom: 1em;
     font-size: 0.8em;
 }
 
+/* Especificidad: 013 */
 main>section>section:first-of-type {
     display: flex;
     align-items: center;
@@ -34,16 +43,18 @@ main>section>section:first-of-type {
     column-gap: 2em;
 }
 
-
+/* Especificidad: 011 */
 input[type="range"] {
     width: 15em;
 }
 
+/* Especificidad: 014 */
 main>section>section:first-of-type>img {
     max-width: 8em;
     max-height: 4em;
 }
 
+/* Especificidad: 014 */
 main>section>section:first-of-type>section {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -52,16 +63,19 @@ main>section>section:first-of-type>section {
     column-gap: 0.2em;
 }
 
+/* Especificidad: 025 */
 main>section>section:first-of-type>section>p:last-of-type {
     color: white;
 }
 
+/* Especificidad: 013 */
 main>section>section:nth-of-type(2) {
     display: flex;
     flex-direction: column;
     column-gap: 2em;
 }
 
+/* Especificidad: 014 */
 main>section>section:nth-of-type(2)>section {
     margin-top: 0.5em;
     border: solid #df823a 0.2em;
@@ -70,6 +84,7 @@ main>section>section:nth-of-type(2)>section {
     height: 18em;
 }
 
+/* Especificidad: 015 */
 main>section>section:nth-of-type(2)>section>p {
     color: white;
     border: solid #df823a 0.1em;
@@ -77,15 +92,18 @@ main>section>section:nth-of-type(2)>section>p {
     padding: 1em;
 }
 
+/* Especificidad: 025 */
 main>section>section:nth-of-type(2)>section>p[data-playingSong="true"] {
     color: red;
 }
 
+/* Especificidad: 025 */
 main>section>section:nth-of-type(2)>section>p:hover {
     cursor: pointer;
     color: blue;
 }
 
+/* Especificidad: 013 */
 main>section>section:nth-of-type(3) {
     display: flex;
     align-items: center;
@@ -93,10 +111,12 @@ main>section>section:nth-of-type(3) {
     flex-flow: row wrap;
 }
 
+/* Especificidad: 014 */
 main>section>section:nth-of-type(3) p {
     flex: 1 100%;
 }
 
+/* Especificidad: 014 */
 main>section>section:nth-of-type(3) button {
     padding: 1em;
     border: none;

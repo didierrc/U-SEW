@@ -44,7 +44,6 @@ h1 {
     font-size: 2.6em;
     font-style: oblique;
     font-weight: 900;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
     margin-right: 0.5em;
 }
 
@@ -102,7 +101,7 @@ a:active {
 /* Especificidad: 011,011 */
 a:focus,
 a:hover {
-    border-bottom: 1px solid;
+    border-bottom: 0.01em solid;
 }
 
 /* Especificidad: 011 */
@@ -169,13 +168,13 @@ caption {
     font-weight: 700;
     margin-bottom: 0.5em;
     font-style: italic;
-    letter-spacing: 0.8px;
+    letter-spacing: 0.05em;
 }
 
 /* Especificidad: 001,001 */
 th,
 td {
-    border: 2.2px solid black;
+    border: 0.12em solid black;
     color: white;
     padding: 0.5em;
 }
