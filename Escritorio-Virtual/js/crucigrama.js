@@ -1,10 +1,3 @@
-// Como se comprueba: click casilla, ponerlo array
-// 1. Buscar en mi fila el "=". [w-3] first [w-2] op [w-1] second. Dejas de buscar si -1 o out
-// 2. Join para unir todo.
-// 3. Eval del join (Si first != 0 op != 0 and second != 0)
-// 4. Comprobar [w+1] con eval
-// Comprobaciones de IZQ a DCHA y de ARRIBA a ABAJO
-
 // ------------------------- Crucigramas -------------------------
 // Facil: "4,*,.,=,12,#,#,#,5,#,#,*,#,/,#,#,#,*,4,-,.,=,.,#,15,#,.,*,#,=,#,=,#,/,#,=,.,#,3,#,4,*,.,=,20,=,#,#,#,#,#,=,#,#,8,#,9,-,.,=,3,#,.,#,#,-,#,+,#,#,#,*,6,/,.,=,.,#,#,#,.,#,#,=,#,=,#,#,#,=,#,#,6,#,8,*,.,=,16"
 // Medio: "12,*,.,=,36,#,#,#,15,#,#,*,#,/,#,#,#,*,.,-,.,=,.,#,55,#,.,*,#,=,#,=,#,/,#,=,.,#,15,#,9,*,.,=,45,=,#,#,#,#,#,=,#,#,72,#,20,-,.,=,11,#,.,#,#,-,#,+,#,#,#,*,56,/,.,=,.,#,#,#,.,#,#,=,#,=,#,#,#,=,#,#,12,#,16,*,.,=,32"
@@ -75,9 +68,6 @@ class Crucigrama {
                     $("main").append("<p>" + valorCelda + "</p>");
                     $("main>p:last").attr("data-state", "blocked");
                 }
-
-
-
             }
         }
 
@@ -143,7 +133,11 @@ class Crucigrama {
 
         var secondsElapsed = Math.floor(elapsedTime / segsDiv);
 
-        return hoursElapsed + ":" + minutesElapsed + ":" + secondsElapsed;
+        return (hoursElapsed / 10 >= 1.0 ? hoursElapsed : "0" + hoursElapsed)
+            + ":"
+            + (minutesElapsed / 10 >= 1.0 ? minutesElapsed : "0" + minutesElapsed)
+            + ":"
+            + (secondsElapsed / 10 >= 1.0 ? secondsElapsed : "0" + secondsElapsed);
     }
 
     introduceElement(element) {
@@ -261,9 +255,6 @@ class Crucigrama {
             } catch (error) {
                 expression_col = false;
             }
-
-
-
         }
 
         // Mostramos el elemento en pantalla o no
@@ -272,10 +263,8 @@ class Crucigrama {
         var jOfCell = $(this.cellClicked).attr("data-j");
 
         if (expression_row && expression_col) {
-
             $(this.cellClicked).text(element); // Mostramos el valor introducido
             $(this.cellClicked).attr("data-state", "correct"); // Estado en correcto
-            // QUITAMOS EL EVENTO ONCLICK?
         } else {
             this.crucigrama[iOfCell][jOfCell] = 0;
             $(this.cellClicked).removeAttr("data-state"); // deja de estar seleccionada
@@ -296,7 +285,7 @@ class Crucigrama {
 
     }
 
-    createRecordForm(){
+    createRecordForm() {
 
         // Introducimos el titulo del formulario
         $("body").append("<h4>Introduce tus datos para guardar el tiempo</h4>");
@@ -308,7 +297,7 @@ class Crucigrama {
         var nombreField = '<p>Nombre: <input type="text" name="nombre" placeholder="Introduce aquí tu nombre" required></p>';
         var apellidosField = '<p>Apellidos: <input type="text" name="apellidos" placeholder="Introduce aquí tus apellidos" required></p>';
         var nivelField = '<p>Nivel: <input type="text" name="nivel" value="' + this.nivel + '" readonly></p>';
-        var tiempoField = '<p>Tiempo: <input type="text" name="tiempo" value="' + this.calculate_date_difference() +'" readonly></p>';
+        var tiempoField = '<p>Tiempo: <input type="text" name="tiempo" value="' + this.calculate_date_difference() + '" readonly></p>';
         var submitField = '<input type="submit" value="Guardar el tiempo!!">';
 
         $("form").append(nombreField);

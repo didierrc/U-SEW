@@ -1,3 +1,4 @@
+<!--
 <?php
 
 /* Definicion de la clase Record */
@@ -28,6 +29,7 @@ if(count($_POST) > 0){
 
 
 ?>
+-->
 
 
 
@@ -95,6 +97,7 @@ if(count($_POST) > 0){
     juego.paintMathword();
     window.addEventListener("keydown", (event) => {
 
+        // CON REGEX....
         var isANum = event.keyCode >= 49 && event.keyCode <= 57
         var isADiv = event.keyCode === 111;
         var isAMult = event.keyCode === 106;
@@ -105,7 +108,7 @@ if(count($_POST) > 0){
         if (isANum || isADiv || isAMult || isASum || isASub) {
 
             if (!juego.isACellClicked) {
-                alert("A cell must be selected!!");
+                alert("Una celda tiene que ser seleccionada!!");
             } else {
                 juego.introduceElement(event.key);
             }
