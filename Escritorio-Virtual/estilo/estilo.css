@@ -92,7 +92,7 @@ a:visited {
 a:focus,
 a:hover,
 a:active {
-    background: #1fb7d6;
+    background: #A2E7F1;
     /* Warning en el Validador CSS: "Ningún color establecido pero si un background-color"
     Herencia de color:#0000D6 o color:0000ac dependiendo del estado del elemento a
     */

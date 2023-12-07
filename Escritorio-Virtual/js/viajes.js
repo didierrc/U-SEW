@@ -4,7 +4,8 @@ class Viajes {
 
 
     constructor() {
-        // PREGUNTAR!! NO SE XQ EL THIS SE PIERDE!!
+
+        // Verificamos los permisos de geolocalizacion
         navigator.geolocation.getCurrentPosition(this.obtainPosition.bind(this), this.manageErrorsFromPosition.bind(this));
 
         // Verificamos que el usuario tiene API file (usado para los ejercicios de API file)
@@ -21,11 +22,8 @@ class Viajes {
     obtainPosition(position) {
         this.longitud = position.coords.longitude;
         this.latitud = position.coords.latitude;
-        this.precision = position.coords.accuracy;
-        this.altitud = position.coords.altitude;
-        this.precisionAltitud = position.coords.altitudeAccuracy;
-        this.rumbo = position.coords.heading;
-        this.velocidad = position.coords.speed;
+        this.showStaticMap();
+        this.showDynamicMap();
     }
 
     manageErrorsFromPosition(error) {
@@ -48,10 +46,26 @@ class Viajes {
 
     showStaticMap() {
 
+        // Dado a la inclusion de librerias y demas componentes por parte de la API
+        // de Google. La propiedad navigator.geolocation tarda en encontrar la localizacion
+        // del usuario. Si se espera unos segundos, se mostrara.
+
         // Request a Maps API
         var apiKey = "&key=AIzaSyCQHMvNMIE31xvj292ywRrpOOss9JWVv9k";
         var url = "https://maps.googleapis.com/maps/api/staticmap?";
 
+        // Parameters for url (all separated by &)
+        var center = "center=" + this.latitud + "," + this.longitud;
+        var zoom = "&zoom=15"; // 10-city, 15-streets, 20-buildings
+        var size = "&size=800x600";
+        var locationMarker = "&markers=color:red%7Clabel:D%7C" + this.latitud + "," + this.longitud;
+
+        // Mostrando el mapa
+        var srcMap = url + center + zoom + size + locationMarker + apiKey;
+        $("main>section:first").append("<img src='" + srcMap + "' alt='Un mapa estatico que muestra tu localizacion actual'>");
+
+
+        /*
         // Intentamos obtener la ubicacion real del usuario
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((pos) => {
@@ -70,6 +84,7 @@ class Viajes {
                 $("main>section:first").append("<img src='" + srcMap + "' alt='Un mapa estatico que muestra tu localizacion actual'>");
             });
         }
+        */
     }
 
     showDynamicMap() {
@@ -91,7 +106,18 @@ class Viajes {
             center: centro,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });
+        var pos = {
+            lat: this.latitud,
+            lng: this.longitud
+        };
 
+        var infoWindow = new google.maps.InfoWindow;
+        infoWindow.setPosition(pos);
+        infoWindow.setContent('Localización encontrada');
+        infoWindow.open(mapaGeoposicionado);
+        mapaGeoposicionado.setCenter(pos);
+
+        /*
         // Intentamos obtener la ubicacion real del usuario
         var infoWindow = new google.maps.InfoWindow;
         if (navigator.geolocation) {
@@ -160,6 +186,234 @@ class Viajes {
 
     procesaXML(files) {
 
+        var parseDuration = (durationXML) => {
+
+            var durationString = "";
+
+            // Removemos la P del inicio e "intentamos" dividir por la T
+            var partes = durationXML.substring(1).split("T");
+            // Siempre está
+            var partesDate = partes[0];
+            // Puede que no haya tiempo, si no lo hay simplemente es un string vacio
+            var partesTiempo = partes[1] || "";
+
+
+            // Parseamos el Date
+            var years =
+                partesDate.includes("Y") ?
+                    partesDate.split("Y")[0].slice(-1) : "";
+            var month =
+                partesDate.includes("M") ?
+                    partesDate.split("M")[0].slice(-1) : "";
+            var days =
+                partesDate.includes("D") ?
+                    partesDate.split("D")[0].slice(-1) : "";
+
+            // Parseamos el Time
+            var hours;
+            var minutes;
+            var seconds;
+            if (partesTiempo != "") {
+                hours = partesTiempo.includes("H") ?
+                    partesTiempo.split("H")[0].slice(-1) : "";
+                minutes = partesTiempo.includes("M") ?
+                    partesTiempo.split("M")[0].slice(-1) : "";
+                seconds = partesTiempo.includes("S") ?
+                    partesTiempo.split("S")[0].slice(-1) : "";
+            }
+
+            if (years)
+                durationString += years + " año/s ";
+            if (month)
+                durationString += month + " mes/es ";
+            if (days)
+                durationString += days + " día/s ";
+            if (hours)
+                durationString += hours + " hora/s ";
+            if (minutes)
+                durationString += minutes + " minuto/s ";
+            if (seconds)
+                durationString += seconds + " segundo/s";
+
+
+            return durationString;
+        }
+
+        var createInfoPrincipal = (ruta, seccionRuta) => {
+
+            // Seccion que representa la informacion principal
+            var seccionInfoPrincipal = $("<section></section>");
+
+            // Subtitulo
+            seccionInfoPrincipal.append("<h5>Información Principal</h5>");
+            // Descripcion
+            var descripcion = $("descripcion", ruta).first().text();
+            seccionInfoPrincipal.append("<p>" + descripcion + "</p>");
+            // Medio de transporte
+            var medioTransporte = $(ruta).attr("medioTransporte");
+            // Duracion
+            var duracion = $("duracion", ruta).text();
+            // Agencia
+            var agencia = $("agencia", ruta).text();
+            // Adecuaciones
+            var adecuaciones = $("adecuaciones", ruta).first();
+            // Recomendacion
+            var recomendacion = $("recomendacion", ruta).text();
+
+            // Añadimos la lista con toda la informacion
+            var listaGeneral = $("<ul></ul>");
+            listaGeneral.append("<li>Medio de transporte: " + medioTransporte + "</li>");
+            listaGeneral.append("<li>Duracion: " + parseDuration(duracion) + "</li>");
+            listaGeneral.append("<li>Agencia: " + agencia + "</li>");
+
+            var listaAdecuaciones = "<li>Adecuaciones: <ul>";
+            for (var adecuacion of $("adecuacion", adecuaciones))
+                listaAdecuaciones += "<li>" + $(adecuacion).text() + "</li>";
+            listaAdecuaciones += "</ul></li>";
+
+            listaGeneral.append(listaAdecuaciones);
+            listaGeneral.append("<li>Recomendación: " + recomendacion + "</li>");
+            seccionInfoPrincipal.append(listaGeneral);
+
+            // Añadimos la seccion InfoPrincipal a la Seccion ruta
+            seccionInfoPrincipal.appendTo(seccionRuta);
+        }
+
+        var createInicioRuta = (ruta, seccionRuta) => {
+
+            // Seccion que representa el Inicio de la Ruta
+            var seccionInicioRuta = $("<section></section>");
+
+            // Subtitulo
+            seccionInicioRuta.append("<h5>Inicio de la ruta</h5>");
+            // Inicio
+            var inicio = $("inicio", ruta);
+            // Lugar de inicio
+            var lugar = $("lugar", inicio).text();
+            // Direccion de inicio
+            var direccion = $("direccion", inicio).text();
+            // Coordenadas
+            var coordenadas = $("coordenadas", inicio);
+
+
+            // Añadimos la lista con toda la informacion
+            var listaGeneral = $("<ul></ul>");
+            listaGeneral.append("<li>Lugar: " + lugar + "</li>");
+            listaGeneral.append("<li>Dirección: " + direccion + "</li>");
+
+            var listaCoordenadas = "<li>Coordenadas: <ul>";
+            listaCoordenadas += "<li>Longitud: " + $("longitud", coordenadas).text() + "</li>";
+            listaCoordenadas += "<li>Latitud: " + $("latitud", coordenadas).text() + "</li>";
+            listaCoordenadas += "<li>Altitud: " + $("altitud", coordenadas).text() + "mts.</li>"
+            listaCoordenadas += "</ul></li>";
+
+            listaGeneral.append(listaCoordenadas);
+            seccionInicioRuta.append(listaGeneral);
+
+            seccionInicioRuta.appendTo(seccionRuta);
+        }
+
+        var createReferencias = (ruta, seccionRuta) => {
+
+            // Seccion que representa el Inicio de la Ruta
+            var seccionReferencias = $("<section></section>");
+
+            // Subtitulo
+            seccionReferencias.append("<h5>Referencias</h5>");
+            // Referencias
+            var referencias = $("referencias", ruta);
+
+            // Añadimos la lista con toda la informacion
+            var listaGeneral = $("<ul></ul>");
+            for (var referencia of $("referencia", referencias)) {
+                var enlaceLi = "<li>";
+                enlaceLi += '<a href="' + $(referencia).text() + '">';
+                enlaceLi += $(referencia).text() + "</a>";
+                enlaceLi += "</li>";
+                listaGeneral.append(enlaceLi);
+            }
+            seccionReferencias.append(listaGeneral);
+
+            seccionReferencias.appendTo(seccionRuta);
+        }
+
+        var createHito = (hito, seccionHitos) => {
+
+            // Seccion que contiene el hito
+            var seccionHito = $("<section></section>");
+
+            // Titulo de la ruta
+            var tituloRuta = $(hito).attr("nombre");
+            // Descripcion
+            var descripcion = $("descripcion", hito).text();
+            // DistanciaHitoAnterior
+            var hitoAnterior = $("distanciaHitoAnterior", hito).text() + $("distanciaHitoAnterior", hito).attr("unidades");
+            // Fotografias
+            var fotografias = $("foto", hito);
+
+            // Introducimos todos los elementos en la seccion
+            seccionHito.append("<h6>" + tituloRuta + "</h6>");
+            seccionHito.append("<p>" + descripcion + "</p>");
+            seccionHito.append("<p>Coordenadas:</p>");
+
+            var listaCoordenadas = "<ul>";
+            listaCoordenadas += "<li>Longitud: " + $("longitud", hito).text() + "</li>";
+            listaCoordenadas += "<li>Latitud: " + $("latitud", hito).text() + "</li>";
+            listaCoordenadas += "<li>Altitud: " + $("altitud", hito).text() + "mts.</li>"
+            listaCoordenadas += "</ul>";
+
+            seccionHito.append(listaCoordenadas);
+            seccionHito.append("<p>Distancia al hito anterior: " + hitoAnterior + "</p>")
+
+            seccionHito.append("<p>Galeria:</p>");
+            for (var foto of fotografias) {
+                var imgLink = $(foto).text();
+                var imgAlt = imgLink.split(".")[0];
+                var imgSrc = "xml/" + imgLink;
+                seccionHito.append('<img src="' + imgSrc + '" alt="' + imgAlt + '" >');
+            }
+
+
+            seccionHito.appendTo(seccionHitos);
+        }
+
+        var createHitos = (ruta, seccionRuta) => {
+            // Seccion que contiene todos los Hitos 
+            var seccionHitos = $("<section></section>");
+
+            // Subtitulo
+            seccionHitos.append("<h5>Hitos de la ruta</h5>");
+            // Seccion de cada Hito
+            for (var hito of $("hito", ruta))
+                createHito(hito, seccionHitos);
+
+            seccionHitos.appendTo(seccionRuta);
+        }
+
+        var createNewRuta = (ruta) => {
+            // Seccion que representa la ruta
+            var seccionRuta = $("<section></section>");
+
+            // Introducimos el titulo y el tipo de la ruta
+            var titulo = $(ruta).attr("nombre");
+            var tipo = $(ruta).attr("tipo")
+            seccionRuta.append("<h4>" + titulo + " - " + tipo + "</h4>");
+
+            // Introducimos su informacion principal
+            createInfoPrincipal(ruta, seccionRuta);
+            // Introducimos el inicio de la ruta
+            createInicioRuta(ruta, seccionRuta);
+            // Introducimos las referencias de la ruta
+            createReferencias(ruta, seccionRuta);
+            // Introducimos todos los hitos
+            createHitos(ruta, seccionRuta);
+
+
+            // Lo añadimos a la seccion global de las rutaS
+            seccionRuta.appendTo("input:first+section");
+        }
+
+
         var file = files[0]; // Solo permite seleccionar un archivo
 
         // Solo permitimos archivos XML y comprobamos usando "MIME types"
@@ -172,25 +426,14 @@ class Viajes {
             var reader = new FileReader();
             reader.onload = (event) => {
 
-                $("input:first").after("<section></section>"); // Creamos una seccion para mostrar datos de XML
+                $("input:first").after("<section></section>"); // Creamos una seccion para mostrar datos de las rutas
+                var xml = new DOMParser().parseFromString(reader.result, "application/xml"); // Parseamos el XML para poder pasarlo a HTML
 
-                var name = "Nombre del archivo: " + file.name;
-                var size = "Tamaño del archivo: " + file.size + " bytes";
-                var fileType = "Tipo del archivo: " + file.type;
-                var lastMod = "Última modificación: " + file.lastModifiedDate;
-
-                // Parseamos el XML y obtenemos el numero de nodos que tiene
-                var xml = new DOMParser().parseFromString(reader.result, "application/xml");
-                var numberNodes = "Número de nodos XML: " + $("*", xml).length;
-
-                $("input:first").next().append("<p>" + name + "</p>");
-                $("input:first").next().append("<p>" + size + "</p>");
-                $("input:first").next().append("<p>" + fileType + "</p>");
-                $("input:first").next().append("<p>" + lastMod + "</p>");
-                $("input:first").next().append("<p>" + numberNodes + "</p>");
-                $("input:first").next().append("<p>Contenido del XML: </p>");
-                $("input:first").next().append("<pre></pre>");
-                $("pre").text(reader.result);
+                // Iteramos sobre cada ruta y creamos una seccion nueva
+                var rutas = $("ruta", xml);
+                for (var ruta of rutas) {
+                    createNewRuta(ruta);
+                }
 
                 this.isAnXmlLoaded = true;
             }
@@ -314,5 +557,3 @@ class Viajes {
     }
 
 }
-
-var viaje = new Viajes();

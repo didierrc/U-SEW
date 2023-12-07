@@ -19,7 +19,7 @@ class Noticias {
     readInputFile(files) {
 
         var file = files[0]; // Solo permite seleccionar un archivo
-        var textType = /text.*/; // Solo permitimos archivos txt
+        var textType = "text/plain"; // Solo permitimos archivos txt
 
         if (file.type.match(textType)) {
 
@@ -114,8 +114,6 @@ class Noticias {
             alert("La noticia debe tener un autor");
             return;
         }
-
-        //this.insertNoticia(titulo, subtitulo, contenido, autor);
 
         var creadorParrafo = (texto) => "<p>" + texto + "</p>";
 

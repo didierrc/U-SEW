@@ -16,7 +16,10 @@ main>h3+p {
 /* Especificidad: 002 */
 main>section {
     margin-top: 1.2em;
-    display: grid;
+
+    display: flex;
+    flex-direction: column;
+
     background-color: rgb(0, 0, 0);
     padding: 1.5em;
     border: solid #df823a 0.2em;
@@ -27,7 +30,9 @@ main>section {
 }
 
 /* Especificidad: 001 */
-audio {}
+audio {
+    visibility: hidden;
+}
 
 /* Especificidad: 011 */
 input[type="file"] {
@@ -51,16 +56,15 @@ input[type="range"] {
 /* Especificidad: 014 */
 main>section>section:first-of-type>img {
     max-width: 8em;
-    max-height: 4em;
+    height: auto;
 }
 
 /* Especificidad: 014 */
 main>section>section:first-of-type>section {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
     align-items: center;
     font-size: 1.8em;
-    column-gap: 0.2em;
+    column-gap: 0.3em;
 }
 
 /* Especificidad: 025 */
@@ -82,6 +86,7 @@ main>section>section:nth-of-type(2)>section {
     scroll-behavior: auto;
     overflow-y: scroll;
     height: 18em;
+    max-width: 30em;
 }
 
 /* Especificidad: 015 */
@@ -125,4 +130,22 @@ main>section>section:nth-of-type(3) button {
     font-weight: 600;
     font-stretch: expanded;
     background-color: #df823a;
+}
+
+@media all and (max-width: 650px) {
+
+    /* Especificidad: 013 */
+    main>section>section:first-of-type {
+        flex-direction: column;
+    }
+
+    /* Especificidad: 014 */
+    main>section>section:first-of-type>img {
+        margin-bottom: 2em;
+    }
+
+    /* Especificidad: 014 */
+    main>section>section:first-of-type>section {
+        font-size: 1.5em;
+    }
 }

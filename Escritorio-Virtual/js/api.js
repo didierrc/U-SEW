@@ -22,6 +22,12 @@ class Reproductor {
         // Añadimos la funcionalidad de reproducir y pausar al boton.
         this.addPlayStopHandler();
 
+        // Añadimos la funcionalidad de reproducir la cancion anterior al boton.
+        this.addPreviousSongHandler();
+
+        // Añadimos la funcionalidad de reproducir la cancion posterior al boton.
+        this.addNextSongHandler();
+
         // Que hacer cuando la cancion finalize...
         this.addEndSongHandler();
 
@@ -37,26 +43,6 @@ class Reproductor {
 
         // Define drop zone
         this.defineDropZone();
-    }
-
-    addEndSongHandler() {
-
-        document.querySelector("audio").addEventListener("ended", () => {
-            var nextSong = this.songToPlay.next();
-
-            if (nextSong.attr("data-song") != undefined) {
-
-                this.songToPlay.removeAttr("data-playingSong");
-                $("main>section>section:nth-of-type(3)>button:nth-of-type(2)").attr("data-playing", "true");
-                this.songToPlay = nextSong;
-                // YOU CANNOT AUTOPLAY -> advise it or try to solve it
-                $("audio")[0].play;
-
-
-            } else {
-                console.log("there is no other song!");
-            }
-        }, false);
     }
 
     addVolumeHandler() {
@@ -77,13 +63,12 @@ class Reproductor {
         });
     }
 
-    addPlayStopHandler() {
-
-        var playButton = $("main>section>section:nth-of-type(3)>button:nth-of-type(2)");
-        playButton.on("click", () => {
+    addNextSongHandler() {
+        var nextButton = $("main>section>section:nth-of-type(3)>button:nth-of-type(3)");
+        nextButton.on("click", () => {
 
             if (this.songToPlay == null) {
-                alert("Añade/Selecciona una cancion");
+                alert("Selecciona una cancion!");
                 return;
             }
 
@@ -93,28 +78,137 @@ class Reproductor {
                 this.audioContext.resume();
             }
 
-            // Iniciando el audio en el que hicieron click
-            var audio = $("audio");
-            var s = this.songToPlay.attr("data-song");
-            if (audio.attr("src") != s)
-                audio.attr("src", s);
+            var nextSong = this.songToPlay.next();
+            if (nextSong.attr("data-song") != undefined) {
 
-            var audioElement = audio[0];
+                // Pausamos la cancion actual
+                this.pauseCurrentSong();
+
+                // Cambiamos a la previa
+                this.songToPlay = nextSong;
+                this.changeAudioSrc(this.songToPlay.attr("data-song"));
+
+                // Play a la nueva cancion
+                this.playCurrentSong();
+            } else {
+                alert("No hay una siguiente canción!");
+            }
+
+
+        });
+    }
+
+    addPreviousSongHandler() {
+
+        var previousButton = $("main>section>section:nth-of-type(3)>button:nth-of-type(1)");
+        previousButton.on("click", () => {
+
+            if (this.songToPlay == null) {
+                alert("Selecciona una cancion!");
+                return;
+            }
+
+            // Revisando si el contexto esta suspendido (Aparecen warnings en las DevTools ya que los navegadores
+            // previenen cualquier reproduccion de sonido sin previa accion del usuario -> autoplay policy)
+            if (this.audioContext.state === "suspended") {
+                this.audioContext.resume();
+            }
+
+            var previousSong = this.songToPlay.prev();
+            if (previousSong.attr("data-song") != undefined) {
+
+                // Pausamos la cancion actual
+                this.pauseCurrentSong();
+
+                // Cambiamos a la previa
+                this.songToPlay = previousSong;
+                this.changeAudioSrc(this.songToPlay.attr("data-song"));
+
+                // Play a la nueva cancion
+                this.playCurrentSong();
+            } else {
+                alert("No hay una canción previa!");
+            }
+
+
+        });
+
+
+    }
+
+    changeAudioSrc(newSrc) {
+
+        var audio = $("audio");
+        if (audio.attr("src") != newSrc)
+            audio.attr("src", newSrc);
+    }
+
+    pauseCurrentSong() {
+        var playButton = $("main>section>section:nth-of-type(3)>button:nth-of-type(2)");
+        var audioElement = $("audio")[0];
+        if (this.songToPlay && playButton.attr("data-playing") === "true") {
+            audioElement.pause();
+            playButton.attr("data-playing", "false");
+            playButton.text("Play");
+            this.songToPlay.removeAttr("data-playingSong");
+        }
+    }
+
+    playCurrentSong() {
+        var playButton = $("main>section>section:nth-of-type(3)>button:nth-of-type(2)");
+        var audioElement = $("audio")[0];
+        if (this.songToPlay && playButton.attr("data-playing") === "false") {
+            this.songToPlay.attr("data-playingSong", "true");
+            playButton.text("Pause");
+            audioElement.play();
+            playButton.attr("data-playing", "true");
+        }
+    }
+
+
+    addPlayStopHandler() {
+
+        var playButton = $("main>section>section:nth-of-type(3)>button:nth-of-type(2)");
+        playButton.on("click", () => {
+
+            if (this.songToPlay == null) {
+                alert("Selecciona una canción!");
+                return;
+            }
+
+            // Revisando si el contexto esta suspendido (Aparecen warnings en las DevTools ya que los navegadores
+            // previenen cualquier reproduccion de sonido sin previa accion del usuario -> autoplay policy)
+            if (this.audioContext.state === "suspended") {
+                this.audioContext.resume();
+            }
+
+            // Cambiando el source del audio
+            var src = this.songToPlay.attr("data-song");
+            this.changeAudioSrc(src);
 
             // Reproducimos o pausamos depende del estado
             if (playButton.attr("data-playing") === "false") {
-                this.songToPlay.attr("data-playingSong", "true");
-                playButton.text("Pause");
-                audioElement.play();
-                playButton.attr("data-playing", "true");
+                this.playCurrentSong();
             } else if (playButton.attr("data-playing") === "true") {
-                audioElement.pause();
-                playButton.attr("data-playing", "false");
-                playButton.text("Play");
-                this.songToPlay.removeAttr("data-playingSong");
+                this.pauseCurrentSong();
             }
         });
 
+    }
+
+    addEndSongHandler() {
+
+        document.querySelector("audio").addEventListener("ended", () => {
+
+            this.songToPlay.removeAttr("data-playingSong");
+            this.songToPlay = null;
+            $("audio").removeAttr("src");
+            var playButton = $("main>section>section:nth-of-type(3)>button:nth-of-type(2)");
+            playButton.text("Play");
+            playButton.attr("data-playing", "false");
+            // No se puede hacer Autoplay sin previa autorizacion del usuario
+
+        }, false);
     }
 
     defineDropZone() {
