@@ -6,9 +6,9 @@
 "use strict";
 class Crucigrama {
 
-    constructor() {
-        this.board = "4,*,.,=,12,#,#,#,5,#,#,*,#,/,#,#,#,*,4,-,.,=,.,#,15,#,.,*,#,=,#,=,#,/,#,=,.,#,3,#,4,*,.,=,20,=,#,#,#,#,#,=,#,#,8,#,9,-,.,=,3,#,.,#,#,-,#,+,#,#,#,*,6,/,.,=,.,#,#,#,.,#,#,=,#,=,#,#,#,=,#,#,6,#,8,*,.,=,16";
-        this.nivel = "Fácil";
+    constructor(board, nivel) {
+        this.board = board;
+        this.nivel = nivel;
 
         // Inicializando el array bidimensional
         this.cols = 9;
@@ -52,6 +52,13 @@ class Crucigrama {
 
     paintMathword() {
 
+        // Eliminamos todos los hijos de main (puede que se haya jugado ya a un modo del crucigrama)
+        $("main").empty();
+
+        // Eliminamos seccion de formulario si se reinicia el juego
+        if ($("form").length != 0)
+            $("body>section:last").remove();
+
         for (var i = 0; i < this.rows; i++) {
             for (var j = 0; j < this.cols; j++) {
 
@@ -78,7 +85,6 @@ class Crucigrama {
         // Empieza el juego
         this.init_time = new Date();
     }
-
 
     addClickEventHandler() {
 
@@ -141,6 +147,12 @@ class Crucigrama {
     }
 
     introduceElement(element) {
+
+        if (!this.isACellClicked) {
+            alert("Una celda tiene que ser seleccionada!!");
+            return;
+        }
+
         var expression_row = true;
         var expression_col = true;
 
@@ -287,11 +299,15 @@ class Crucigrama {
 
     createRecordForm() {
 
-        // Introducimos el titulo del formulario
-        $("body").append("<h4>Introduce tus datos para guardar el tiempo</h4>");
+        // Creamos la seccion del formulario
+        // Data-type para poder referenciarlo mejor desde el CSS
+        var seccionFormulario = $("<section data-type='formulario'></section>");
 
-        // Introudcimos el formulario en sí
-        $("body").append('<form action="#" method="post" name="record"></form>');
+        // Introducimos el titulo del formulario
+        seccionFormulario.append("<h4>Introduce tus datos para guardar el tiempo</h4>");
+
+        // Creamos el formulario en sí
+        var formulario = $('<form action="#" method="post" name="record"></form>');
 
         // Introducimos todos los campos del formulario
         var nombreField = '<p>Nombre: <input type="text" name="nombre" placeholder="Introduce aquí tu nombre" required></p>';
@@ -300,13 +316,17 @@ class Crucigrama {
         var tiempoField = '<p>Tiempo: <input type="text" name="tiempo" value="' + this.calculate_date_difference() + '" readonly></p>';
         var submitField = '<input type="submit" value="Guardar el tiempo!!">';
 
-        $("form").append(nombreField);
-        $("form").append(apellidosField);
-        $("form").append(nivelField);
-        $("form").append(tiempoField);
-        $("form").append(submitField);
+        formulario.append(nombreField);
+        formulario.append(apellidosField);
+        formulario.append(nivelField);
+        formulario.append(tiempoField);
+        formulario.append(submitField);
+
+        // Introucimos el formulario en su seccion
+        seccionFormulario.append(formulario);
+
+        // Finalmente lo añadimos al body
+        seccionFormulario.appendTo("body");
     }
 
 }
-
-var juego = new Crucigrama();

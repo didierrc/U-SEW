@@ -88,34 +88,79 @@ if(count($_POST) > 0){
     </section>
 
     <h3>Crucigrama matemático</h3>
+
+    <!-- Seccion que simplemente agrupa las diferentes dificultades del crucigrama
+        (puesta para hacer las pruebas de usabilidad "más rápidas" )
+    -->
+    <section>
+        <p>Elige el nivel de dificultad:</p>
+        <button>Fácil</button>
+        <button>Medio</button>
+        <button>Difícil</button>
+    </section>
+
+    <script>
+
+        // Seleccion del crucigrama a jugar
+        var crucigrama;
+
+        $("body>section:last-of-type>button:first").on("click", () => {
+            crucigrama = new Crucigrama("4,*,.,=,12,#,#,#,5,#,#,*,#,/,#,#,#,*,4,-,.,=,.,#,15,#,.,*,#,=,#,=,#,/,#,=,.,#,3,#,4,*,.,=,20,=,#,#,#,#,#,=,#,#,8,#,9,-,.,=,3,#,.,#,#,-,#,+,#,#,#,*,6,/,.,=,.,#,#,#,.,#,#,=,#,=,#,#,#,=,#,#,6,#,8,*,.,=,16", "facil");
+            crucigrama.paintMathword();
+        });
+        $("body>section:last-of-type>button:nth-of-type(2)").on("click", () => {
+            crucigrama = new Crucigrama("12,*,.,=,36,#,#,#,15,#,#,*,#,/,#,#,#,*,.,-,.,=,.,#,55,#,.,*,#,=,#,=,#,/,#,=,.,#,15,#,9,*,.,=,45,=,#,#,#,#,#,=,#,#,72,#,20,-,.,=,11,#,.,#,#,-,#,+,#,#,#,*,56,/,.,=,.,#,#,#,.,#,#,=,#,=,#,#,#,=,#,#,12,#,16,*,.,=,32", "medio");
+            crucigrama.paintMathword();
+        });
+        $("body>section:last-of-type>button:last").on("click", () => {
+            crucigrama = new Crucigrama("4,.,.,=,36,#,#,#,25,#,#,*,#,.,#,#,#,.,.,-,.,=,.,#,15,#,.,*,#,=,#,=,#,.,#,=,.,#,18,#,6,*,.,=,30,=,#,#,#,#,#,=,#,#,56,#,9,-,.,=,3,#,.,#,#,*,#,+,#,#,#,*,20,.,.,=,18,#,#,#,.,#,#,=,#,=,#,#,#,=,#,#,18,#,24,.,.,=,72", "dificil");
+            crucigrama.paintMathword();
+        });
+
+        // Añadiendo el evento keydown
+        window.addEventListener("keydown", (event) => {
+
+            if (crucigrama) {
+                // TODO: CON REGEX....
+                var isANum = event.keyCode >= 49 && event.keyCode <= 57
+                var isADiv = event.keyCode === 111;
+                var isAMult = event.keyCode === 106;
+                var isASum = event.keyCode === 107;
+                var isASub = event.keyCode === 109;
+
+                // Teclas aceptadas
+                if (isANum || isADiv || isAMult || isASum || isASub) {
+
+                    if (!crucigrama.isACellClicked) {
+                        alert("Una celda tiene que ser seleccionada!!");
+                    } else {
+                        crucigrama.introduceElement(event.key);
+                    }
+
+                }
+            }
+        });
+
+    </script>
+
     <main>
     </main>
 
-    <script>
-        juego.paintMathword();
-        window.addEventListener("keydown", (event) => {
-
-            // CON REGEX....
-            var isANum = event.keyCode >= 49 && event.keyCode <= 57
-            var isADiv = event.keyCode === 111;
-            var isAMult = event.keyCode === 106;
-            var isASum = event.keyCode === 107;
-            var isASub = event.keyCode === 109;
-
-            // Teclas aceptadas
-            if (isANum || isADiv || isAMult || isASum || isASub) {
-
-                if (!juego.isACellClicked) {
-                    alert("Una celda tiene que ser seleccionada!!");
-                } else {
-                    juego.introduceElement(event.key);
-                }
-
-            }
-
-
-        });
-    </script>
+    <section data-type="botonera">
+        <button onclick="crucigrama ? crucigrama.introduceElement(1) : alert('Tienes que crear un juego!')">1</button>
+        <button onclick="crucigrama ? crucigrama.introduceElement(2) : alert('Tienes que crear un juego!')">2</button>
+        <button onclick="crucigrama ? crucigrama.introduceElement(3) : alert('Tienes que crear un juego!')">3</button>
+        <button onclick="crucigrama ? crucigrama.introduceElement(4) : alert('Tienes que crear un juego!')">4</button>
+        <button onclick="crucigrama ? crucigrama.introduceElement(5) : alert('Tienes que crear un juego!')">5</button>
+        <button onclick="crucigrama ? crucigrama.introduceElement(6) : alert('Tienes que crear un juego!')">6</button>
+        <button onclick="crucigrama ? crucigrama.introduceElement(7) : alert('Tienes que crear un juego!')">7</button>
+        <button onclick="crucigrama ? crucigrama.introduceElement(8) : alert('Tienes que crear un juego!')">8</button>
+        <button onclick="crucigrama ? crucigrama.introduceElement(9) : alert('Tienes que crear un juego!')">9</button>
+        <button onclick="crucigrama ? crucigrama.introduceElement('*') : alert('Tienes que crear un juego!')">*</button>
+        <button onclick="crucigrama ? crucigrama.introduceElement('+') : alert('Tienes que crear un juego!')">+</button>
+        <button onclick="crucigrama ? crucigrama.introduceElement('-') : alert('Tienes que crear un juego!')">-</button>
+        <button onclick="crucigrama ? crucigrama.introduceElement('/') : alert('Tienes que crear un juego!')">/</button>
+    </section>
 
 </body>
 
