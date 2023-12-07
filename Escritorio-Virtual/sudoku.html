@@ -57,13 +57,12 @@
 
     </main>
 
+    <script>
+        var sudoku = new Sudoku();
+        sudoku.paintSudoku();
+        window.addEventListener("keydown", (ev) => sudoku.keyUpHandler(ev));
+    </script>
 
 </body>
-
-<script>
-    var sudoku = new Sudoku();
-    sudoku.paintSudoku();
-    window.addEventListener("keydown", (ev) => sudoku.keyUpHandler(ev));
-</script>
 
 </html>

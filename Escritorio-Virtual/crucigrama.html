@@ -91,33 +91,33 @@ if(count($_POST) > 0){
     <main>
     </main>
 
-</body>
+    <script>
+        juego.paintMathword();
+        window.addEventListener("keydown", (event) => {
 
-<script>
-    juego.paintMathword();
-    window.addEventListener("keydown", (event) => {
+            // CON REGEX....
+            var isANum = event.keyCode >= 49 && event.keyCode <= 57
+            var isADiv = event.keyCode === 111;
+            var isAMult = event.keyCode === 106;
+            var isASum = event.keyCode === 107;
+            var isASub = event.keyCode === 109;
 
-        // CON REGEX....
-        var isANum = event.keyCode >= 49 && event.keyCode <= 57
-        var isADiv = event.keyCode === 111;
-        var isAMult = event.keyCode === 106;
-        var isASum = event.keyCode === 107;
-        var isASub = event.keyCode === 109;
+            // Teclas aceptadas
+            if (isANum || isADiv || isAMult || isASum || isASub) {
 
-        // Teclas aceptadas
-        if (isANum || isADiv || isAMult || isASum || isASub) {
+                if (!juego.isACellClicked) {
+                    alert("Una celda tiene que ser seleccionada!!");
+                } else {
+                    juego.introduceElement(event.key);
+                }
 
-            if (!juego.isACellClicked) {
-                alert("Una celda tiene que ser seleccionada!!");
-            } else {
-                juego.introduceElement(event.key);
             }
 
-        }
 
+        });
+    </script>
 
-    });
-</script>
+</body>
 
 
 </html>
