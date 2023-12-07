@@ -313,13 +313,15 @@ class Crucigrama {
         var nombreField = '<p>Nombre: <input type="text" name="nombre" placeholder="Introduce aquí tu nombre" required></p>';
         var apellidosField = '<p>Apellidos: <input type="text" name="apellidos" placeholder="Introduce aquí tus apellidos" required></p>';
         var nivelField = '<p>Nivel: <input type="text" name="nivel" value="' + this.nivel + '" readonly></p>';
-        var tiempoField = '<p>Tiempo: <input type="text" name="tiempo" value="' + this.calculate_date_difference() + '" readonly></p>';
+        var tiempoUser = '<p>Tiempo: <input type="text" name="tiempoUser" value="' + this.calculate_date_difference() + '" readonly></p>';
+        var tiempoDB = '<p><input type="text" name="tiempoDB" value="' + (this.end_time - this.init_time) + '" readonly></p>'
         var submitField = '<input type="submit" value="Guardar el tiempo!!">';
 
         formulario.append(nombreField);
         formulario.append(apellidosField);
         formulario.append(nivelField);
-        formulario.append(tiempoField);
+        formulario.append(tiempoUser);
+        formulario.append(tiempoDB);
         formulario.append(submitField);
 
         // Introucimos el formulario en su seccion
