@@ -1,37 +1,41 @@
 /* Datos personales: Didier Reyes Castro - UO287866 */
 /* Color palette: https://www.canva.com/colors/color-palettes/summer-splash/ */
 
-/* Especificidad: 013 */
-main>section:first-of-type>article {
+/* Especificidad: 002 */
+main>article {
     box-shadow: 0.2em 0.2em 0.1em rgba(0, 0, 0, 0.5);
     margin-top: 1em;
     display: grid;
     background-color: #75E6DA;
+    /* Warning: "No color set but background-color is set"
+        El color se hereda de estilo.css (los h3 y h4)*/
     max-width: 50em;
 }
 
-/* Especificidad: 014 */
-main>section:first-of-type>article>p {
+/* Especificidad: 003 */
+main>article>p {
     background-color: white;
+    /* Warning: "No color set but background-color is set"
+        El color se hereda de estilo.css (los p)*/
     margin: 0;
     padding: 2em;
 }
 
-/* Especificidad: 014-014 */
-main>section:first-of-type>article>h3,
-main>section:first-of-type>article>h4 {
+/* Especificidad: 003-003 */
+main>article>h3,
+main>article>h4 {
     text-align: center;
     margin-left: 1em;
     margin-right: 1em;
 }
 
-/* Especificidad: 014 */
-main>section:first-of-type>article>h4 {
+/* Especificidad: 003 */
+main>article>h4 {
     margin-top: 0.1em;
 }
 
-/* Especificidad: 024 */
-main>section:first-of-type>article>p:last-child {
+/* Especificidad: 013 */
+main>article>p:last-child {
     text-align: end;
 }
 
@@ -40,6 +44,7 @@ button {
     padding: 1em;
     font-size: 1em;
     background-color: #75E6DA;
+    color: black;
     border: none;
     border-radius: 0.4em;
     box-shadow: 0.2em 0.2em 0.1em rgba(0, 0, 0, 0.5);

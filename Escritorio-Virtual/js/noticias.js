@@ -11,7 +11,6 @@ class Noticias {
             $("main").append("<p>Los contenidos del documento no pueden enseñarse correctamente.</p>");
         }
 
-        this.isSeccionNoticiasAdded = false;
         this.isSeccionNewNoticiasAdded = false;
     }
 
@@ -36,11 +35,6 @@ class Noticias {
     // Introduce las noticias almacenadas en noticias.txt
     insertNoticiasFromFile(noticiasTxt) {
 
-        if (!this.isSeccionNoticiasAdded) {
-            $("main").append("<section></section>"); // La seccion que contiene todas las noticias
-            this.isSeccionNoticiasAdded = true;
-        }
-
         var noticias = noticiasTxt.split("\n");
 
         var i = 0;
@@ -55,11 +49,17 @@ class Noticias {
 
             var creadorParrafo = (texto) => "<p>" + texto + "</p>";
 
-            $("main>section:first").append("<article></article>"); // Añadiendo la noticia
-            $("main>section:first>article:last").append("<h3>" + titulo + "</h3>");
-            $("main>section:first>article:last").append("<h4>" + subtitulo + "</h4>");
-            $("main>section:first>article:last").append(creadorParrafo(contenido));
-            $("main>section:first>article:last").append(creadorParrafo(autor));
+            var noticiaArticle = $("<article></article>"); // Añadiendo la noticia
+            noticiaArticle.append("<h3>" + titulo + "</h3>");
+            noticiaArticle.append("<h4>" + subtitulo + "</h4>");
+            noticiaArticle.append(creadorParrafo(contenido));
+            noticiaArticle.append(creadorParrafo(autor));
+
+            // Si existe ya un articulo, lo añadimos despues de el
+            if ($("main>article:last")[0])
+                $("main>article:last").after(noticiaArticle)
+            else // Si es la primera noticia, se inserta despues del input
+                $("main>input").after(noticiaArticle)
         }
 
         // Añadimos la seccion para que el usuario pueda añadir más noticias
@@ -117,11 +117,13 @@ class Noticias {
 
         var creadorParrafo = (texto) => "<p>" + texto + "</p>";
 
-        $("main>section:first").append("<article></article>"); // Añadiendo la noticia
-        $("main>section:first>article:last").append("<h3>" + titulo + "</h3>");
-        $("main>section:first>article:last").append("<h4>" + subtitulo + "</h4>");
-        $("main>section:first>article:last").append(creadorParrafo(contenido));
-        $("main>section:first>article:last").append(creadorParrafo(autor));
+        var noticiaArticle = $("<article></article>"); // Añadiendo la noticia
+        noticiaArticle.append("<h3>" + titulo + "</h3>");
+        noticiaArticle.append("<h4>" + subtitulo + "</h4>");
+        noticiaArticle.append(creadorParrafo(contenido));
+        noticiaArticle.append(creadorParrafo(autor));
+
+        $("main>article:last").after(noticiaArticle)
 
     }
 
