@@ -1,4 +1,3 @@
-<!--
 <?php
 
 /* Definicion de la clase Record */
@@ -14,8 +13,122 @@ class Record{
         $this->user = "DBUSER2023";
         $this->pass = "DBPSWD2023";
         $this->dbname = "records";
+
+        // La BD se debe crear en el codigo???
+        // La tabla se debe crear en el codigo???
     }
 
+    public function registerNewRecord($userName, $userSurname, $level, $time){
+
+        // Establecemos la conexion con la base de datos
+        $db = new mysqli($this->server, $this->user, $this->pass, $this->dbname);
+        
+        // Comprobamos conexion
+        if($db->connect_error){
+            echo "Error al conectarse a la base de datos";
+        } else{
+            
+            // Preparamos la sentencia para evitar Injecciones de Código
+            $preparedStatement = $db->prepare("INSERT INTO registro (nombre, apellidos, nivel, tiempo) VALUES (?,?,?,?)");
+
+            // Añadimos los parametros
+            $preparedStatement->bind_param("sssi",
+                $userName, $userSurname, $level, $time);
+            
+            // Ejecutamos la sentencia
+            $preparedStatement->execute();
+
+            // Cerramos la sentencia
+            $preparedStatement->close();
+
+        }
+
+        // Cerramos la conexion
+        $db->close();
+
+        // Mostramos los 10 mejores records luego de "intentar" añadir el ultimo record
+        $this->showBestRecords($level);
+    }
+
+    private function showBestRecords($level){
+
+        // Establecemos la conexion con la base de datos
+        $db = new mysqli($this->server, $this->user, $this->pass, $this->dbname);
+        
+        // Comprobamos conexion
+        if($db->connect_error){
+            echo "Error al conectarse a la base de datos";
+        } else{
+            
+            // Preparamos la sentencia para evitar Injecciones de Código
+            $preparedStatement = $db->prepare("SELECT * FROM registro WHERE nivel=? ORDER BY tiempo");
+
+            // Añadimos los parametros
+            $preparedStatement->bind_param("s", $level);
+            
+            // Ejecutamos la sentencia
+            $preparedStatement->execute();
+
+            // Obtenemos el resultado
+            $resultSet = $preparedStatement->get_result();
+
+            $listToReturn = "<ol>";
+            if($resultSet->fetch_assoc() != NULL){ // Como decir resultSet.next()
+
+                $listToReturn .= "Los 10 mejores tiempos para el nivel: " . $level;
+                $nTiempos = 0;
+
+                $resultSet->data_seek(0); // Nos posicionamos en el inicio del array asociativo
+                while($row = $resultSet->fetch_assoc()){
+                    
+                    if($nTiempos === 10){
+                        break;
+                    }
+                    
+                    $listToReturn .= "<li>Nombre: " . $row["nombre"];
+                    $listToReturn .= " Apellidos: " . $row["apellidos"];
+                    $listToReturn .= " Tiempo: " . $this->timeToString($row["tiempo"]);
+                    $listToReturn .= "</li>";
+                    $nTiempos += 1;
+                }
+
+                $listToReturn .= "</ol>";
+            }else{
+                // No ha conseguido obtener ningun record
+                $listToReturn .= "Aún no hay datos para mostrar</ol>";
+            }
+
+            echo $listToReturn;
+            $preparedStatement->close();
+        }
+
+        // Cerramos la conexion
+        $db->close();
+
+    }
+
+    private function timeToString($time){
+
+        $elapsedTime = $time;
+
+        $segsDiv = 1000;
+        $minDiv = $segsDiv * 60;
+        $hourDiv = $minDiv * 60;
+
+        $hoursElapsed = floor($elapsedTime / $hourDiv);
+        $elapsedTime -= ($hoursElapsed * $hourDiv);
+
+        $minutesElapsed = floor($elapsedTime / $minDiv);
+        $elapsedTime -= ($minutesElapsed * $minDiv);
+
+        $secondsElapsed = floor($elapsedTime / $segsDiv);
+
+        return ($hoursElapsed / 10 >= 1.0 ? $hoursElapsed : "0" . $hoursElapsed)
+            . ":"
+            . ($minutesElapsed / 10 >= 1.0 ? $minutesElapsed : "0" . $minutesElapsed)
+            . ":"
+            . ($secondsElapsed / 10 >= 1.0 ? $secondsElapsed : "0" . $secondsElapsed);
+    }
 
 }
 
@@ -23,13 +136,16 @@ class Record{
 if(count($_POST) > 0){
     $recordUsuario = new Record(); // Creamos un nuevo record
     
+    // Obtenemos los datos enviados
+    $userName = $_POST["nombre"];
+    $userSurname = $_POST["apellidos"];
+    $level = $_POST["nivel"];
+    $time = intval($_POST["tiempoDB"]); // Transformamos de String a int
 
+    $recordUsuario->registerNewRecord($userName, $userSurname, $level, $time);
 }
 
-
-
 ?>
--->
 
 
 
