@@ -24,6 +24,11 @@ main>section {
 }
 
 /* Especificidad: 003 */
+main>section>h4 {
+    display: none;
+}
+
+/* Especificidad: 003 */
 main>section p {
     padding: 1.5em;
     text-align: center;
@@ -39,8 +44,8 @@ main>section p:nth-of-type(3n):not(:nth-of-type(9n)) {
 }
 
 /* Especificidad: 023-023 */
-main>section p:nth-child(n+19):not(:nth-of-type(n+28)),
-main>section p:nth-child(n+46):not(:nth-of-type(n+55)) {
+main>section p:nth-child(n+20):not(:nth-of-type(n+28)),
+main>section p:nth-child(n+47):not(:nth-of-type(n+55)) {
     border-bottom: 0.3em solid black
 }
 
@@ -54,11 +59,22 @@ main>section p[data-state="correct"] {
 
 @media all and (max-width: 550px) {
 
+    /*
+        Warnings de redefinicion!
+        Todos los cambios hechos dentro del @media y que producen warinings
+        en el validador son para una mejor visualizacion del tablero de sudoku
+        para dispositivos con baja resolucion de pantalla.
+        - Se redefine border-width: 0.3em a border-width:0.2em
+        - Se redefine grid-template: repeat(9,1fr) a repeat(9,2.4em)
+        - Se redefine el padding:1.5em a padding:0.8em
+        - Se redefine todos los bordes del sudoku para que ocupen menos
+    */
+
     /* Especificidad: 002 */
     main>section {
         /* El tamaño de cada celda se reduce para su mejor visualizacion */
         grid-template-columns: repeat(9, 2.4em);
-        border: 0.2em solid black
+        border-width: 0.2em
     }
 
     /* Especificidad: 003 */
@@ -72,9 +88,9 @@ main>section p[data-state="correct"] {
     }
 
     /* Especificidad: 023-023 */
-    main>section p:nth-child(n+19):not(:nth-of-type(n+28)),
-    main>section p:nth-child(n+46):not(:nth-of-type(n+55)) {
-        border-bottom: 0.2em solid black
+    main>section p:nth-child(n+20):not(:nth-of-type(n+28)),
+    main>section p:nth-child(n+47):not(:nth-of-type(n+55)) {
+        border-bottom: 0.2em solid black;
     }
 
 
