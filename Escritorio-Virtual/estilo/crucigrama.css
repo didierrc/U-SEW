@@ -71,7 +71,7 @@ input[name="tiempoDB"] {
     display: none;
 }
 
-@media all and (max-width: 1250px) {
+@media all and (max-width: 1400px) {
 
     /* Especificidad: 011 */
     section[data-type="botonera"] {
