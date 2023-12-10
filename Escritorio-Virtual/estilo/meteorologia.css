@@ -24,6 +24,12 @@ main>article:last-child>section {
     flex-flow: row wrap;
     padding: 2em;
     max-width: 12em;
+
+    /* Warning en el Validador CSS: "Ningún color establecido pero si un background-color"
+        El color viene heredado por body en estilo.css para los diferentes h4,h5
+        (que luego su color son redefinidos en esta hoja de estilo para mantener el contraste
+        de colores)
+    */
     background-color: rgb(238, 238, 238);
 
     margin-bottom: 2em;
@@ -33,16 +39,25 @@ main>article:last-child>section {
 }
 
 /* Especificidad: 014 */
-main>article:last-child>section>p {
+main>article:last-child>section>h4 {
     flex: 1 100%;
     text-align: center;
     font-size: 1.2em;
     font-weight: bold;
+    color: black;
+    /* Warning en el Validador CSS: "Ningún background-color establecido pero si un color"
+        El color viene heredado por la seccion en la que se encuentra. En este caso es
+        rgb(238, 238, 238) que se encuentra definido en esta hoja de estilo.
+    */
 }
 
 /* Especificidad: 014 */
 main>article:last-child>section>img {
-    /* background-color: #1c7dcc6d; */
+
+    /* Warning en el Validador CSS: "Ningún color establecido pero si un background-color"
+        En este caso el color no es necesario ya que se trata de una imagen, pero el color
+        heredado sería el por defecto "black"
+    */
     background-color: #92d4db;
     border-radius: 5em;
     box-shadow: 0.01em 0.01em 0.5em rgba(0, 0, 0, 0.5);
@@ -65,6 +80,7 @@ main>article:last-child>section>section>img {
 }
 
 /* Especificidad: 015 */
-main>article:last-child>section>section>p {
+main>article:last-child>section>section>h5 {
     margin-left: 1em;
+    font-size: 1em;
 }

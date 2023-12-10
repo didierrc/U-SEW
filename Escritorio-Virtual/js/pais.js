@@ -127,7 +127,7 @@ class Pais {
             var weekday = forecastDate.toLocaleDateString("es-ES", { weekday: "long" });
             weekday = weekday.charAt(0).toUpperCase() + weekday.slice(1); // Solo para capitalizar la primera letra
             var hour = forecastDate.getHours() + ":" + forecastDate.getMinutes() + "0";
-            var title = "<p>" + weekday + " " + hour + "</p>";
+            var title = "<h4>" + weekday + " " + hour + "</h4>";
 
             $("main article:last-child>section:last-child").append(title);
         }
@@ -156,13 +156,13 @@ class Pais {
             insertaImagenForecast(forecast);
 
             // Añadiendo seccion de temperatura maxima
-            var t = "<p>Max: " + forecast["main"]["temp_max"] + "º</p>";
+            var t = "<h5>Max: " + forecast["main"]["temp_max"] + "º</h5>";
             var imageUrl = "multimedia/maxTemp_icon.png";
             var imageAlt = "Icono de temperatura maxima";
             insertaSeccionInfo(imageUrl, imageAlt, t);
 
             // Añadiendo seccion de temperatura minima
-            t = "<p>Min: " + forecast["main"]["temp_min"] + "º</p>";
+            t = "<h5>Min: " + forecast["main"]["temp_min"] + "º</h5>";
             imageUrl = "multimedia/minTemp_icon.png";
             imageAlt = "Icono de temperatura minima";
             insertaSeccionInfo(imageUrl, imageAlt, t);
@@ -178,19 +178,20 @@ class Pais {
             } catch (error) {
                 rainAmount = "";
             }
-            t = "<p>Cantidad de Lluvia: " + (rainAmount === "" ? "0" : rainAmount) + "mm";
+            t = "<h5>Cantidad de Lluvia: " + (rainAmount === "" ? "0" : rainAmount) + "mm";
+            t += "</h5>"
             imageUrl = "multimedia/rain_icon.png";
             imageAlt = "Icono de  probabilidad de lluvia";
             insertaSeccionInfo(imageUrl, imageAlt, t);
 
             // Añadiendo seccion de humedad
-            t = "<p>Humedad: " + forecast["main"]["humidity"] + "%</p>";
+            t = "<h5>Humedad: " + forecast["main"]["humidity"] + "%</h5>";
             imageUrl = "multimedia/humidity_icon.png";
             imageAlt = "Icono de humedad en ambiente";
             insertaSeccionInfo(imageUrl, imageAlt, t);
 
             // Añadiendo seccion de viento
-            t = "<p>Viento: " + forecast["wind"]["speed"] + "km/h</p>";
+            t = "<h5>Viento: " + forecast["wind"]["speed"] + "km/h</h5>";
             imageUrl = "multimedia/wind_icon.png";
             imageAlt = "Icono de viento";
             insertaSeccionInfo(imageUrl, imageAlt, t);
