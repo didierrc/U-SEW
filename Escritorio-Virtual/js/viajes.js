@@ -410,7 +410,7 @@ class Viajes {
 
 
             // Lo añadimos a la seccion global de las rutaS
-            seccionRuta.appendTo("input:first+section");
+            $("input:first").after(seccionRuta);
         }
 
 
@@ -426,7 +426,6 @@ class Viajes {
             var reader = new FileReader();
             reader.onload = (event) => {
 
-                $("input:first").after("<section></section>"); // Creamos una seccion para mostrar datos de las rutas
                 var xml = new DOMParser().parseFromString(reader.result, "application/xml"); // Parseamos el XML para poder pasarlo a HTML
 
                 // Iteramos sobre cada ruta y creamos una seccion nueva

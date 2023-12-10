@@ -16,48 +16,49 @@ main>section:nth-of-type(4) section {
     width: 100%;
 }
 
-/* Especificidad: 013 */
+/* Especificidad: 024-023-013 */
+main>section:nth-of-type(3)>input:first-of-type~section,
+main>section:nth-of-type(3)>input:first-of-type,
 main>section:nth-of-type(4) input {
-    margin-bottom: 2em;
+    margin-bottom: 1em;
 }
 
 /* XML CSS*/
 
-/* Especificidad: 013 */
-main input:first-of-type+section {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 1em;
-    gap: 1em;
-}
-
-/* Especificidad: 014 */
-main input:first-of-type+section>section {
+/* Especificidad: 024 */
+main>section:nth-of-type(3)>input:first-of-type~section {
     display: flex;
     flex-direction: column;
     border: solid 0.4em #75E6DA;
     border-radius: 0.5em;
     max-width: 50em;
     background-color: white;
+    /* Warning en el Validador CSS: "Ningún color establecido pero si un background-color"
+        Herencia de color:black para los p. 
+        En el caso de los h4,h5,h6 son definidos en esta hoja de estilo. (selector de abajo)
+    */
 }
 
-/* Especificidad: 015-001-001 */
-main input:first-of-type+section>section>h4,
+/* Especificidad: 025-001-001 */
+main>section:nth-of-type(3)>input:first-of-type~section>h4,
 h5,
 h6 {
+    /* Warning en el Validador CSS: "Ningún backgroundcolor establecido pero si un background-color"
+        Herencia de color:#white definido en el anterior selector
+    */
     color: #05445E;
 }
 
-/* Especificidad: 015 */
-main input:first-of-type+section>section>h4 {
+/* Especificidad: 025 */
+main>section:nth-of-type(3)>input:first-of-type~section>h4 {
     background-color: #75E6DA;
     margin: 0;
     padding: 1em 1em 1em 0.7em;
     font-size: 1.4em;
 }
 
-/* Especificidad: 015 */
-main input:first-of-type+section>section>section {
+/* Especificidad: 025 */
+main>section:nth-of-type(3)>input:first-of-type~section>section {
     padding: 1em
 }
 
@@ -79,8 +80,8 @@ h6~* {
     margin-left: 1.4em;
 }
 
-/* Especificidad: 014 */
-main input:first-of-type+section img {
+/* Especificidad: 025 */
+main>section:nth-of-type(3)>input:first-of-type~section img {
     width: auto;
     max-height: 30em;
     margin-bottom: 2em;

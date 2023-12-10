@@ -42,6 +42,13 @@
         <h2>Viajes</h2>
         <script> var v = new Viajes(); </script>
 
+
+        <!-- README! Dado a que se usan las librerias de Google Maps estas presentan errores de marcado HTML
+            Si simplemente se carga la pagina, se mostraran 2 mapas que son los que introducen los errores como que
+            algunas etiquetas <img> tienen un atributo alt="" vacío, uso de elementos <div>, uso de <div> como 
+            hijos de <button>, etc. -->
+
+
         <section>
             <h3>Esta es tu localización actual (Mapa estático): </h3>
         </section>
@@ -50,9 +57,9 @@
             <h3>Esta es tu localización actual (Mapa dinámico): </h3>
         </section>
 
-        <!-- Usando la forma "legacy" de obtener las librerias de la API. Llama a la funcion initMap() declarada
+        <!--Usando la forma "legacy" de obtener las librerias de la API. Llama a la funcion initMap() declarada
             anteriormente. A partir de ella, la libreria de google ya está lista para su uso por otros metodos 
-            (por ejemplo, los archivos KML)-->
+            (por ejemplo, los archivos KML) -->
         <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQHMvNMIE31xvj292ywRrpOOss9JWVv9k"></script>
 
