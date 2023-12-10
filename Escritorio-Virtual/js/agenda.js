@@ -43,60 +43,59 @@ class Agenda {
         var creaCarreraHTML = (race, i) => {
 
             // Creando la seccion para la carrera
-            $("main>section:last-child").append("<section></section>");
+            $("main").append("<section></section>");
 
             // Creando la seccion del numero de carrera
-            $("main>section:last-child>section:last-child").append("<section></section>");
-            var raceNumber = "<p>R" + i + "</p>"
-            $("main>section:last-child>section:last-child>section:last-child").append(raceNumber);
-
-            // Creando la seccion de Informacion
-            $("main>section:last-child>section:last-child").append("<section></section>");
+            //$("main>section:last-child").append("<section></section>");
+            var raceNumber = "<h4>R" + i + "</h4>"
+            $("main>section:last-child").append(raceNumber);
 
             // Añadiendo la imagen extraida de wikipedia
             var countryRace = $('Country', race).text();
             var wikiUrl = flags[countryRace];
             var imageAlt = "Image of the flag of " + countryRace;
-            $("main>section:last-child>section:last-child>section:last-child").append("<img>");
-            $("main>section:last-child>section:last-child>section:last-child>img").attr("src", wikiUrl);
-            $("main>section:last-child>section:last-child>section:last-child>img").attr("alt", imageAlt);
+            $("main>section:last-child").append("<img>");
+            $("main>section:last-child>img").attr("src", wikiUrl);
+            $("main>section:last-child>img").attr("alt", imageAlt);
 
             // Añadiendo la seccion de informacion principal
-            $("main>section:last-child>section:last-child>section:last-child").append("<section></section>");
+            $("main>section:last-child").append("<section></section>");
+            $("main>section:last-child>section:last-child").append("<h5>Información Principal</h5>")
 
             // Fecha y hora de carrera
             var dateRace = $("Race>Date", race).text().split("-")[2] + "-" + $("Race>Date", race).text().split("-")[1];
             var timeRace = $('Time', race).text().split(":")[0] + ":" + $('Time', race).text().split(":")[1];
-            var whenRace = "<p>" + dateRace + " a las " + timeRace + "</p>";
-            $("main>section:last-child>section:last-child>section:last-child>section:last-child").append(whenRace);
+            var whenRace = "<p>Horario: " + dateRace + " a las " + timeRace + "</p>";
+            $("main>section:last-child>section:last-child").append(whenRace);
 
             // Nombre de carrera
-            var raceName = "<p>" + $("RaceName", race).text() + "</p>";
-            $("main>section:last-child>section:last-child>section:last-child>section:last-child").append(raceName);
+            var raceName = "<p>Nombre: " + $("RaceName", race).text() + "</p>";
+            $("main>section:last-child>section:last-child").append(raceName);
 
             // Añadiendo la seccion de informacion sobre localizacion
-            $("main>section:last-child>section:last-child>section:last-child").append("<section></section>");
+            $("main>section:last-child").append("<section></section>");
+            $("main>section:last-child>section:last-child").append("<h5>Se celebra en...</h5>")
 
             // Nombre de circuito
             var circuitName = "<p>Circuito: " + $("CircuitName", race).text() + "</p>";
-            $("main>section:last-child>section:last-child>section:last-child>section:last-child").append(circuitName);
+            $("main>section:last-child>section:last-child").append(circuitName);
 
             // Localizacion del circuito
             var circuitLocality = $("Locality", race).text();
             var countryLocality = $("Country", race).text();
             var localisationCircuit = "<p>Localización: " + countryLocality + " - " + circuitLocality + "</p>"
-            $("main>section:last-child>section:last-child>section:last-child>section:last-child").append(localisationCircuit);
+            $("main>section:last-child>section:last-child").append(localisationCircuit);
 
             // Coordenadas de circuito
             var coordinates = "<p>Coordenadas: " + $("Location", race).attr("lat") + "," + $("Location", race).attr("long") + "</p>";
-            $("main>section:last-child>section:last-child>section:last-child>section:last-child").append(coordinates);
+            $("main>section:last-child>section:last-child").append(coordinates);
         }
 
 
         var creaHTML = (datos) => {
 
             // Creando la seccion que engloba a todas las carreras
-            $("main").append("<section></section>");
+            //$("main").append("<section></section>");
 
             // Creando una seccion por cada carrera 
             var allRaces = $('Race', datos);
@@ -154,7 +153,7 @@ class Agenda {
         $("main>section>img").attr("alt", f1Alt);
 
         // Creando el titulo
-        $("main>section").append("<p>Calendario de la Temporada 2023</p>");
+        $("main>section").append("<h3>Calendario de la Temporada 2023</h3>");
 
         // Haciendo que el boton no se vuelva a llamar para no generar mas contenido
         $("button").attr("disabled", "disabled");

@@ -22,82 +22,109 @@ main>section:first-of-type img {
 }
 
 /* Especificidad: 013 */
-main>section:first-of-type p {
+main>section:first-of-type h3 {
     font-size: 2em;
     color: #ee0000;
+    /* Warning en el Validador CSS: "Ningún background-color establecido pero si un color"
+    Herencia de background-color:#D4F1F4 de body (en el estilo.css) 
+    */
     font-weight: bold;
 }
 
 /* Especificidad: 012 */
-main>section:nth-of-type(2) {
-    display: grid;
-    row-gap: 1em;
+main>section:not(:nth-of-type(1)) {
+    border: solid 0.1em black;
+
+    /* Warning en el Validador CSS: "Ningún color establecido pero si un background-color"
+        Herencia de color:black de <p> (en el estilo.css) y los colores de los hx son definidos
+        en esta hoja de estilo 
+    */
+    background-color: white;
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    max-width: 50em;
+    margin-bottom: 1em;
 }
 
 /* Especificidad: 013 */
-main>section:nth-of-type(2)>section {
-    border: solid 0.1em black;
-    background-color: white;
-    display: flex;
-    max-width: 50em;
-    height: auto;
-}
-
-/* Especificidad: 024 */
-main>section:nth-of-type(2)>section>section:first-child {
+main>section:not(:nth-of-type(1))>h4 {
     background-color: #ee0000;
-    font-size: 1.2em;
     color: white;
-    font-weight: bold;
-    flex: 1 10%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 1em;
-    border-right: solid 0.1em black;
+    font-size: 1.2em;
+    flex: 1 100%;
+    text-align: center;
+    margin: 0;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border-bottom: solid 0.1em black;
 }
 
-/* Especificidad: 024 */
-main>section:nth-of-type(2)>section>section:nth-child(2) {
-    flex: 1 90%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-flow: row wrap;
+/* Especificidad: 013 */
+main>section:not(:nth-of-type(1))>img {
+    width: auto;
+    max-height: 5em;
 }
 
-/* Especificidad: 025 */
-main>section:nth-of-type(2)>section>section:nth-child(2)>img {
-    max-width: 5em;
-    height: auto;
-}
-
-/* Especificidad: 026 */
-main>section:nth-of-type(2)>section>section:nth-child(2)>section>p {
-    margin: 0.5em;
+/* Especificidad: 014 */
+main>section:not(:nth-of-type(1))>section>h5 {
+    font-size: 1em;
+    margin-bottom: 0.5em;
+    /* Warning en el Validador CSS: "Ningún background-color establecido pero si un color"
+        Herencia de background-color:white de  main>section:not(:nth-of-type(1)) definido en
+        esta hoja de estilo
+    */
+    color: #ee0000;
 }
 
 
 @media all and (max-width: 650px) {
 
-    /* Especificidad: 013 */
-    main>section:nth-of-type(2)>section {
+    /* Especificidad: 012 */
+    main>section:not(:nth-of-type(1)) {
         flex-direction: column;
     }
 
-    /* Especificidad: 024 */
-    main>section:nth-of-type(2)>section>section:first-child {
-        flex: 1 100%;
-        margin-right: 0;
-        border-right: none;
+    /* Especificidad: 013 */
+    main>section:not(:nth-of-type(1))>h4 {
+        padding-left: 1em;
+        padding-right: 1em;
+
+        /* Warning:"Redefinition of margin-top y margin-botton" 
+            Se está redefiniendo las propiedades margin top y bottom que previamente
+            habían sido aplicadas en el selector anterior de h4 (margin:0). Se ha
+            hecho esto para dar un mejor aspecto en cuanto a la adaptabilidad en
+            dispositivos con resoluciones bajas
+            (se muestra el numero de carrera mas espaciado) */
+        margin-top: 1em;
         margin-bottom: 1em;
-        border-bottom: solid 0.1em black;
-        font-size: 1em;
+
+        /* Warning:"Redefinition of border-bottom-color,-style,-width" 
+            Se está "redefiniendo" las propiedades border-bottom que
+            habían sido aplicadas en el selector anterior de h4 
+            (border-bottom: solid 0.1em black;). Se ha hecho esto para dar un mejor 
+            aspecto en cuanto a la adaptabilidad en dispositivos con resoluciones bajas
+            (se pasa a tener todo el contorno solido en negro) */
+        border: solid 0.1em black;
+
+        /* Warning:"Redefinition of color and background" 
+            Se está redefiniendo las propiedades color y background-color que previamente
+            habían sido aplicadas en el selector anterior de h4 (color:white, background-color:red). 
+            Se ha hecho esto para dar un mejor aspecto en cuanto a la adaptabilidad en
+            dispositivos con resoluciones bajas.
+            (se hace un efecto de "hueco" con cada tarjeta de carrera) */
+        background-color: #D4F1F4;
+        color: black;
+
+        border-radius: 5em;
     }
 
-    /* Especificidad: 014 */
-    main>section:nth-of-type(2)>section p {
-        font-size: 0.9em;
+    /* Especificidad: 013 */
+    main>section:not(:nth-of-type(1))>section {
+        text-align: center;
     }
 
 }
