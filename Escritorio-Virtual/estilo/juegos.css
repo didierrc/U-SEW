@@ -33,6 +33,9 @@ body>section>nav>a {
     /* Especificidad: 003 */
     body>section>h2 {
         margin-right: 0;
+        /* Warning: Redefinition or margin-right
+            Esta propiedad se redefine a la antes puesta (margin-right: 1.5em)
+            para mejorar la adaptabilidad*/
     }
 
     /* Especificidad: 003 */
