@@ -212,7 +212,7 @@ if(count($_POST) > 0){
         (puesta para hacer las pruebas de usabilidad "más rápidas" )
     -->
     <section>
-        <p>Elige el nivel de dificultad:</p>
+        <h4>Elige el nivel de dificultad:</h4>
         <button>Fácil</button>
         <button>Medio</button>
         <button>Difícil</button>
@@ -239,16 +239,11 @@ if(count($_POST) > 0){
         // Añadiendo el evento keydown
         window.addEventListener("keydown", (event) => {
 
-            if (crucigrama) {
-                // TODO: CON REGEX....
-                var isANum = event.keyCode >= 49 && event.keyCode <= 57
-                var isADiv = event.keyCode === 111;
-                var isAMult = event.keyCode === 106;
-                var isASum = event.keyCode === 107;
-                var isASub = event.keyCode === 109;
+            var teclasPermitidas = /[1-9/*+\-]/
 
+            if (crucigrama) {
                 // Teclas aceptadas
-                if (isANum || isADiv || isAMult || isASum || isASub) {
+                if (teclasPermitidas.test(event.key)) {
 
                     if (!crucigrama.isACellClicked) {
                         alert("Una celda tiene que ser seleccionada!!");
@@ -266,6 +261,7 @@ if(count($_POST) > 0){
     </main>
 
     <section data-type="botonera">
+        <h4>Botonera:</h4>
         <button onclick="crucigrama ? crucigrama.introduceElement(1) : alert('Tienes que crear un juego!')">1</button>
         <button onclick="crucigrama ? crucigrama.introduceElement(2) : alert('Tienes que crear un juego!')">2</button>
         <button onclick="crucigrama ? crucigrama.introduceElement(3) : alert('Tienes que crear un juego!')">3</button>

@@ -4,6 +4,8 @@
 /* Especificidad: 001 */
 body {
     padding-bottom: 2em;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Especificidad: 001 */
@@ -17,6 +19,8 @@ main {
     grid-template-columns: repeat(9, 1fr);
     grid-template-rows: repeat(11, 1fr);
     gap: 0;
+    max-width: 40em;
+    align-self: center;
 }
 
 /* Especificidad: 002 */
@@ -26,6 +30,8 @@ main>p {
     text-align: center;
     border: solid;
     border-width: 0.01em;
+    font-size: 1.3em;
+    padding: 0.5em 1em;
 }
 
 /* Especificidad: 012 */
@@ -39,7 +45,13 @@ body>section:nth-of-type(2) {
     display: flex;
     flex-direction: row;
     align-items: center;
+    flex-wrap: wrap;
     column-gap: 1em;
+}
+
+/* Especificidad: 013 */
+body>section:nth-of-type(2)>h4 {
+    flex: 1 100%;
 }
 
 
@@ -67,6 +79,7 @@ section[data-type="formulario"] {
     align-items: flex-start;
 }
 
+/* Especificidad: 011 */
 input[name="tiempoDB"] {
     display: none;
 }
@@ -83,14 +96,18 @@ input[name="tiempoDB"] {
     }
 
     /* Especificidad: 012 */
-    body>section:nth-of-type(2) {
-        flex-wrap: wrap;
-    }
-
-    /* Especificidad: 013 */
-    body>section:nth-of-type(2)>p {
+    section[data-type="botonera"]>h4 {
         flex: 1 100%;
     }
 
+}
+
+@media all and (max-width: 650px) {
+
+    /* Especificidad: 002 */
+    main>p {
+        font-size: 1.2em;
+        padding: 0.2em 0.5em;
+    }
 
 }
