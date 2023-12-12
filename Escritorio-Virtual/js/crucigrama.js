@@ -153,6 +153,15 @@ class Crucigrama {
             return;
         }
 
+        // Pruebas de usabilidad - Usuarios presionaban Backspace para revertier errores.
+        // Se puede hacer mediante backspace o simplemente seleccionando otro numero
+        if (element === "Backspace") {
+            $(this.cellClicked).text("");
+            $(this.cellClicked).removeAttr("data-state");
+            this.crucigrama[$(this.cellClicked).attr("data-i")][$(this.cellClicked).attr("data-j")] = 0;
+            return;
+        }
+
         var expression_row = true;
         var expression_col = true;
 
@@ -290,7 +299,11 @@ class Crucigrama {
         // Comprobamos el final del crucigrama
         if (this.check_win_condition()) {
             this.end_time = new Date();
-            alert("El juego ha terminado!!. Duración: " + this.calculate_date_difference());
+            var finalTime = this.calculate_date_difference();
+
+            // Pruebas de usabilidad - Se incluye el pequeño timer para mostrar antes en pantalla 
+            // el ultimo número introducido y después enseñar la alerta.
+            setTimeout(() => alert("El juego ha terminado!!. Duración: " + finalTime), 25);
             this.createRecordForm();
         }
 

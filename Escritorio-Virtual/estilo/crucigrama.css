@@ -32,6 +32,7 @@ main>p {
     border-width: 0.01em;
     font-size: 1.3em;
     padding: 0.5em 1em;
+    border-color: black;
 }
 
 /* Especificidad: 012 */
@@ -40,17 +41,47 @@ main>p[data-state="empty"] {
 }
 
 /* Especificidad: 012 */
-body>section:nth-of-type(2) {
+main>p[data-state="clicked"] {
+    border: solid 0.1em red;
+}
+
+/* Especificidad: 012 */
+main>p[data-i] {
+    color: blue;
+}
+
+/* Especificidad: 012-012 */
+body>section:nth-of-type(2),
+body>section:nth-of-type(3) {
     border: none;
     display: flex;
-    flex-direction: row;
     align-items: center;
+}
+
+/* Especificidad: 012 */
+body>section:nth-of-type(2) {
+    flex-direction: column;
+}
+
+/* Especificidad: 014 */
+body>section:nth-of-type(2)>ol>li {
+    margin-bottom: 1.3em;
+}
+
+/* Especificidad: 013 */
+body>section:nth-of-type(2)>ol {
+    font-size: 1.04em;
+}
+
+/* Especificidad: 012 */
+body>section:nth-of-type(3) {
+    flex-direction: row;
     flex-wrap: wrap;
     column-gap: 1em;
 }
 
 /* Especificidad: 013 */
-body>section:nth-of-type(2)>h4 {
+body>section:nth-of-type(3)>h4 {
     flex: 1 100%;
 }
 
@@ -108,6 +139,11 @@ input[name="tiempoDB"] {
     main>p {
         font-size: 1.2em;
         padding: 0.2em 0.5em;
+    }
+
+    /* Especificidad: 013 */
+    body>section:nth-of-type(2)>ol {
+        font-size: 1em;
     }
 
 }

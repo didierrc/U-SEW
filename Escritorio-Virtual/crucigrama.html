@@ -208,6 +208,28 @@ if(count($_POST) > 0){
 
     <h3>Crucigrama matemático</h3>
 
+    <!-- Seccion que explica el juego - Pruebas de usabilidad.
+    -->
+    <section>
+        <h4>Instrucciones:</h4>
+        <ol>
+            <li>Selecciona la casilla para introducir un número u operación
+                <ul>
+                    <li> Los números van del 1 al 9. </li>
+                    <li> Las operaciones: + (suma) - (resta) * (multiplicación) / (división)</li>
+                </ul>
+            </li>
+            <li>Introduce el número u operación mediante el teclado. Puedes utilizar el Pad numérico o Combinaciones
+                especiales para colocar las operaciones.</li>
+            <li>Si quieres cambiar el número u operación. Selecciona la casilla y:
+                <ul>
+                    <li>Usa la tecla de retroceso.</li>
+                    <li>Introduce directamente un número u operación.</li>
+                </ul>
+            </li>
+        </ol>
+    </section>
+
     <!-- Seccion que simplemente agrupa las diferentes dificultades del crucigrama
         (puesta para hacer las pruebas de usabilidad "más rápidas" )
     -->
@@ -243,7 +265,7 @@ if(count($_POST) > 0){
 
             if (crucigrama) {
                 // Teclas aceptadas
-                if (teclasPermitidas.test(event.key)) {
+                if (teclasPermitidas.test(event.key) || event.keyCode == 8) {
 
                     if (!crucigrama.isACellClicked) {
                         alert("Una celda tiene que ser seleccionada!!");
@@ -261,7 +283,7 @@ if(count($_POST) > 0){
     </main>
 
     <section data-type="botonera">
-        <h4>Botonera:</h4>
+        <h4>Botonera:</h4> <!-- Pruebas de usabilidad.-->
         <button onclick="crucigrama ? crucigrama.introduceElement(1) : alert('Tienes que crear un juego!')">1</button>
         <button onclick="crucigrama ? crucigrama.introduceElement(2) : alert('Tienes que crear un juego!')">2</button>
         <button onclick="crucigrama ? crucigrama.introduceElement(3) : alert('Tienes que crear un juego!')">3</button>
