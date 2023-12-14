@@ -265,6 +265,7 @@ if(count($_POST) > 0){
 
             if (crucigrama) {
                 // Teclas aceptadas
+                // Usabilidad - Tecla de retroceso
                 if (teclasPermitidas.test(event.key) || event.keyCode == 8) {
 
                     if (!crucigrama.isACellClicked) {
@@ -298,6 +299,18 @@ if(count($_POST) > 0){
         <button onclick="crucigrama ? crucigrama.introduceElement('-') : alert('Tienes que crear un juego!')">-</button>
         <button onclick="crucigrama ? crucigrama.introduceElement('/') : alert('Tienes que crear un juego!')">/</button>
     </section>
+
+    <!-- Usabilidad - Usuario quería feedback sonoro para saber las correctas o falsas. -->
+
+    <audio controls>
+        <source src="multimedia/correct.mp3" type="audio/mpeg">
+        <source src="multimedia/correct.wav" type="audio/wav">
+    </audio>
+
+    <audio controls>
+        <source src="multimedia/wrong.mp3" type="audio/mpeg">
+        <source src="multimedia/wrong.wav" type="audio/wav">
+    </audio>
 
 </body>
 

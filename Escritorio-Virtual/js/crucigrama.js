@@ -286,15 +286,21 @@ class Crucigrama {
         if (expression_row && expression_col) {
             $(this.cellClicked).text(element); // Mostramos el valor introducido
             $(this.cellClicked).attr("data-state", "correct"); // Estado en correcto
+            $("audio")[0].play() // Usabilidad
+
+            // Usabilidad - Solo se deselecciona si la respuesta es correcta
+            // Se deselecciona la celda
+            this.isACellClicked = false;
+            this.cellClicked = null;
+
         } else {
             this.crucigrama[iOfCell][jOfCell] = 0;
-            $(this.cellClicked).removeAttr("data-state"); // deja de estar seleccionada
+            //$(this.cellClicked).removeAttr("data-state"); // deja de estar seleccionada
+            $("audio")[1].play() // Usabilidad
             alert("Elemento introducido no correcto");
         }
 
-        // Se deselecciona la celda
-        this.isACellClicked = false;
-        this.cellClicked = null;
+
 
         // Comprobamos el final del crucigrama
         if (this.check_win_condition()) {

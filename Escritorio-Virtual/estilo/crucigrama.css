@@ -33,6 +33,7 @@ main>p {
     font-size: 1.3em;
     padding: 0.5em 1em;
     border-color: black;
+    border-width: 0.08em;
 }
 
 /* Especificidad: 012 */
@@ -110,8 +111,9 @@ section[data-type="formulario"] {
     align-items: flex-start;
 }
 
-/* Especificidad: 011 */
-input[name="tiempoDB"] {
+/* Especificidad: 011-001 */
+input[name="tiempoDB"],
+audio {
     display: none;
 }
 
