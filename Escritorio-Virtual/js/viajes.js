@@ -17,6 +17,9 @@ class Viajes {
         this.isKMLSectionLoaded = false;
         this.isAnSVGSectionLoaded = false;
         this.counterPerfiles = 1;
+
+        // Carrusel
+        this.curSlide = 0;
     }
 
     obtainPosition(position) {
@@ -554,5 +557,49 @@ class Viajes {
             readSVG(files[i]);
         }
     }
+
+    nextSlide(){
+
+        var slides = $("article img");
+        var maxSlide = slides.length - 1; // maximum number of slides
+        
+        var current = this.curSlide;
+
+        // check if current slide is the last and reset current slide
+        if (current === maxSlide) {
+            this.curSlide = 0;
+        } else {
+            this.curSlide++;
+        }
+
+        // Move slide by -100%
+        $("article img").each((slide, indx) => {
+      	    var trans = 100 * (indx - current);
+            $(slide).css('transform', 'translateX(' + trans + '%)')
+        });
+    }
+
+    prevSlide(){
+        
+        var slides = $("article img");
+        var maxSlide = slides.length - 1; // maximum number of slides
+
+        var current = this.curSlide
+
+        // check if current slide is the first and reset current slide to last
+        if (current === 0) {
+            this.curSlide = maxSlide;
+        } else {
+            this.curSlide--;
+        }
+  
+        // Move slide by 100%
+        slides.each((slide, indx) => {
+            var trans = 100 * (indx - current);
+          $(slide).css('transform', 'translateX(' + trans + '%)')
+        });
+    }
+
+    
 
 }

@@ -1,3 +1,60 @@
+<?php
+
+/* Definicion de la clase Carrusel */
+// https://exchangeratesapi.io/documentation/
+class Carrusel{
+
+    private $capital;
+    private $pais;
+
+    public function __construct($capital, $pais){
+        $this->capital = $capital;
+        $this->pais = $pais;
+    }
+
+    public function getCarrusel(){
+        // Llamada al servicio de Flickr -> return 10 fotos
+        $per_page = 10;
+
+        // Procedemos a crear la URL
+        $flickrURL = "https://www.flickr.com/services/rest/?method=flickr.photos.search";
+        $flickrURL .= "&api_key=ddbe51fd442c70e2750078a38b9f3ae0"; // api key
+        $flickrURL .= "&tags=" . $this->capital; // la capital
+        $flickrURL .= "&per_page=" . $per_page; // 10 fotos por página
+        $flickrURL .= "&format=json&nojsoncallback=1"; // formato json
+    
+        $response = file_get_contents($flickrURL);
+        $json = json_decode($response);
+
+        if($json == null){
+            return $json;
+        }
+            
+        $fotos = []; // Array de fotos
+        $jsonFotos = $json->photos->photo;
+
+        for($i=0; $i < $per_page; $i++){
+            
+            $fotoHTML = "<img src='";
+            $fotoHTML .= "https://live.staticflickr.com/" . $jsonFotos[$i]->server . "/";
+            $fotoHTML .= $jsonFotos[$i]->id . "_" . $jsonFotos[$i]->secret . "_b.jpg";
+            $fotoHTML .= "' alt='" . $jsonFotos[$i]->title . "'>";
+
+            $fotos[$i] = $fotoHTML;
+        }
+
+        return $fotos;
+    }
+
+
+}
+
+$carrusel = new Carrusel("Monaco", "Monaco");
+$fotos = $carrusel->getCarrusel();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -33,15 +90,39 @@
             <a href="noticias.html" accesskey="N" tabindex="3">Noticias</a>
             <a href="agenda.html" accesskey="A" tabindex="4">Agenda</a>
             <a href="meteorologia.html" accesskey="M" tabindex="5">Meteorología</a>
-            <a href="viajes.html" accesskey="V" tabindex="6">Viajes</a>
+            <a href="viajes.php" accesskey="V" tabindex="6">Viajes</a>
             <a href="juegos.html" accesskey="J" tabindex="7">Juegos</a>
         </nav>
     </header>
 
     <main>
         <h2>Viajes</h2>
-        <script> var v = new Viajes(); </script>
 
+        <?php 
+
+            if($fotos != null){
+
+                // Añadiendo el articulo que contiene al carrusel
+
+                $fotosArticle = "<article><h3> Carrusel de fotos </h3>";
+                
+                for($i=0; $i < count($fotos); $i++){
+                    $fotosArticle .= $fotos[$i];
+                }
+
+                // Botones de control
+                $fotosArticle .= "<button data-action='next' onclick='v.nextSlide();'>></button>";
+                $fotosArticle .= "<button data-action='prev' onclick='v.prevSlide();'><</button>";
+
+                $fotosArticle .= "</article>";
+
+                echo $fotosArticle;
+            }
+
+        
+        ?>
+
+        <script> var v = new Viajes(); </script>
 
         <!-- README! Dado a que se usan las librerias de Google Maps estas presentan errores de marcado HTML
             Si simplemente se carga la pagina, se mostraran 2 mapas que son los que introducen los errores como que
