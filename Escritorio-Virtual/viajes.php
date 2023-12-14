@@ -122,6 +122,20 @@ $fotos = $carrusel->getCarrusel();
         
         ?>
 
+        <!--Usando la forma "legacy" de obtener las librerias de la API. Llama a la funcion initMap() declarada
+            anteriormente. A partir de ella, la libreria de google ya está lista para su uso por otros metodos 
+            (por ejemplo, los archivos KML) -->
+            <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQHMvNMIE31xvj292ywRrpOOss9JWVv9k"></script>
+
+        <!--Usando libreria dinamicamente siguiendo la documentacion de Google JS API
+        Leer el DISCLAIMER de showDynamicMap()
+        <script>
+            (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
+                ({ key: "AIzaSyCQHMvNMIE31xvj292ywRrpOOss9JWVv9k", v: "weekly" });
+        </script>
+        -->
+
         <script> var v = new Viajes(); </script>
 
         <!-- README! Dado a que se usan las librerias de Google Maps estas presentan errores de marcado HTML
@@ -138,19 +152,7 @@ $fotos = $carrusel->getCarrusel();
             <h3>Esta es tu localización actual (Mapa dinámico): </h3>
         </section>
 
-        <!--Usando la forma "legacy" de obtener las librerias de la API. Llama a la funcion initMap() declarada
-            anteriormente. A partir de ella, la libreria de google ya está lista para su uso por otros metodos 
-            (por ejemplo, los archivos KML) -->
-        <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQHMvNMIE31xvj292ywRrpOOss9JWVv9k"></script>
-
-        <!--Usando libreria dinamicamente siguiendo la documentacion de Google JS API
-        Leer el DISCLAIMER de showDynamicMap()
-        <script>
-            (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
-                ({ key: "AIzaSyCQHMvNMIE31xvj292ywRrpOOss9JWVv9k", v: "weekly" });
-        </script>
-        -->
+        
 
         <section>
             <h3>Procesando un archivo XML con API file</h3>

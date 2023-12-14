@@ -26,25 +26,25 @@ main>section:nth-of-type(4) input {
 /* Carrusel */
 
 /* Especificidad: 001 */
-article{
+article {
     width: 100%;
     max-width: 100vh;
     height: 70vh;
     position: relative;
-    overflow: hidden; /* <===  */
+    overflow: hidden;
+    /* <===  */
     border-radius: 1em;
 }
 
 /* Especificidad: 002 */
 article h3 {
     width: 100%;
-    text-align: center;
     margin-bottom: 0.5em;
     font-size: 2em;
 }
 
 /* Especificidad: 002 */
-article img{
+article img {
     width: 100%;
     max-width: 100vh;
     height: 60vh;
@@ -55,7 +55,7 @@ article img{
 }
 
 /* Especificidad: 002 */
-article button{
+article button {
     position: absolute;
     width: 2em;
     height: 2em;
@@ -65,11 +65,11 @@ article button{
     z-index: 10;
     cursor: pointer;
     background-color: #fff;
-    font-size: 1em; 
+    font-size: 1em;
 }
 
 /* Especificidad: 012 */
-article button:active{
+article button:active {
     transform: scale(1.1);
 }
 

@@ -19,7 +19,7 @@ class Viajes {
         this.counterPerfiles = 1;
 
         // Carrusel
-        this.curSlide = 0;
+        this.curSlide = 9;
     }
 
     obtainPosition(position) {
@@ -558,48 +558,44 @@ class Viajes {
         }
     }
 
-    nextSlide(){
+    nextSlide() {
 
         var slides = $("article img");
         var maxSlide = slides.length - 1; // maximum number of slides
-        
-        var current = this.curSlide;
 
         // check if current slide is the last and reset current slide
-        if (current === maxSlide) {
+        if (this.curSlide === maxSlide) {
             this.curSlide = 0;
         } else {
             this.curSlide++;
         }
 
         // Move slide by -100%
-        $("article img").each((slide, indx) => {
-      	    var trans = 100 * (indx - current);
+        $("article img").each((indx, slide) => {
+            var trans = 100 * (indx - this.curSlide);
             $(slide).css('transform', 'translateX(' + trans + '%)')
         });
     }
 
-    prevSlide(){
-        
+    prevSlide() {
+
         var slides = $("article img");
         var maxSlide = slides.length - 1; // maximum number of slides
 
-        var current = this.curSlide
-
         // check if current slide is the first and reset current slide to last
-        if (current === 0) {
+        if (this.curSlide === 0) {
             this.curSlide = maxSlide;
         } else {
             this.curSlide--;
         }
-  
+
         // Move slide by 100%
-        slides.each((slide, indx) => {
-            var trans = 100 * (indx - current);
-          $(slide).css('transform', 'translateX(' + trans + '%)')
+        slides.each((indx, slide) => {
+            var trans = 100 * (indx - this.curSlide);
+            $(slide).css('transform', 'translateX(' + trans + '%)')
         });
     }
 
-    
+
 
 }
