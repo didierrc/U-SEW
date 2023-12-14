@@ -86,12 +86,6 @@ body>section:nth-of-type(3)>h4 {
     flex: 1 100%;
 }
 
-
-/* Especificidad: 011 */
-section[data-type="botonera"] {
-    display: none;
-}
-
 /* Especificidad: 001-011 */
 button,
 input[type="submit"] {
@@ -111,10 +105,22 @@ section[data-type="formulario"] {
     align-items: flex-start;
 }
 
-/* Especificidad: 011-001 */
+/* Especificidad: 011-001-011 */
 input[name="tiempoDB"],
-audio {
+audio,
+section[data-type="botonera"],
+body>section[data-state="form_time"],
+main[data-state="form_time"] {
     display: none;
+}
+
+/* Especificidad: 012 */
+body>section[data-type="record"] {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    align-self: center;
 }
 
 @media all and (max-width: 1400px) {

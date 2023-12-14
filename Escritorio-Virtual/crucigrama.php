@@ -1,4 +1,3 @@
-<!--
 <?php
 
 /* Definicion de la clase Record */
@@ -48,7 +47,7 @@ class Record{
         $db->close();
 
         // Mostramos los 10 mejores records luego de "intentar" añadir el ultimo record
-        $this->showBestRecords($level);
+        return $this->showBestRecords($level);
     }
 
     private function showBestRecords($level){
@@ -56,9 +55,12 @@ class Record{
         // Establecemos la conexion con la base de datos
         $db = new mysqli($this->server, $this->user, $this->pass, $this->dbname);
         
+        // Seccion a devolver
+        $sectionToReturn = "<section data-type='record'>";
+
         // Comprobamos conexion
         if($db->connect_error){
-            echo "Error al conectarse a la base de datos";
+            $sectionToReturn .= "<h4>Error al conectarse a la base de datos. No se pueden mostrar los records!</h4>";
         } else{
             
             // Preparamos la sentencia para evitar Injecciones de Código
@@ -73,10 +75,12 @@ class Record{
             // Obtenemos el resultado
             $resultSet = $preparedStatement->get_result();
 
-            $listToReturn = "<ol>";
+            // Titulo de los records
+            $sectionToReturn .= "<h4>Los 10 mejores tiempos para el nivel: " . $level . "</h4>";
+            
             if($resultSet->fetch_assoc() != NULL){ // Como decir resultSet.next()
-
-                $listToReturn .= "Los 10 mejores tiempos para el nivel: " . $level;
+    
+                $sectionToReturn .= "<ol>";
                 $nTiempos = 0;
 
                 $resultSet->data_seek(0); // Nos posicionamos en el inicio del array asociativo
@@ -86,25 +90,30 @@ class Record{
                         break;
                     }
                     
-                    $listToReturn .= "<li>Nombre: " . $row["nombre"];
-                    $listToReturn .= " Apellidos: " . $row["apellidos"];
-                    $listToReturn .= " Tiempo: " . $this->timeToString($row["tiempo"]);
-                    $listToReturn .= "</li>";
+                    $sectionToReturn .= "<li>Nombre: " . $row["nombre"];
+                    $sectionToReturn .= " Apellidos: " . $row["apellidos"];
+                    $sectionToReturn .= " Tiempo: " . $this->timeToString($row["tiempo"]);
+                    $sectionToReturn .= "</li>";
                     $nTiempos += 1;
                 }
 
-                $listToReturn .= "</ol>";
-            }else{
+                $sectionToReturn .= "</ol>";
+
+            } else{
                 // No ha conseguido obtener ningun record
-                $listToReturn .= "Aún no hay datos para mostrar</ol>";
+                $sectionToReturn .= "<p>Aún no hay datos para mostrar</p>";
             }
 
-            echo $listToReturn;
             $preparedStatement->close();
         }
 
+        // Cerramos la etiqueta section
+        $sectionToReturn .= "</section>";
+
         // Cerramos la conexion
         $db->close();
+
+        return $sectionToReturn;
 
     }
 
@@ -133,6 +142,8 @@ class Record{
 
 }
 
+$recordsToShow = "";
+
 // Comprobamos que el usuario ha enviado los datos correspondientes
 if(count($_POST) > 0){
     $recordUsuario = new Record(); // Creamos un nuevo record
@@ -143,12 +154,10 @@ if(count($_POST) > 0){
     $level = $_POST["nivel"];
     $time = intval($_POST["tiempoDB"]); // Transformamos de String a int
 
-    $recordUsuario->registerNewRecord($userName, $userSurname, $level, $time);
+    $recordsToShow = $recordUsuario->registerNewRecord($userName, $userSurname, $level, $time);
 }
 
 ?>
-
--->
 
 
 
@@ -263,7 +272,7 @@ if(count($_POST) > 0){
 
             var teclasPermitidas = /[1-9/*+\-]/
 
-            if (crucigrama) {
+            if (crucigrama && !$("main[data-state='form_time']")[0]) {
                 // Teclas aceptadas
                 // Usabilidad - Tecla de retroceso
                 if (teclasPermitidas.test(event.key) || event.keyCode == 8) {
@@ -299,6 +308,14 @@ if(count($_POST) > 0){
         <button onclick="crucigrama ? crucigrama.introduceElement('-') : alert('Tienes que crear un juego!')">-</button>
         <button onclick="crucigrama ? crucigrama.introduceElement('/') : alert('Tienes que crear un juego!')">/</button>
     </section>
+
+    <?php
+
+        if($recordsToShow != ""){
+            echo $recordsToShow;
+        }
+
+    ?>
 
     <!-- Usabilidad - Usuario quería feedback sonoro para saber las correctas o falsas. -->
 

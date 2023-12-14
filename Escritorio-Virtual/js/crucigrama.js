@@ -54,6 +54,10 @@ class Crucigrama {
 
         // Eliminamos todos los hijos de main (puede que se haya jugado ya a un modo del crucigrama)
         $("main").empty();
+        // Removemos el data-state si se viene de jugar un juego
+        $("body>section[data-state='form_time']").removeAttr("data-state");
+        $("main[data-state='form_time']").removeAttr("data-state");
+
 
         // Eliminamos seccion de formulario si se reinicia el juego
         if ($("form").length != 0)
@@ -317,6 +321,13 @@ class Crucigrama {
     }
 
     createRecordForm() {
+
+        // Ponemos los atributos data-state="form_time"
+        // Para ocultar el crucigrama, las instrucciones, botonera etc.
+        $("main").attr("data-state", "form_time");
+        $("body>section:nth-of-type(2)").attr("data-state", "form_time");
+        $("body>section[data-type='botonera']").attr("data-state", "form_time");
+
 
         // Creamos la seccion del formulario
         // Data-type para poder referenciarlo mejor desde el CSS
