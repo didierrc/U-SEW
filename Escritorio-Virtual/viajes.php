@@ -1,7 +1,6 @@
 <?php
 
 /* Definicion de la clase Carrusel */
-// https://exchangeratesapi.io/documentation/
 class Carrusel{
 
     private $capital;
@@ -49,8 +48,42 @@ class Carrusel{
 
 }
 
+// API: https://www.exchangerate-api.com/docs/standard-requests
+class Moneda{
+
+    private $from;
+    private $to;
+
+    public function __construct($from, $to){
+        $this->from = $from;
+        $this->to = $to;
+    }
+
+    public function getExchange(){
+        
+        // Creamos la llamada al API
+        $apiKey = "f31809a51348ca688f165d45";
+        $apiURL = "https://v6.exchangerate-api.com/v6/". $apiKey . "//latest/" . $this->from;
+
+        $response = file_get_contents($apiURL, true);
+        $json = json_decode($response);
+
+        if($json == null){
+            return -1; // Devolvemos -1 si no se ha obtenido el API response
+        }
+
+        $rateFor = $this->to;
+        return $json->conversion_rates->$rateFor; // Devolviendo la tasa de cambio
+    }
+
+
+}
+
 $carrusel = new Carrusel("Monaco", "Monaco");
 $fotos = $carrusel->getCarrusel();
+
+$moneda = new Moneda("USD", "EUR"); // Cambio de 1$ a € ya que Monaco usa euros.
+$cambio = $moneda->getExchange();
 
 ?>
 
@@ -104,7 +137,7 @@ $fotos = $carrusel->getCarrusel();
 
                 // Añadiendo el articulo que contiene al carrusel
 
-                $fotosArticle = "<article><h3> Carrusel de fotos </h3>";
+                $fotosArticle = "<article><h3>1. Carrusel de fotos</h3>";
                 
                 for($i=0; $i < count($fotos); $i++){
                     $fotosArticle .= $fotos[$i];
@@ -119,6 +152,14 @@ $fotos = $carrusel->getCarrusel();
                 echo $fotosArticle;
             }
 
+        
+        ?>
+
+        <?php
+
+            if($cambio != -1){
+                echo "<h3>2. 1$ es equivalente a " . $cambio . "€</h3>";
+            }
         
         ?>
 
@@ -145,27 +186,27 @@ $fotos = $carrusel->getCarrusel();
 
 
         <section>
-            <h3>Esta es tu localización actual (Mapa estático): </h3>
+            <h3>3. Esta es tu localización actual (Mapa estático): </h3>
         </section>
 
         <section>
-            <h3>Esta es tu localización actual (Mapa dinámico): </h3>
+            <h3>4. Esta es tu localización actual (Mapa dinámico): </h3>
         </section>
 
         
 
         <section>
-            <h3>Procesando un archivo XML con API file</h3>
+            <h3>5. Procesando un archivo XML con API file</h3>
             <input type="file" onchange="v.procesaXML(this.files);" accept=".xml">
         </section>
 
         <section>
-            <h3>Procesando archivos KML con API file</h3>
+            <h3>6. Procesando archivos KML con API file</h3>
             <input type="file" onchange="v.procesaKML(this.files);" accept=".kml" multiple>
         </section>
 
         <section>
-            <h3>Procesando archivos SVG con API file</h3>
+            <h3>7. Procesando archivos SVG con API file</h3>
             <input type="file" onchange="v.procesaSVG(this.files);" accept=".svg" multiple>
         </section>
     </main>
