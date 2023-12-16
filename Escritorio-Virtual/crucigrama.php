@@ -13,9 +13,6 @@ class Record{
         $this->user = "DBUSER2023";
         $this->pass = "DBPSWD2023";
         $this->dbname = "records";
-
-        // La BD se debe crear en el codigo???
-        // La tabla se debe crear en el codigo???
     }
 
     public function registerNewRecord($userName, $userSurname, $level, $time){
@@ -212,6 +209,7 @@ if(count($_POST) > 0){
             <a href="sudoku.html" accesskey="D" tabindex="9">Sudoku</a>
             <a href="crucigrama.php" accesskey="C" tabindex="10">Crucigrama matemático</a>
             <a href="api.html" accesskey="P" tabindex="11">Aplicacion con APIs</a>
+            <a href="concesionario.php" accesskey="O" tabindex="12">Concesionario</a>
         </nav>
     </section>
 
