@@ -58,6 +58,8 @@ class Crucigrama {
         $("body>section[data-state='form_time']").removeAttr("data-state");
         $("main[data-state='form_time']").removeAttr("data-state");
 
+        // Eliminamos el record si es que se muestra
+        $("body>section[data-type='record']").remove();
 
         // Eliminamos seccion de formulario si se reinicia el juego
         if ($("form").length != 0)

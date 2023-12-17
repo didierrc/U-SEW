@@ -29,9 +29,12 @@ main>section {
     max-width: 50em;
 }
 
-/* Especificidad: 001 */
+/* Especificidad: 003-014-015-001 */
+main>section>h4,
+main>section>section:first-of-type>h5,
+main>section>section:nth-of-type(2)>section>h6,
 audio {
-    visibility: hidden;
+    display: none;
 }
 
 /* Especificidad: 011 */
@@ -117,7 +120,7 @@ main>section>section:nth-of-type(3) {
 }
 
 /* Especificidad: 014 */
-main>section>section:nth-of-type(3) p {
+main>section>section:nth-of-type(3) h5 {
     flex: 1 100%;
 }
 
