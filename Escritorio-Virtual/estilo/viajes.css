@@ -64,6 +64,9 @@ article button {
     border-radius: 50%;
     z-index: 10;
     cursor: pointer;
+    /* Warning en el Validador CSS: "Ningún color establecido pero si un background-color"
+        Herencia de color:black por defecto de botones (estilo.css)
+    */
     background-color: #fff;
     font-size: 1em;
 }

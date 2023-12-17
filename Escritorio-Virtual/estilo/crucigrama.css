@@ -25,11 +25,13 @@ main {
 
 /* Especificidad: 002 */
 main>p {
+    /* Warning en el Validador CSS: "Ningún color establecido pero si un background-color"
+        Herencia de color por defecto asociado a todos los parrafos (estilo.css) 
+    */
     background-color: white;
     margin: 0;
     text-align: center;
     border: solid;
-    border-width: 0.01em;
     font-size: 1.3em;
     padding: 0.5em 1em;
     border-color: black;
@@ -38,6 +40,11 @@ main>p {
 
 /* Especificidad: 012 */
 main>p[data-state="empty"] {
+    /* Warning en el Validador CSS: "Ningún color establecido pero si un background-color"
+        Herencia de color por defecto asociado a todos los parrafos (estilo.css).
+        En este caso el bakcground y color son el mismo para representar una casilla que
+        no se puede pulsar.
+    */
     background-color: black;
 }
 
@@ -48,6 +55,9 @@ main>p[data-state="clicked"] {
 
 /* Especificidad: 012 */
 main>p[data-i] {
+    /* Warning en el Validador CSS: "Ningún background-color establecido pero si un color"
+        Herencia de background-color:white de main>p (esa misma hoja) 
+    */
     color: blue;
 }
 
@@ -90,6 +100,9 @@ body>section:nth-of-type(3)>h4 {
 button,
 input[type="submit"] {
     padding: 0.5em 1em;
+    /* Warning en el Validador CSS: "Ningún color establecido pero si un background-color"
+        Herencia de color:black por defecto asociado a todos los botones (estilo.css) 
+    */
     background-color: #75E6DA;
     font-size: 1em;
     font-weight: 500;
@@ -128,6 +141,11 @@ body>section[data-type="record"] {
     /* Especificidad: 011 */
     section[data-type="botonera"] {
         border: none;
+        /* Warning en el Validador CSS: "Redifinition of display"
+            Este valor se redefine para hacer visible la botonera que da paso a la
+            introduccion de numeros y operaciones en dispositivos de resolucion
+            baja -> Adaptabilidad! (pasa de display:none a display:flex)
+        */
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -145,12 +163,23 @@ body>section[data-type="record"] {
 
     /* Especificidad: 002 */
     main>p {
+        /* Warning en el Validador CSS: "Redifinition of font-size, padding"
+            Todos estos valores se redefinen para mejorar la adaptabilidad en 
+            dispositivos de resolucion baja. (en esta hoja de estilo)
+            font-size: 1.3em -> 1.2em
+            padding:  0.5em 1em -> 0.2em 0.5em
+        */
         font-size: 1.2em;
         padding: 0.2em 0.5em;
     }
 
     /* Especificidad: 013 */
     body>section:nth-of-type(2)>ol {
+        /* Warning en el Validador CSS: "Redifinition of font-size, padding"
+            Todos estos valores se redefinen para mejorar la adaptabilidad en 
+            dispositivos de resolucion baja. (en esta hoja de estilo)
+            font-size: 1.04em -> 1em
+        */
         font-size: 1em;
     }
 
