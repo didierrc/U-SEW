@@ -195,7 +195,6 @@ td {
 video,
 audio {
     max-width: 90%;
-    height: auto;
 }
 
 /* Especificidad: 001 */
