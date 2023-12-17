@@ -1,0 +1,95 @@
+/* Especificidad: 001*/
+main {
+    max-width: 70em;
+}
+
+/* Especificidad: 002*/
+main>section {
+    border: solid 0.2em #05435e;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+/* Especificidad: 012*/
+main>section:first-of-type {
+    display: flex;
+    align-items: center;
+    column-gap: 2em;
+    flex-wrap: wrap;
+}
+
+/* Especificidad: 003-013*/
+main>section>h4,
+main>section:first-of-type>p {
+    flex: 1 100%;
+}
+
+/* Especificidad: 003*/
+main>section>p {
+    color: red;
+}
+
+/* Especificidad: 013*/
+main>section:first-of-type>form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+/* Especificidad: 002*/
+main h4 {
+    font-size: 1.2em;
+}
+
+/* Especificidad: 002*/
+main h5 {
+    color: #05435e;
+    font-size: 1em;
+}
+
+/* Especificidad: 033-013*/
+main>section:nth-of-type(2)>section:nth-of-type(n+2):not(:last-of-type),
+main>section:last-of-type>section {
+    background-color: white;
+    margin-top: 1em;
+    border: solid 0.2em black;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+/* Especificidad: 034-014*/
+main>section:nth-of-type(2)>section:nth-of-type(n+2):not(:last-of-type)>h5,
+main>section:last-of-type>section>h5 {
+    flex: 1 100%;
+    background-color: #75E6DA;
+    margin: 0;
+    padding: 1em;
+}
+
+/* Especificidad: 034-014*/
+main>section:nth-of-type(2)>section:nth-of-type(n+2):not(:last-of-type)>p,
+main>section:last-of-type>section>p {
+    margin-left: 1em;
+    margin-top: 0.5em;
+}
+
+
+
+
+
+@media all and (max-width: 650px) {
+
+    /* Especificidad: 012*/
+    main>section:first-of-type {
+        flex-direction: column;
+    }
+
+    /* Especificidad: 013*/
+    main>section:first-of-type>form {
+        flex-wrap: wrap;
+    }
+
+}

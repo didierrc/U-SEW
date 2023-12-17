@@ -636,13 +636,13 @@ class Concesionario{
 
                 $sectionsCar .= "<section>";
                 $sectionsCar .= "<h5>" . $row["make"] . " " . $row["model"] . "</h5>";
-                $sectionsCar .= "<p>Matrícula:" . $row["plate"] .  "</p>";
-                $sectionsCar .= "<p>Año fabricación:" . $row["year"] .  "</p>";
-                $sectionsCar .= "<p>Precio:" . $row["price"] .  "</p>";
+                $sectionsCar .= "<p>Matrícula: " . $row["plate"] .  "</p>";
+                $sectionsCar .= "<p>Año fabricación: " . $row["year"] .  "</p>";
+                $sectionsCar .= "<p>Precio: " . $row["price"] .  "€</p>";
 
                 $colorRes = $db->query("SELECT description FROM color WHERE code = '" . $row["color_code"] . "'");
 
-                $sectionsCar .= "<p>Color:" . $colorRes->fetch_array()[0] .  "</p>";
+                $sectionsCar .= "<p>Color: " . $colorRes->fetch_array()[0] .  "</p>";
                 $sectionsCar .= "</section>";
             }
 
@@ -821,7 +821,7 @@ class Concesionario{
             while($row = $res->fetch_array()){
 
                 $sectionsCar .= "<section>";
-                $sectionsCar .= "<h5>" . $row["car_plate"] . " - Comprado el: " . $row["orderDate"] . "</h5>";
+                $sectionsCar .= "<h5>" . $row["car_plate"] . " - Comprado en: " . $row["orderDate"] . "</h5>";
                 
                 // Informacion del coche
                 $infoCar = $db->query("SELECT model,year,make,color_code,dealer_id FROM car WHERE plate = '" . $row["car_plate"] . "'");
@@ -918,6 +918,7 @@ if($_FILES){
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
     <link rel="stylesheet" type="text/css" href="estilo/layout.css">
     <link rel="stylesheet" type="text/css" href="estilo/juegos.css">
+    <link rel="stylesheet" type="text/css" href="php/concesionario.css">
 
     <link rel="icon" href="multimedia/favicon-spidey.ico">
 </head>
@@ -960,8 +961,20 @@ if($_FILES){
             <h4>Acciones principales</h4>
             
             <form action="#" method="post" name="crear">
-                <p>Crea nueva base de datos: <input type="text" name="nombreDb" value="concesionario" readonly></p>
+                <p>1. Crea nueva BD: <input type="text" name="nombreDb" value="concesionario" readonly></p>
                 <input type="submit" value="Crear!!">
+            </form>
+
+            <form action="#" method="post" enctype='multipart/form-data'>
+                <p>2. Importa tus datos: <input name="files[]" type="file" accept=".csv" required multiple></p>
+                <input type="submit" value="Importar!!">
+            </form>
+
+            
+
+            <form action="#" method="post" name="exportar">
+                <p>3. Exporta tus datos: <input type="text" name="fileExportar" placeholder="Nombre de archivo" required></p>
+                <input type="submit" value="Exportar!!">
             </form>
 
             <?php
@@ -969,31 +982,17 @@ if($_FILES){
                     echo "<p>Base de datos inicializada con éxito.</p>";
                 elseif($baseDatosExito === FALSE)
                     echo "<p>Ha habido un error al crear la Base de Datos!</p>";
-            ?>
 
-            
-            <form action="#" method="post" enctype='multipart/form-data'>
-                <p>Importa tus datos: <input name="files[]" type="file" accept=".csv" required multiple></p>
-                <input type="submit" value="Importar!!">
-            </form>
-
-            <?php
                 if($importarExito === TRUE)
                     echo "<p>Datos importados con éxito.</p>";
                 elseif($importarExito === FALSE)
                     echo "<p>Ha habido un error al importar los datos! Revisa que la DB este creada!</p>";
-            ?>
-
-            <form action="#" method="post" name="exportar">
-                <p>Exporta tus datos: <input type="text" name="fileExportar" placeholder="Nombre de archivo" required></p>
-                <input type="submit" value="Exportar!!">
-            </form>
-
-            <?php
+            
                 if($exportarExito === TRUE)
                     echo "<p>Datos exportados con éxito a ./php/nombre.csv </p>";
                 elseif($exportarExito === FALSE)
                     echo "<p>Ha habido un error al exportar! Revisa que la DB este creada!</p>";
+            
             ?>
         </section>
 
@@ -1006,35 +1005,39 @@ if($_FILES){
                     if($vendedoresPosibles != null)
                         echo $vendedoresPosibles;
                     else
-                        echo "No hay vendedores activos o no se ha activado la base de datos!";
+                        echo "<p>No hay vendedores activos o no se ha activado la base de datos!</p>";
                 ?>
+                <form action="#" method="post" name="vendor">
+                    <p>Introduce el ID del vendedor: <input type="text" name="dealerID" required></p>
+                    <input type="submit" value="Muéstrame!!">
+                </form>
             </section>
-            <form action="#" method="post" name="vendor">
-                <p>Introduce el ID del vendedor: <input type="text" name="dealerID" required></p>
-                <input type="submit" value="Muéstrame!!">
-            </form>
+            
             <?php
                     if($cochesVenta != null){
                         echo $cochesVenta;
                         // Formulario de compra
-                        $formVenta = '<form action="#" method="post" name="compra">';
-                        $formVenta .= '<p>Introduce la matrícula del coche de tus sueños!:';
+                        $formVenta = "<section><h5>Compra el coche de tus sueños!</h5>";
+                        $formVenta .= "<p>Si ya estás registrado solo ingrea la matrícula, dni y la cantidad!</p>";
+                        $formVenta .= '<form action="#" method="post" name="compra">';
+                        $formVenta .= '<p>Introduce la matrícula: ';
                         $formVenta .= '<input type="text" name="matriculaIdCompra" required></p>';
-                        $formVenta .= '<p>Introduce tu dni:';
+                        $formVenta .= '<p>Introduce tu dni: ';
                         $formVenta .= '<input type="text" name="usuarioIdCompra" required></p>';
-                        $formVenta .= '<p>Introduce tu nombre:';
+                        $formVenta .= '<p>Introduce tu nombre: ';
                         $formVenta .= '<input type="text" name="usuarioNombreCompra"></p>';
-                        $formVenta .= '<p>Introduce tu apellido:';
+                        $formVenta .= '<p>Introduce tu apellido: ';
                         $formVenta .= '<input type="text" name="usuarioApellidoCompra"></p>';
-                        $formVenta .= '<p>Introduce tu email:';
+                        $formVenta .= '<p>Introduce tu email: ';
                         $formVenta .= '<input type="text" name="usuarioEmailCompra"></p>';
-                        $formVenta .= '<p>Introduce tu teléfono:';
+                        $formVenta .= '<p>Introduce tu teléfono: ';
                         $formVenta .= '<input type="number" name="usuarioTelefonoCompra"></p>';
-                        $formVenta .= '<p>Cuántos vas a comprar?:';
+                        $formVenta .= '<p>Cuántos vas a comprar?: ';
                         $formVenta .= '<input type="number" name="cantidadCompra" min="1" required></p>';
                         $formVenta .= '<input type="submit" value="Comprar!!">';
                         $formVenta .= "</form>";
-                        
+                        $formVenta .= "</section>";
+
                         echo $formVenta;
                     }
 
