@@ -29,6 +29,7 @@ main>section {
     max-width: 50em;
 }
 
+/* Especificidad: 003 */
 main>section p {
     font-size: 0.9em;
 }
@@ -65,7 +66,7 @@ main>section>section:first-of-type>img {
     height: auto;
 }
 
-/* Especificidad: 014 */
+/* Especificidad: 024 */
 main>section>section:first-of-type>p:first-of-type {
     display: flex;
     align-items: center;
@@ -88,6 +89,7 @@ main>section>section:nth-of-type(2) {
     column-gap: 2em;
 }
 
+/* Especificidad: 014 */
 main>section>section:nth-of-type(2)>p {
     margin-top: 0.2em;
 }

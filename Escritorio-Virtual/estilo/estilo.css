@@ -10,12 +10,6 @@ body {
     margin: 0;
 }
 
-/* Especificidad: 003 
-header nav a {
-    font
-}
-*/
-
 /* Especificidad: 001 */
 main {
     margin: 1.5em;

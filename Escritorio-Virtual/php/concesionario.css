@@ -1,3 +1,6 @@
+/* Datos personales: Didier Reyes Castro - UO287866 */
+/* Color palette: https://www.canva.com/colors/color-palettes/summer-splash/ */
+
 /* Especificidad: 001*/
 main {
     max-width: 70em;
@@ -26,6 +29,9 @@ main>section:first-of-type>p {
 
 /* Especificidad: 003*/
 main>section>p {
+    /* Warning en el Validador CSS: "Ningún background-color establecido pero si un color"
+        Herencia del background-color de estilo.css (el color de fondo del body: #D4F1F4)
+    */
     color: #940000;
 }
 
@@ -45,6 +51,9 @@ main h4 {
 
 /* Especificidad: 002*/
 main h5 {
+    /* Warning en el Validador CSS: "Ningún background-color establecido pero si un color"
+        Herencia del background-color de estilo.css (el color de fondo del body: #D4F1F4)
+    */
     color: #05435e;
     font-size: 1em;
 }
@@ -52,6 +61,9 @@ main h5 {
 /* Especificidad: 033-013*/
 main>section:nth-of-type(2)>section:nth-of-type(n+2):not(:last-of-type),
 main>section:last-of-type>section {
+    /* Warning en el Validador CSS: "Ningún color establecido pero si un background-color"
+        Herencia de colores de esta hoja de estilos (h5) y de parrafos (estilo.css)
+    */
     background-color: white;
     margin-top: 1em;
     border: solid 0.2em black;
@@ -64,6 +76,9 @@ main>section:last-of-type>section {
 main>section:nth-of-type(2)>section:nth-of-type(n+2):not(:last-of-type)>h5,
 main>section:last-of-type>section>h5 {
     flex: 1 100%;
+    /* Warning en el Validador CSS: "Ningún color establecido pero si un background-color"
+        Herencia de colores de esta hoja de estilos (h5).
+    */
     background-color: #75E6DA;
     margin: 0;
     padding: 1em;
@@ -77,9 +92,6 @@ main>section:last-of-type>section>p {
 }
 
 
-
-
-
 @media all and (max-width: 650px) {
 
     /* Especificidad: 012*/
@@ -89,6 +101,10 @@ main>section:last-of-type>section>p {
 
     /* Especificidad: 013*/
     main>section:first-of-type>form {
+        /* Warning en el Validador CSS: "Redefinicion de flex-wrap"
+            Se pasa de nowrap (en esta misma hoja de estilo) a wrap para mejorar la visibilidad
+            en dispositivos de resolucion baja.
+        */
         flex-wrap: wrap;
     }
 

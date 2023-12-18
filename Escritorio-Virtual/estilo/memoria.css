@@ -52,6 +52,9 @@ main>section article>img {
     margin: 0;
     position: absolute;
     backface-visibility: hidden;
+    /* Warning: Background-color set but there is no color.
+        El color para los articulos viene definido en estilo.css(los elementos h3)
+    */
     background-color: #75E6DA;
 }
 

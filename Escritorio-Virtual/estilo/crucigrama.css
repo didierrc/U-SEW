@@ -118,7 +118,7 @@ section[data-type="formulario"] {
     align-items: flex-start;
 }
 
-/* Especificidad: 011-001-011 */
+/* Especificidad: 001-011-012-011-024 */
 audio,
 section[data-type="botonera"],
 body>section[data-state="form_time"],
