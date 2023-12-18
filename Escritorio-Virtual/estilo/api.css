@@ -29,26 +29,28 @@ main>section {
     max-width: 50em;
 }
 
+main>section p {
+    font-size: 0.9em;
+}
+
 /* Especificidad: 003-014-015-001 */
 main>section>h4,
 main>section>section:first-of-type>h5,
 main>section>section:nth-of-type(2)>section>h6,
-audio,
-label {
+audio {
     display: none;
 }
 
 /* Especificidad: 011 */
 input[type="file"] {
-    margin-bottom: 1em;
-    font-size: 0.8em;
+    margin-left: 0.2em;
 }
 
 /* Especificidad: 013 */
 main>section>section:first-of-type {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     column-gap: 2em;
 }
 
@@ -64,15 +66,15 @@ main>section>section:first-of-type>img {
 }
 
 /* Especificidad: 014 */
-main>section>section:first-of-type>section {
+main>section>section:first-of-type>p:first-of-type {
     display: flex;
     align-items: center;
-    font-size: 1.8em;
-    column-gap: 0.3em;
+    justify-content: center;
+    column-gap: 0.5em;
 }
 
-/* Especificidad: 025 */
-main>section>section:first-of-type>section>p:last-of-type {
+/* Especificidad: 024 */
+main>section>section:first-of-type>p:last-of-type {
     /* Warning en el Validador CSS: "Ningún background-color establecido pero si un color"
         Herencia de background-color:black de main>section (en este mismo estilo) 
     */
@@ -86,9 +88,12 @@ main>section>section:nth-of-type(2) {
     column-gap: 2em;
 }
 
+main>section>section:nth-of-type(2)>p {
+    margin-top: 0.2em;
+}
+
 /* Especificidad: 014 */
 main>section>section:nth-of-type(2)>section {
-    margin-top: 0.5em;
     border: solid #df823a 0.2em;
     scroll-behavior: auto;
     overflow-y: scroll;
@@ -151,6 +156,12 @@ main>section>section:nth-of-type(3) button {
     background-color: #df823a;
 }
 
+main>section>section:nth-of-type(4)>p {
+    display: flex;
+    align-items: center;
+    column-gap: 1em;
+}
+
 @media all and (max-width: 650px) {
 
     /* Especificidad: 013 */
@@ -164,12 +175,8 @@ main>section>section:nth-of-type(3) button {
     }
 
     /* Especificidad: 014 */
-    main>section>section:first-of-type>section {
-        /* Warning en el Validador CSS: "Redefinition of font-size"
-            Se redefine el tamaño de la letra para que la adaptabilidad sea mejor en
-            caso de dispositivos con resolucion baja. Se redefine 
-            main>section>section:first-of-type>section presente en esta hoja de estilo.
-        */
-        font-size: 1.5em;
+    main>section>section:first-of-type>p {
+        flex-direction: column;
+        row-gap: 1em;
     }
 }

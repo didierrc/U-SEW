@@ -51,7 +51,7 @@ class Reproductor {
 
         volumeControl.on("input", () => {
             this.gainNode.gain.value = volumeControl.val();
-            $("main>section>section:first>section>p:last").text(Math.floor(+volumeControl.val() * 100) + "%");
+            $("main>section>section:first>p:last").text(Math.floor(+volumeControl.val() * 100) + "%");
         });
     }
 

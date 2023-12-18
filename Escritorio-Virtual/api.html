@@ -78,20 +78,21 @@
                 <img src="multimedia/logo.png" alt="Logo del reproductor de musica">
                 <!-- Ganancia: Puede ser el doble o mutearse -->
                 <p>
-                    <label for="volume">Volume</label>
+                    <label for="volume">Volumen: </label>
                     <input id="volume" type="range" min="0" max="2" value="1" step="0.01">
                 </p>
 
-                <section>
-                    <h6>Vol:</h6>
-                    <p>100%</p>
-                </section>
+                <p>100%</p>
             </section>
 
             <!-- Drag and Drop o Seleccion -->
             <section>
                 <h5>&sung; Playlist:</h5>
-                <input type="file" onchange="musica.addTrackFile(this.files);" multiple>
+                <p>
+                    <label for="songs">Introduce música! </label>
+                    <input id="songs" type="file" onchange="musica.addTrackFile(this.files);" multiple>
+                </p>
+
                 <section>
                     <!-- Accesibilidad: Este h no se muestra al usuario "regular" sino que ayuda a las personas
                     , por ejemplo, con lectores de páginas a saber de qué trata esta sección-->
@@ -109,9 +110,9 @@
 
             <!-- Stereo -->
             <section>
-                <h5>&diams; Modifica el stereo!!</h5>
+                <h5>&diams; Stereo:</h5>
                 <p>
-                    <label for="stereo">Stereo</label>
+                    <label for="stereo">Modificador: </label>
                     <input id="stereo" type="range" min="-1" max="1" value="0" step="0.01">
                 </p>
 
