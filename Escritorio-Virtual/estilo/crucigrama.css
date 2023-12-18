@@ -119,11 +119,11 @@ section[data-type="formulario"] {
 }
 
 /* Especificidad: 011-001-011 */
-input[name="tiempoDB"],
 audio,
 section[data-type="botonera"],
 body>section[data-state="form_time"],
-main[data-state="form_time"] {
+main[data-state="form_time"],
+body>section[data-type="formulario"]>form>p:last-of-type {
     display: none;
 }
 
@@ -135,6 +135,7 @@ body>section[data-type="record"] {
     margin-bottom: 2em;
     align-self: center;
 }
+
 
 @media all and (max-width: 1400px) {
 

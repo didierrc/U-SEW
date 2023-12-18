@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Datos que describe el documento -->
+    <title>Escritorio Virtual - Juegos</title>
+
+    <meta charset="UTF-8">
+    <meta name="author" content="Didier Yamil Reyes Castro">
+    <meta name="description" content="Documento con el juego Crucigrama Matemático.">
+    <meta name="keywords" content="juegos,matemática,razonamiento,agilidad">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
+    <link rel="stylesheet" type="text/css" href="estilo/layout.css">
+    <link rel="stylesheet" type="text/css" href="estilo/juegos.css">
+    <link rel="stylesheet" type="text/css" href="estilo/crucigrama.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="js/crucigrama.js"></script>
+
+    <link rel="icon" href="multimedia/favicon-spidey.ico">
+</head>
+
+<body>
+    <!-- Seccion Header que agrupa la cabezera de la página web (Cosas que se repiten en todas las páginas Web) -->
+    <header>
+        <h1>Escritorio Virtual</h1>
+
+        <!-- Seccion Nav que agrupa enlaces a otras páginas web -->
+        <nav>
+            <a href="index.html" accesskey="I" tabindex="1">Inicio</a>
+            <a href="sobremi.html" accesskey="S" tabindex="2">Sobre mi</a>
+            <a href="noticias.html" accesskey="N" tabindex="3">Noticias</a>
+            <a href="agenda.html" accesskey="A" tabindex="4">Agenda</a>
+            <a href="meteorologia.html" accesskey="M" tabindex="5">Meteorología</a>
+            <a href="viajes.php" accesskey="V" tabindex="6">Viajes</a>
+            <a href="juegos.html" accesskey="J" tabindex="7">Juegos</a>
+        </nav>
+    </header>
+
+    <!-- Section que representa la barra de navegacion a los diferentes juegos. Fuera del main ya que lo
+     comparten los distintos HTML que componen los juegos -->
+    <section>
+        <h2>Juegos:</h2>
+        <nav>
+            <a href="memoria.html" accesskey="E" tabindex="8">Memoria</a>
+            <a href="sudoku.html" accesskey="D" tabindex="9">Sudoku</a>
+            <a href="crucigrama.php" accesskey="C" tabindex="10">Crucigrama matemático</a>
+            <a href="api.html" accesskey="P" tabindex="11">Aplicacion con APIs</a>
+            <a href="concesionario.php" accesskey="O" tabindex="12">Concesionario</a>
+        </nav>
+    </section>
+
+    <h3>Crucigrama matemático</h3>
+
+    <!-- Seccion que explica el juego - Pruebas de usabilidad.
+    -->
+    <section data-state="form_time">
+        <h4>Instrucciones:</h4>
+        <ol>
+            <li>Selecciona la casilla para introducir un número u operación
+                <ul>
+                    <li> Los números van del 1 al 9. </li>
+                    <li> Las operaciones: + (suma) - (resta) * (multiplicación) / (división)</li>
+                </ul>
+            </li>
+            <li>Introduce el número u operación mediante el teclado. Puedes utilizar el Pad numérico o Combinaciones
+                especiales para colocar las operaciones.</li>
+            <li>Si quieres cambiar el número u operación. Selecciona la casilla y:
+                <ul>
+                    <li>Usa la tecla de retroceso.</li>
+                    <li>Introduce directamente un número u operación.</li>
+                </ul>
+            </li>
+        </ol>
+    </section>
+
+    <!-- Seccion que simplemente agrupa las diferentes dificultades del crucigrama
+        (puesta para hacer las pruebas de usabilidad "más rápidas" )
+    -->
+    <section>
+        <h4>Elige el nivel de dificultad:</h4>
+        <button>Fácil</button>
+        <button>Medio</button>
+        <button>Difícil</button>
+    </section>
+
+    <script>
+
+        // Seleccion del crucigrama a jugar
+        var crucigrama;
+
+        $("body>section:last-of-type>button:first").on("click", () => {
+            crucigrama = new Crucigrama("4,*,.,=,12,#,#,#,5,#,#,*,#,/,#,#,#,*,4,-,.,=,.,#,15,#,.,*,#,=,#,=,#,/,#,=,.,#,3,#,4,*,.,=,20,=,#,#,#,#,#,=,#,#,8,#,9,-,.,=,3,#,.,#,#,-,#,+,#,#,#,*,6,/,.,=,.,#,#,#,.,#,#,=,#,=,#,#,#,=,#,#,6,#,8,*,.,=,16", "facil");
+            crucigrama.paintMathword();
+        });
+        $("body>section:last-of-type>button:nth-of-type(2)").on("click", () => {
+            crucigrama = new Crucigrama("12,*,.,=,36,#,#,#,15,#,#,*,#,/,#,#,#,*,.,-,.,=,.,#,55,#,.,*,#,=,#,=,#,/,#,=,.,#,15,#,9,*,.,=,45,=,#,#,#,#,#,=,#,#,72,#,20,-,.,=,11,#,.,#,#,-,#,+,#,#,#,*,56,/,.,=,.,#,#,#,.,#,#,=,#,=,#,#,#,=,#,#,12,#,16,*,.,=,32", "medio");
+            crucigrama.paintMathword();
+        });
+        $("body>section:last-of-type>button:last").on("click", () => {
+            crucigrama = new Crucigrama("4,.,.,=,36,#,#,#,25,#,#,*,#,.,#,#,#,.,.,-,.,=,.,#,15,#,.,*,#,=,#,=,#,.,#,=,.,#,18,#,6,*,.,=,30,=,#,#,#,#,#,=,#,#,56,#,9,-,.,=,3,#,.,#,#,*,#,+,#,#,#,*,20,.,.,=,18,#,#,#,.,#,#,=,#,=,#,#,#,=,#,#,18,#,24,.,.,=,72", "dificil");
+            crucigrama.paintMathword();
+        });
+
+        // Añadiendo el evento keydown
+        window.addEventListener("keydown", (event) => {
+
+            var teclasPermitidas = /[1-9/*+\-]/
+
+            if (crucigrama && !$("main[data-state='form_time']")[0]) {
+                // Teclas aceptadas
+                // Usabilidad - Tecla de retroceso
+                if (teclasPermitidas.test(event.key) || event.keyCode == 8) {
+
+                    if (!crucigrama.isACellClicked) {
+                        alert("Una celda tiene que ser seleccionada!!");
+                    } else {
+                        crucigrama.introduceElement(event.key);
+                    }
+
+                }
+            }
+        });
+
+    </script>
+
+    <main data-state="form_time">
+        <p data-state="blocked">4</p>
+        <p data-i="0" data-j="1" data-state="correct">*</p>
+        <p data-i="0" data-j="2" data-state="correct">9</p>
+        <p data-state="blocked">=</p>
+        <p data-state="blocked">36</p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">25</p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">*</p>
+        <p data-state="empty"></p>
+        <p data-i="1" data-j="4" data-state="correct">/</p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-i="1" data-j="8" data-state="correct">+</p>
+        <p data-i="2" data-j="0" data-state="correct">8</p>
+        <p data-state="blocked">-</p>
+        <p data-i="2" data-j="2" data-state="correct">2</p>
+        <p data-state="blocked">=</p>
+        <p data-i="2" data-j="4" data-state="correct">6</p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">15</p>
+        <p data-state="empty"></p>
+        <p data-i="2" data-j="8" data-state="correct">5</p>
+        <p data-state="blocked">*</p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">=</p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">=</p>
+        <p data-state="empty"></p>
+        <p data-i="3" data-j="6" data-state="correct">/</p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">=</p>
+        <p data-i="4" data-j="0" data-state="correct">7</p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">18</p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">6</p>
+        <p data-state="blocked">*</p>
+        <p data-i="4" data-j="6" data-state="correct">5</p>
+        <p data-state="blocked">=</p>
+        <p data-state="blocked">30</p>
+        <p data-state="blocked">=</p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">=</p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">56</p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">9</p>
+        <p data-state="blocked">-</p>
+        <p data-i="6" data-j="4" data-state="correct">6</p>
+        <p data-state="blocked">=</p>
+        <p data-state="blocked">3</p>
+        <p data-state="empty"></p>
+        <p data-i="6" data-j="8" data-state="correct">8</p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">*</p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">+</p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">*</p>
+        <p data-state="blocked">20</p>
+        <p data-i="8" data-j="1" data-state="correct">-</p>
+        <p data-i="8" data-j="2" data-state="correct">2</p>
+        <p data-state="blocked">=</p>
+        <p data-state="blocked">18</p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-i="8" data-j="8" data-state="correct">9</p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">=</p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">=</p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">=</p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">18</p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">24</p>
+        <p data-i="10" data-j="5" data-state="correct">*</p>
+        <p data-i="10" data-j="6" data-state="correct">3</p>
+        <p data-state="blocked">=</p>
+        <p data-state="blocked">72</p>
+    </main>
+
+    <section data-type="botonera" data-state="form_time">
+        <h4>Botonera:</h4> <!-- Pruebas de usabilidad.-->
+        <button onclick="crucigrama ? crucigrama.introduceElement(1) : alert('Tienes que crear un juego!')">1</button>
+        <button onclick="crucigrama ? crucigrama.introduceElement(2) : alert('Tienes que crear un juego!')">2</button>
+        <button onclick="crucigrama ? crucigrama.introduceElement(3) : alert('Tienes que crear un juego!')">3</button>
+        <button onclick="crucigrama ? crucigrama.introduceElement(4) : alert('Tienes que crear un juego!')">4</button>
+        <button onclick="crucigrama ? crucigrama.introduceElement(5) : alert('Tienes que crear un juego!')">5</button>
+        <button onclick="crucigrama ? crucigrama.introduceElement(6) : alert('Tienes que crear un juego!')">6</button>
+        <button onclick="crucigrama ? crucigrama.introduceElement(7) : alert('Tienes que crear un juego!')">7</button>
+        <button onclick="crucigrama ? crucigrama.introduceElement(8) : alert('Tienes que crear un juego!')">8</button>
+        <button onclick="crucigrama ? crucigrama.introduceElement(9) : alert('Tienes que crear un juego!')">9</button>
+        <button onclick="crucigrama ? crucigrama.introduceElement('*') : alert('Tienes que crear un juego!')">*</button>
+        <button onclick="crucigrama ? crucigrama.introduceElement('+') : alert('Tienes que crear un juego!')">+</button>
+        <button onclick="crucigrama ? crucigrama.introduceElement('-') : alert('Tienes que crear un juego!')">-</button>
+        <button onclick="crucigrama ? crucigrama.introduceElement('/') : alert('Tienes que crear un juego!')">/</button>
+    </section>
+
+
+    <!-- Usabilidad - Usuario quería feedback sonoro para saber las correctas o falsas. -->
+
+    <audio controls="">
+        <source src="multimedia/correct.mp3" type="audio/mpeg">
+        <source src="multimedia/correct.wav" type="audio/wav">
+    </audio>
+
+    <audio controls="">
+        <source src="multimedia/wrong.mp3" type="audio/mpeg">
+        <source src="multimedia/wrong.wav" type="audio/wav">
+    </audio>
+
+
+
+
+    <section data-type="formulario">
+        <h4>Introduce tus datos para guardar el tiempo</h4>
+        <form action="#" method="post" name="record">
+            <p><label for="nombreUsuario">Nombre: </label><input id="nombreUsuario" type="text" name="nombre"
+                    placeholder="Introduce aquí tu nombre" required=""></p>
+            <p><label for="apellidosUsuario">Apellidos: </label><input id="apellidosUsuario" type="text"
+                    name="apellidos" placeholder="Introduce aquí tus apellidos" required=""></p>
+            <p><label for="nivel">Nivel: </label><input id="nivel" type="text" name="nivel" value="dificil" readonly="">
+            </p>
+            <p><label for="tiempoJuego">Tiempo: </label><input id="tiempoJuego" type="text" name="tiempoUser"
+                    value="00:00:31" readonly=""></p>
+            <p><label for="tiempoDb">TiempoDB_NoVisible: </label><input id="tiempoDb" type="text" name="tiempoDB"
+                    value="31510" readonly=""></p><input type="submit" value="Guardar el tiempo!!">
+        </form>
+    </section>
+</body>
+
+</html>

@@ -342,11 +342,11 @@ class Crucigrama {
         var formulario = $('<form action="#" method="post" name="record"></form>');
 
         // Introducimos todos los campos del formulario
-        var nombreField = '<p>Nombre: <input type="text" name="nombre" placeholder="Introduce aquí tu nombre" required></p>';
-        var apellidosField = '<p>Apellidos: <input type="text" name="apellidos" placeholder="Introduce aquí tus apellidos" required></p>';
-        var nivelField = '<p>Nivel: <input type="text" name="nivel" value="' + this.nivel + '" readonly></p>';
-        var tiempoUser = '<p>Tiempo: <input type="text" name="tiempoUser" value="' + this.calculate_date_difference() + '" readonly></p>';
-        var tiempoDB = '<p><input type="text" name="tiempoDB" value="' + (this.end_time - this.init_time) + '" readonly></p>'
+        var nombreField = '<p><label for="nombreUsuario">Nombre: </label><input id="nombreUsuario" type="text" name="nombre" placeholder="Introduce aquí tu nombre" required></p>';
+        var apellidosField = '<p><label for="apellidosUsuario">Apellidos: </label><input id="apellidosUsuario" type="text" name="apellidos" placeholder="Introduce aquí tus apellidos" required></p>';
+        var nivelField = '<p><label for="nivel">Nivel: </label><input id="nivel" type="text" name="nivel" value="' + this.nivel + '" readonly></p>';
+        var tiempoUser = '<p><label for="tiempoJuego">Tiempo: </label><input id="tiempoJuego" type="text" name="tiempoUser" value="' + this.calculate_date_difference() + '" readonly></p>';
+        var tiempoDB = '<p><label for="tiempoDb">TiempoDB_NoVisible: </label><input id="tiempoDb" type="text" name="tiempoDB" value="' + (this.end_time - this.init_time) + '" readonly></p>'
         var submitField = '<input type="submit" value="Guardar el tiempo!!">';
 
         formulario.append(nombreField);
