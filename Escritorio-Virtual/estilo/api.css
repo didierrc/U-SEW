@@ -33,7 +33,8 @@ main>section {
 main>section>h4,
 main>section>section:first-of-type>h5,
 main>section>section:nth-of-type(2)>section>h6,
-audio {
+audio,
+label {
     display: none;
 }
 

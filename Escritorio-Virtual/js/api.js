@@ -47,7 +47,7 @@ class Reproductor {
 
     addVolumeHandler() {
 
-        var volumeControl = $("main>section>section:first>input[type='range']");
+        var volumeControl = $("main>section>section:first input[type='range']");
 
         volumeControl.on("input", () => {
             this.gainNode.gain.value = volumeControl.val();
@@ -56,7 +56,7 @@ class Reproductor {
     }
 
     addStereoHandler() {
-        var stereoControl = $("main>section>section:last>input[type='range']");
+        var stereoControl = $("main>section>section:last input[type='range']");
 
         stereoControl.on("input", () => {
             this.panner.pan.value = stereoControl.val();

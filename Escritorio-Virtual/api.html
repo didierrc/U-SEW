@@ -77,7 +77,11 @@
 
                 <img src="multimedia/logo.png" alt="Logo del reproductor de musica">
                 <!-- Ganancia: Puede ser el doble o mutearse -->
-                <input type="range" min="0" max="2" value="1" step="0.01">
+                <p>
+                    <label for="volume">Volume</label>
+                    <input id="volume" type="range" min="0" max="2" value="1" step="0.01">
+                </p>
+
                 <section>
                     <h6>Vol:</h6>
                     <p>100%</p>
@@ -106,7 +110,11 @@
             <!-- Stereo -->
             <section>
                 <h5>&diams; Modifica el stereo!!</h5>
-                <input type="range" min="-1" max="1" value="0" step="0.01">
+                <p>
+                    <label for="stereo">Stereo</label>
+                    <input id="stereo" type="range" min="-1" max="1" value="0" step="0.01">
+                </p>
+
             </section>
 
         </section>
