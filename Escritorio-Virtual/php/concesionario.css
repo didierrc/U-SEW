@@ -26,7 +26,7 @@ main>section:first-of-type>p {
 
 /* Especificidad: 003*/
 main>section>p {
-    color: red;
+    color: #940000;
 }
 
 /* Especificidad: 013*/
