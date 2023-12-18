@@ -42,7 +42,11 @@
     <main>
         <h2>Noticias</h2>
 
-        <input type="file" onchange="n.readInputFile(this.files);" accept=".txt">
+        <p>
+            <label for="noticias">Selecciona tu archivo noticia.txt: </label>
+            <input id="noticias" type="file" onchange="n.readInputFile(this.files);" accept=".txt">
+        </p>
+
         <script> var n = new Noticias(); </script>
     </main>
 

@@ -5,7 +5,7 @@ class Noticias {
     // Comprueba que el navegador del usuario soporta API file
     constructor() {
         if (window.File && window.FileReader && window.FileList && window.Blob) {
-            $("main>input").before("<p>Este navegador soporta el API file!!</p>");
+            $("main>p").before("<p>Este navegador soporta el API file!!</p>");
         } else {
             $("main").append("<p>Este navegador no soporta el API file!!</p>");
             $("main").append("<p>Los contenidos del documento no pueden enseñarse correctamente.</p>");
@@ -59,7 +59,7 @@ class Noticias {
             if ($("main>article:last")[0])
                 $("main>article:last").after(noticiaArticle)
             else // Si es la primera noticia, se inserta despues del input
-                $("main>input").after(noticiaArticle)
+                $("main").append(noticiaArticle)
         }
 
         // Añadimos la seccion para que el usuario pueda añadir más noticias
@@ -72,18 +72,18 @@ class Noticias {
 
     showAddNewNoticiaSection() {
 
-        var creadorPTexto = (labelFor, input) => "<p>" + labelFor + input + "</p>";
-        var creadorInputTexto = (placeholder) => "<input type='text' placeholder='" + placeholder + "' required>";
-        var creadorTextArea = (titulo, nameTxtArea) => "<p>" + titulo + "</p> <textarea name='" + nameTxtArea + "' required></textarea>";
+        var creadorPTexto = (id, labelFor, input) => '<p><label for="' + id + '">' + labelFor + "</label>" + input + "</p>";
+        var creadorInputTexto = (id, placeholder) => "<input id='" + id + "' type='text' placeholder='" + placeholder + "' required>";
+        var creadorTextArea = (id, titulo, nameTxtArea) => "<p><label for='" + id + "'>" + titulo + "</p> <textarea id='" + id + "' name='" + nameTxtArea + "' required></textarea>";
         var creadorBoton = (value) => "<button type='button'>" + value + "</button>"
 
         $("main").append("<section></section>");
         $("main>section:last").append("<h3>Añade tu nueva noticia</h3>");
 
-        $("main>section:last").append(creadorPTexto("Titulo: ", creadorInputTexto("Escribe el titulo")));
-        $("main>section:last").append(creadorPTexto("Subtitulo: ", creadorInputTexto("Escribe el subtitulo")));
-        $("main>section:last").append(creadorTextArea("Contenido de la noticia:", "contenidoNoticia"));
-        $("main>section:last").append(creadorPTexto("Autor: ", creadorInputTexto("Escribe el autor")));
+        $("main>section:last").append(creadorPTexto("titulo", "Titulo: ", creadorInputTexto("titulo", "Escribe el titulo")));
+        $("main>section:last").append(creadorPTexto("subtitulo", "Subtitulo: ", creadorInputTexto("subtitulo", "Escribe el subtitulo")));
+        $("main>section:last").append(creadorTextArea("contenido", "Contenido de la noticia:", "contenidoNoticia"));
+        $("main>section:last").append(creadorPTexto("autor", "Autor: ", creadorInputTexto("autor", "Escribe el autor")));
         $("main>section:last").append(creadorBoton("Añade nueva noticia!!"));
 
         $("button").on("click", this.insertNewNoticias);
