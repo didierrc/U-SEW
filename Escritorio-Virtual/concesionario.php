@@ -961,19 +961,28 @@ if($_FILES){
             <h4>Acciones principales</h4>
             
             <form action="#" method="post" name="crear">
-                <p>1. Crea nueva BD: <input type="text" name="nombreDb" value="concesionario" readonly></p>
+                <p>
+                    <label for="nuevaBD">1. Crea nueva BD: </label>
+                    <input id="nuevaBD" type="text" name="nombreDb" value="concesionario" readonly>
+                </p>
                 <input type="submit" value="Crear!!">
             </form>
 
             <form action="#" method="post" enctype='multipart/form-data'>
-                <p>2. Importa tus datos: <input name="files[]" type="file" accept=".csv" required multiple></p>
+                <p>
+                    <label for="importaDatos">2. Importa tus datos: </label>
+                    <input id="importaDatos" name="files[]" type="file" accept=".csv" required multiple>
+                </p>
                 <input type="submit" value="Importar!!">
             </form>
 
             
 
             <form action="#" method="post" name="exportar">
-                <p>3. Exporta tus datos: <input type="text" name="fileExportar" placeholder="Nombre de archivo" required></p>
+                <p>
+                    <label for="exportaDatos">3. Exporta tus datos: </label>
+                    <input id="exportaDatos" type="text" name="fileExportar" placeholder="Nombre de archivo" required>
+                </p>
                 <input type="submit" value="Exportar!!">
             </form>
 
@@ -1008,7 +1017,10 @@ if($_FILES){
                         echo "<p>No hay vendedores activos o no se ha activado la base de datos!</p>";
                 ?>
                 <form action="#" method="post" name="vendor">
-                    <p>Introduce el ID del vendedor: <input type="text" name="dealerID" required></p>
+                    <p>
+                        <label for="idVendedor">Introduce el ID del vendedor: </label>
+                        <input id="idVendedor" type="text" name="dealerID" required>
+                    </p>
                     <input type="submit" value="Muéstrame!!">
                 </form>
             </section>
@@ -1020,20 +1032,20 @@ if($_FILES){
                         $formVenta = "<section><h5>Compra el coche de tus sueños!</h5>";
                         $formVenta .= "<p>Si ya estás registrado solo ingrea la matrícula, dni y la cantidad!</p>";
                         $formVenta .= '<form action="#" method="post" name="compra">';
-                        $formVenta .= '<p>Introduce la matrícula: ';
-                        $formVenta .= '<input type="text" name="matriculaIdCompra" required></p>';
-                        $formVenta .= '<p>Introduce tu dni: ';
-                        $formVenta .= '<input type="text" name="usuarioIdCompra" required></p>';
-                        $formVenta .= '<p>Introduce tu nombre: ';
-                        $formVenta .= '<input type="text" name="usuarioNombreCompra"></p>';
-                        $formVenta .= '<p>Introduce tu apellido: ';
-                        $formVenta .= '<input type="text" name="usuarioApellidoCompra"></p>';
-                        $formVenta .= '<p>Introduce tu email: ';
-                        $formVenta .= '<input type="text" name="usuarioEmailCompra"></p>';
-                        $formVenta .= '<p>Introduce tu teléfono: ';
-                        $formVenta .= '<input type="number" name="usuarioTelefonoCompra"></p>';
-                        $formVenta .= '<p>Cuántos vas a comprar?: ';
-                        $formVenta .= '<input type="number" name="cantidadCompra" min="1" required></p>';
+                        $formVenta .= '<p><label for="matriculaComprar">Introduce la matrícula: </label>';
+                        $formVenta .= '<input id="matriculaComprar" type="text" name="matriculaIdCompra" required></p>';
+                        $formVenta .= '<p><label for="dniComprar">Introduce tu dni: </label>';
+                        $formVenta .= '<input id="dniComprar" type="text" name="usuarioIdCompra" required></p>';
+                        $formVenta .= '<p><label for="nuevoNombre">Introduce tu nombre: </label>';
+                        $formVenta .= '<input id="nuevoNombre" type="text" name="usuarioNombreCompra"></p>';
+                        $formVenta .= '<p><label for="nuevoApellido">Introduce tu apellido: </label>';
+                        $formVenta .= '<input id="nuevoApellido" type="text" name="usuarioApellidoCompra"></p>';
+                        $formVenta .= '<p><label for="nuevoEmail">Introduce tu email: </label>';
+                        $formVenta .= '<input id="nuevoEmail" type="text" name="usuarioEmailCompra"></p>';
+                        $formVenta .= '<p><label for="nuevoTelefono">Introduce tu teléfono: </label>';
+                        $formVenta .= '<input id="nuevoTelefono" type="number" name="usuarioTelefonoCompra"></p>';
+                        $formVenta .= '<p><label for="cantidadCoches">Cuántos vas a comprar?: </label>';
+                        $formVenta .= '<input id="cantidadCoches" type="number" name="cantidadCompra" min="1" required></p>';
                         $formVenta .= '<input type="submit" value="Comprar!!">';
                         $formVenta .= "</form>";
                         $formVenta .= "</section>";
@@ -1052,7 +1064,10 @@ if($_FILES){
         <section>
             <h4>Coches en posesión</h4>
             <form action="#" method="post" name="posesion">
-                <p>Introduce tu ID: <input type="text" name="usuarioIdConsulta" required></p>
+                <p>
+                    <label for="dniUsuario">Introduce tu ID: </label>
+                    <input id="dniUsuario" type="text" name="usuarioIdConsulta" required>
+                </p>
                 <input type="submit" value="Consultar!!">
             </form>
             <?php

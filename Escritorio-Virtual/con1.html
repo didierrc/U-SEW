@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Datos que describe el documento -->
+    <title>Escritorio Virtual - Juegos</title>
+
+    <meta charset="UTF-8">
+    <meta name="author" content="Didier Yamil Reyes Castro">
+    <meta name="description" content="Documento que representa la Venta de Coches en un Concesionario.">
+    <meta name="keywords" content="concesionario,coches,venta,lujo">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
+    <link rel="stylesheet" type="text/css" href="estilo/layout.css">
+    <link rel="stylesheet" type="text/css" href="estilo/juegos.css">
+    <link rel="stylesheet" type="text/css" href="php/concesionario.css">
+
+    <link rel="icon" href="multimedia/favicon-spidey.ico">
+</head>
+
+<body>
+    <!-- Seccion Header que agrupa la cabezera de la página web (Cosas que se repiten en todas las páginas Web) -->
+    <header>
+        <h1>Escritorio Virtual</h1>
+
+        <!-- Seccion Nav que agrupa enlaces a otras páginas web -->
+        <nav>
+            <a href="index.html" accesskey="I" tabindex="1">Inicio</a>
+            <a href="sobremi.html" accesskey="S" tabindex="2">Sobre mi</a>
+            <a href="noticias.html" accesskey="N" tabindex="3">Noticias</a>
+            <a href="agenda.html" accesskey="A" tabindex="4">Agenda</a>
+            <a href="meteorologia.html" accesskey="M" tabindex="5">Meteorología</a>
+            <a href="viajes.php" accesskey="V" tabindex="6">Viajes</a>
+            <a href="juegos.html" accesskey="J" tabindex="7">Juegos</a>
+        </nav>
+    </header>
+
+    <!-- Section que representa la barra de navegacion a los diferentes juegos. Fuera del main ya que lo
+     comparten los distintos HTML que componen los juegos -->
+    <section>
+        <h2>Juegos:</h2>
+        <nav>
+            <a href="memoria.html" accesskey="E" tabindex="8">Memoria</a>
+            <a href="sudoku.html" accesskey="D" tabindex="9">Sudoku</a>
+            <a href="crucigrama.php" accesskey="C" tabindex="10">Crucigrama matemático</a>
+            <a href="api.html" accesskey="P" tabindex="11">Aplicacion con APIs</a>
+            <a href="concesionario.php" accesskey="O" tabindex="12">Concesionario</a>
+        </nav>
+    </section>
+
+    <main>
+        <h3>Concesionario "GTAVI - Mónaco"</h3>
+
+        <!-- Seccion con las acciones a realizar en el concesionario-->
+        <section>
+            <h4>Acciones principales</h4>
+
+            <form action="#" method="post" name="crear">
+                <p>
+                    <label for="nuevaBD">1. Crea nueva BD: </label>
+                    <input id="nuevaBD" type="text" name="nombreDb" value="concesionario" readonly="">
+                </p>
+                <input type="submit" value="Crear!!">
+            </form>
+
+            <form action="#" method="post" enctype="multipart/form-data">
+                <p>
+                    <label for="importaDatos">2. Importa tus datos: </label>
+                    <input id="importaDatos" name="files[]" type="file" accept=".csv" required="" multiple="">
+                </p>
+                <input type="submit" value="Importar!!">
+            </form>
+
+
+
+            <form action="#" method="post" name="exportar">
+                <p>
+                    <label for="exportaDatos">3. Exporta tus datos: </label>
+                    <input id="exportaDatos" type="text" name="fileExportar" placeholder="Nombre de archivo"
+                        required="">
+                </p>
+                <input type="submit" value="Exportar!!">
+            </form>
+
+            <p>Base de datos inicializada con éxito.</p>
+        </section>
+
+        <!-- Seccion que muestra la lista de coches en venta de cada vendedor -->
+        <section>
+            <h4>Coches en venta</h4>
+            <section>
+                <h5>Vendedores posibles</h5>
+                <ul>
+                    <li>ID:1 - CarroceriasPepe</li>
+                </ul>
+                <form action="#" method="post" name="vendor">
+                    <p>
+                        <label for="idVendedor">Introduce el ID del vendedor: </label>
+                        <input id="idVendedor" type="text" name="dealerID" required="">
+                    </p>
+                    <input type="submit" value="Muéstrame!!">
+                </form>
+            </section>
+
+        </section>
+
+        <!-- Seccion que muestra la lista de coches que posee el usuario-->
+        <section>
+            <h4>Coches en posesión</h4>
+            <form action="#" method="post" name="posesion">
+                <p>
+                    <label for="dniUsuario">Introduce tu ID: </label>
+                    <input id="dniUsuario" type="text" name="usuarioIdConsulta" required="">
+                </p>
+                <input type="submit" value="Consultar!!">
+            </form>
+        </section>
+
+    </main>
+
+
+
+
+
+</body>
+
+</html>
