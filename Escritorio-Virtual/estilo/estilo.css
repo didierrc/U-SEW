@@ -10,10 +10,11 @@ body {
     margin: 0;
 }
 
-/* Especificidad: 003 */
+/* Especificidad: 003 
 header nav a {
-    margin-right: 0.5em;
+    font
 }
+*/
 
 /* Especificidad: 001 */
 main {
@@ -70,6 +71,7 @@ a {
     /* propiedad outline se divide en <outline-color> || <outline-style> || <outline-width> */
     outline: none;
     text-decoration: none;
+    font-size: 1.2em;
 }
 
 /* Especificidad: 011 */

@@ -166,7 +166,7 @@ $cambio = $moneda->getExchange();
         <!--Usando la forma "legacy" de obtener las librerias de la API. Llama a la funcion initMap() declarada
             anteriormente. A partir de ella, la libreria de google ya está lista para su uso por otros metodos 
             (por ejemplo, los archivos KML) -->
-            <script async defer
+            <script
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQHMvNMIE31xvj292ywRrpOOss9JWVv9k"></script>
 
         <!--Usando libreria dinamicamente siguiendo la documentacion de Google JS API
