@@ -27,10 +27,6 @@ main>section>h3 {
 /* Especificidad: 003 */
 main>section article {
     border-radius: 0.4em;
-    background-color: #75E6DA;
-    /* Warning en el Validador CSS: "Ningún color establecido pero si un background-color"
-        Herencia de color:#05435e de estilo.css para los h3) 
-    */
     flex: 1 20%;
     height: 15em;
     width: 5em;
@@ -45,10 +41,6 @@ main>section article {
 /* Especificidad: 013-013 */
 main>section article[data-state="flip"],
 main>section article[data-state="revealed"] {
-    /* Warning en el Validador CSS: "Ningún color establecido pero si un background-color"
-        Herencia de color:#05435e de estilo.css para los h3) 
-    */
-    background-color: #05435e;
     transform: rotateY(180deg);
 }
 
@@ -60,6 +52,7 @@ main>section article>img {
     margin: 0;
     position: absolute;
     backface-visibility: hidden;
+    background-color: #75E6DA;
 }
 
 /* Especificidad: 004 */
@@ -74,7 +67,6 @@ main>section article>h3 {
 /* Especificidad: 004 */
 main>section article>img {
     transform: rotateY(180deg);
-    /* Hereda de estilo.css y lo sobreescribimos Cascada!!*/
     max-width: none;
 }
 
