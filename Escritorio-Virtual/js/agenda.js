@@ -53,7 +53,7 @@ class Agenda {
             // Añadiendo la imagen extraida de wikipedia
             var countryRace = $('Country', race).text();
             var wikiUrl = flags[countryRace];
-            var imageAlt = "Image of the flag of " + countryRace;
+            var imageAlt = "Bandera de " + countryRace;
             $("main>section:last-child").append("<img>");
             $("main>section:last-child>img").attr("src", wikiUrl);
             $("main>section:last-child>img").attr("alt", imageAlt);
