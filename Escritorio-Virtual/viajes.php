@@ -197,17 +197,26 @@ $cambio = $moneda->getExchange();
 
         <section>
             <h3>5. Procesando un archivo XML con API file</h3>
-            <input type="file" onchange="v.procesaXML(this.files);" accept=".xml">
+            <p>
+                <label for="xml">Introduce el archivo: </label>
+                <input id="xml" type="file" onchange="v.procesaXML(this.files);" accept=".xml">
+            </p>
         </section>
 
         <section>
             <h3>6. Procesando archivos KML con API file</h3>
-            <input type="file" onchange="v.procesaKML(this.files);" accept=".kml" multiple>
+            <p>
+                <label for="kml">Introduce el/los archivo/s: </label>
+                <input id="kml" type="file" onchange="v.procesaKML(this.files);" accept=".kml" multiple>
+            </p>
         </section>
 
         <section>
             <h3>7. Procesando archivos SVG con API file</h3>
-            <input type="file" onchange="v.procesaSVG(this.files);" accept=".svg" multiple>
+            <p>
+                <label for="svg">Introduce el/los archivo/s: </label>
+                <input id="svg" type="file" onchange="v.procesaSVG(this.files);" accept=".svg" multiple>
+            </p>
         </section>
     </main>
 

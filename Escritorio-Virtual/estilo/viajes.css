@@ -16,9 +16,9 @@ main>section:nth-of-type(4) section {
     width: 100%;
 }
 
-/* Especificidad: 024-023-013 */
-main>section:nth-of-type(3)>input:first-of-type~section,
-main>section:nth-of-type(3)>input:first-of-type,
+/* Especificidad: 013-013-013 */
+main>section:nth-of-type(3)>section,
+main>section:nth-of-type(3)>p,
 main>section:nth-of-type(4) input {
     margin-bottom: 1em;
 }
@@ -90,8 +90,8 @@ article button[data-action=next] {
 
 /* XML CSS*/
 
-/* Especificidad: 024 */
-main>section:nth-of-type(3)>input:first-of-type~section {
+/* Especificidad: 013 */
+main>section:nth-of-type(3)>section {
     display: flex;
     flex-direction: column;
     border: solid 0.4em #75E6DA;
@@ -104,8 +104,8 @@ main>section:nth-of-type(3)>input:first-of-type~section {
     */
 }
 
-/* Especificidad: 025-001-001 */
-main>section:nth-of-type(3)>input:first-of-type~section>h4,
+/* Especificidad: 014-001-001 */
+main>section:nth-of-type(3)>section>h4,
 h5,
 h6 {
     /* Warning en el Validador CSS: "Ningún backgroundcolor establecido pero si un background-color"
@@ -114,16 +114,16 @@ h6 {
     color: #05445E;
 }
 
-/* Especificidad: 025 */
-main>section:nth-of-type(3)>input:first-of-type~section>h4 {
+/* Especificidad: 014 */
+main>section:nth-of-type(3)>section>h4 {
     background-color: #75E6DA;
     margin: 0;
     padding: 1em 1em 1em 0.7em;
     font-size: 1.4em;
 }
 
-/* Especificidad: 025 */
-main>section:nth-of-type(3)>input:first-of-type~section>section {
+/* Especificidad: 014 */
+main>section:nth-of-type(3)>section>section {
     padding: 1em
 }
 
@@ -145,8 +145,8 @@ h6~* {
     margin-left: 1.4em;
 }
 
-/* Especificidad: 025 */
-main>section:nth-of-type(3)>input:first-of-type~section img {
+/* Especificidad: 014 */
+main>section:nth-of-type(3)>section img {
     width: auto;
     max-height: 30em;
     margin-bottom: 2em;

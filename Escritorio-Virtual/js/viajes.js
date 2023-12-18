@@ -413,7 +413,7 @@ class Viajes {
 
 
             // Lo añadimos a la seccion global de las rutaS
-            $("input:first").after(seccionRuta);
+            $("main>section:nth-of-type(3)>p").after(seccionRuta);
         }
 
 
@@ -423,7 +423,7 @@ class Viajes {
         if (file.type.match("application/xml") || file.type.match("text/xml")) {
 
             if (this.isAnXmlLoaded) { // Para sobreescribir en vez de crear otra seccion
-                $("input:first").next().remove();
+                $("main>section:nth-of-type(3)>p").next().remove();
             }
 
             var reader = new FileReader();
