@@ -159,14 +159,20 @@ main>section:nth-of-type(3)>section img {
 
 @media all and (max-width: 650px) {
 
+    /* Especificidad: 013 */
     main>section:nth-of-type(3)>section * {
         flex-wrap: wrap;
     }
 
+    /* Especificidad: 014 */
     main>section:nth-of-type(3) ul>li {
         word-break: break-all;
     }
 
+    /* Especificidad: 001 */
+    svg {
+        width: 20em;
+    }
 
 
 }
