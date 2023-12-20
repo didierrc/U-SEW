@@ -1,163 +1,3 @@
-<?php
-
-/* Definicion de la clase Record */
-class Record{
-
-    private $server;
-    private $user;
-    private $pass;
-    private $dbname;
-
-    public function __construct(){
-        $this->server = "localhost";
-        $this->user = "DBUSER2023";
-        $this->pass = "DBPSWD2023";
-        $this->dbname = "records";
-    }
-
-    public function registerNewRecord($userName, $userSurname, $level, $time){
-
-        // Establecemos la conexion con la base de datos
-        $db = new mysqli($this->server, $this->user, $this->pass, $this->dbname);
-        
-        // Comprobamos conexion
-        if($db->connect_error){
-            echo "Error al conectarse a la base de datos";
-        } else{
-            
-            // Preparamos la sentencia para evitar Injecciones de Código
-            $preparedStatement = $db->prepare("INSERT INTO registro (nombre, apellidos, nivel, tiempo) VALUES (?,?,?,?)");
-
-            // Añadimos los parametros
-            $preparedStatement->bind_param("sssi",
-                $userName, $userSurname, $level, $time);
-            
-            // Ejecutamos la sentencia
-            $preparedStatement->execute();
-
-            // Cerramos la sentencia
-            $preparedStatement->close();
-
-        }
-
-        // Cerramos la conexion
-        $db->close();
-
-        // Mostramos los 10 mejores records luego de "intentar" añadir el ultimo record
-        return $this->showBestRecords($level);
-    }
-
-    private function showBestRecords($level){
-
-        // Establecemos la conexion con la base de datos
-        $db = new mysqli($this->server, $this->user, $this->pass, $this->dbname);
-        
-        // Seccion a devolver
-        $sectionToReturn = "<section data-type='record'>";
-
-        // Comprobamos conexion
-        if($db->connect_error){
-            $sectionToReturn .= "<h4>Error al conectarse a la base de datos. No se pueden mostrar los records!</h4>";
-        } else{
-            
-            // Preparamos la sentencia para evitar Injecciones de Código
-            $preparedStatement = $db->prepare("SELECT * FROM registro WHERE nivel=? ORDER BY tiempo");
-
-            // Añadimos los parametros
-            $preparedStatement->bind_param("s", $level);
-            
-            // Ejecutamos la sentencia
-            $preparedStatement->execute();
-
-            // Obtenemos el resultado
-            $resultSet = $preparedStatement->get_result();
-
-            // Titulo de los records
-            $sectionToReturn .= "<h4>Los 10 mejores tiempos para el nivel: " . $level . "</h4>";
-            
-            if($resultSet->fetch_assoc() != NULL){ // Como decir resultSet.next()
-    
-                $sectionToReturn .= "<ol>";
-                $nTiempos = 0;
-
-                $resultSet->data_seek(0); // Nos posicionamos en el inicio del array asociativo
-                while($row = $resultSet->fetch_assoc()){
-                    
-                    if($nTiempos === 10){
-                        break;
-                    }
-                    
-                    $sectionToReturn .= "<li>Nombre: " . $row["nombre"];
-                    $sectionToReturn .= " Apellidos: " . $row["apellidos"];
-                    $sectionToReturn .= " Tiempo: " . $this->timeToString($row["tiempo"]);
-                    $sectionToReturn .= "</li>";
-                    $nTiempos += 1;
-                }
-
-                $sectionToReturn .= "</ol>";
-
-            } else{
-                // No ha conseguido obtener ningun record
-                $sectionToReturn .= "<p>Aún no hay datos para mostrar</p>";
-            }
-
-            $preparedStatement->close();
-        }
-
-        // Cerramos la etiqueta section
-        $sectionToReturn .= "</section>";
-
-        // Cerramos la conexion
-        $db->close();
-
-        return $sectionToReturn;
-
-    }
-
-    private function timeToString($time){
-
-        $elapsedTime = $time;
-
-        $segsDiv = 1000;
-        $minDiv = $segsDiv * 60;
-        $hourDiv = $minDiv * 60;
-
-        $hoursElapsed = floor($elapsedTime / $hourDiv);
-        $elapsedTime -= ($hoursElapsed * $hourDiv);
-
-        $minutesElapsed = floor($elapsedTime / $minDiv);
-        $elapsedTime -= ($minutesElapsed * $minDiv);
-
-        $secondsElapsed = floor($elapsedTime / $segsDiv);
-
-        return ($hoursElapsed / 10 >= 1.0 ? $hoursElapsed : "0" . $hoursElapsed)
-            . ":"
-            . ($minutesElapsed / 10 >= 1.0 ? $minutesElapsed : "0" . $minutesElapsed)
-            . ":"
-            . ($secondsElapsed / 10 >= 1.0 ? $secondsElapsed : "0" . $secondsElapsed);
-    }
-
-}
-
-$recordsToShow = "";
-
-// Comprobamos que el usuario ha enviado los datos correspondientes
-if(count($_POST) > 0){
-    $recordUsuario = new Record(); // Creamos un nuevo record
-    
-    // Obtenemos los datos enviados
-    $userName = $_POST["nombre"];
-    $userSurname = $_POST["apellidos"];
-    $level = $_POST["nivel"];
-    $time = intval($_POST["tiempoDB"]); // Transformamos de String a int
-
-    $recordsToShow = $recordUsuario->registerNewRecord($userName, $userSurname, $level, $time);
-}
-
-?>
-
-
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -217,7 +57,7 @@ if(count($_POST) > 0){
 
     <!-- Seccion que explica el juego - Pruebas de usabilidad.
     -->
-    <section>
+    <section data-state="form_time">
         <h4>Instrucciones:</h4>
         <ol>
             <li>Selecciona la casilla para introducir un número u operación
@@ -287,10 +127,109 @@ if(count($_POST) > 0){
 
     </script>
 
-    <main>
+    <main data-state="form_time">
+        <p data-state="blocked">4</p>
+        <p data-state="blocked">*</p>
+        <p data-i="0" data-j="2" data-state="correct">3</p>
+        <p data-state="blocked">=</p>
+        <p data-state="blocked">12</p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">5</p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">*</p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">/</p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">*</p>
+        <p data-state="blocked">4</p>
+        <p data-state="blocked">-</p>
+        <p data-i="2" data-j="2" data-state="correct">1</p>
+        <p data-state="blocked">=</p>
+        <p data-i="2" data-j="4" data-state="correct">3</p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">15</p>
+        <p data-state="empty"></p>
+        <p data-i="2" data-j="8" data-state="correct">4</p>
+        <p data-state="blocked">*</p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">=</p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">=</p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">/</p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">=</p>
+        <p data-i="4" data-j="0" data-state="correct">2</p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">3</p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">4</p>
+        <p data-state="blocked">*</p>
+        <p data-i="4" data-j="6" data-state="correct">5</p>
+        <p data-state="blocked">=</p>
+        <p data-state="blocked">20</p>
+        <p data-state="blocked">=</p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">=</p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">8</p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">9</p>
+        <p data-state="blocked">-</p>
+        <p data-i="6" data-j="4" data-state="correct">6</p>
+        <p data-state="blocked">=</p>
+        <p data-state="blocked">3</p>
+        <p data-state="empty"></p>
+        <p data-i="6" data-j="8" data-state="correct">4</p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">-</p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">+</p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">*</p>
+        <p data-state="blocked">6</p>
+        <p data-state="blocked">/</p>
+        <p data-i="8" data-j="2" data-state="correct">3</p>
+        <p data-state="blocked">=</p>
+        <p data-i="8" data-j="4" data-state="correct">2</p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-i="8" data-j="8" data-state="correct">4</p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">=</p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">=</p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">=</p>
+        <p data-state="empty"></p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">6</p>
+        <p data-state="empty"></p>
+        <p data-state="blocked">8</p>
+        <p data-state="blocked">*</p>
+        <p data-i="10" data-j="6" data-state="correct">2</p>
+        <p data-state="blocked">=</p>
+        <p data-state="blocked">16</p>
     </main>
 
-    <section data-type="botonera">
+    <section data-type="botonera" data-state="form_time">
         <h4>Botonera:</h4> <!-- Pruebas de usabilidad.-->
         <button onclick="crucigrama ? crucigrama.introduceElement(1) : alert('Tienes que crear un juego!')">1</button>
         <button onclick="crucigrama ? crucigrama.introduceElement(2) : alert('Tienes que crear un juego!')">2</button>
@@ -307,27 +246,37 @@ if(count($_POST) > 0){
         <button onclick="crucigrama ? crucigrama.introduceElement('/') : alert('Tienes que crear un juego!')">/</button>
     </section>
 
-    <?php
-
-        if($recordsToShow != ""){
-            echo $recordsToShow;
-        }
-
-    ?>
 
     <!-- Usabilidad - Usuario quería feedback sonoro para saber las correctas o falsas. -->
 
-    <audio controls>
+    <audio controls="">
         <source src="multimedia/audios/correct.mp3" type="audio/mpeg">
         <source src="multimedia/audios/correct.wav" type="audio/wav">
     </audio>
 
-    <audio controls>
+    <audio controls="">
         <source src="multimedia/audios/wrong.mp3" type="audio/mpeg">
         <source src="multimedia/audios/wrong.wav" type="audio/wav">
     </audio>
 
-</body>
 
+
+
+    <section data-type="formulario">
+        <h4>Introduce tus datos para guardar el tiempo</h4>
+        <form action="#" method="post" name="record">
+            <p><label for="nombreUsuario">Nombre: </label><input id="nombreUsuario" type="text" name="nombre"
+                    placeholder="Introduce aquí tu nombre" required=""></p>
+            <p><label for="apellidosUsuario">Apellidos: </label><input id="apellidosUsuario" type="text"
+                    name="apellidos" placeholder="Introduce aquí tus apellidos" required=""></p>
+            <p><label for="nivel">Nivel: </label><input id="nivel" type="text" name="nivel" value="facil" readonly="">
+            </p>
+            <p><label for="tiempoJuego">Tiempo: </label><input id="tiempoJuego" type="text" name="tiempoUser"
+                    value="00:00:34" readonly=""></p>
+            <p><label for="tiempoDb">TiempoDB_NoVisible: </label><input id="tiempoDb" type="text" name="tiempoDB"
+                    value="34882" readonly=""></p><input type="submit" value="Guardar el tiempo!!">
+        </form>
+    </section>
+</body>
 
 </html>

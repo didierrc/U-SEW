@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Datos que describe el documento -->
+    <title>Escritorio Virtual - Juegos</title>
+
+    <meta charset="UTF-8">
+    <meta name="author" content="Didier Yamil Reyes Castro">
+    <meta name="description" content="Documento con el juego Sudoku.">
+    <meta name="keywords" content="juegos,jugar,sudoku,razonamiento,matemático">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
+    <link rel="stylesheet" type="text/css" href="estilo/layout.css">
+    <link rel="stylesheet" type="text/css" href="estilo/juegos.css">
+    <link rel="stylesheet" type="text/css" href="estilo/sudoku.css">
+
+    <script src="js/sudoku.js"></script>
+    <link rel="icon" href="multimedia/imagenes/favicon-spidey.ico">
+</head>
+
+<body>
+    <!-- Seccion Header que agrupa la cabezera de la página web (Cosas que se repiten en todas las páginas Web) -->
+    <header>
+        <h1>Escritorio Virtual</h1>
+
+        <!-- Seccion Nav que agrupa enlaces a otras páginas web -->
+        <nav>
+            <a href="index.html" accesskey="I" tabindex="1">Inicio</a>
+            <a href="sobremi.html" accesskey="S" tabindex="2">Sobre mi</a>
+            <a href="noticias.html" accesskey="N" tabindex="3">Noticias</a>
+            <a href="agenda.html" accesskey="A" tabindex="4">Agenda</a>
+            <a href="meteorologia.html" accesskey="M" tabindex="5">Meteorología</a>
+            <a href="viajes.php" accesskey="V" tabindex="6">Viajes</a>
+            <a href="juegos.html" accesskey="J" tabindex="7">Juegos</a>
+        </nav>
+    </header>
+
+    <!-- Section que representa la barra de navegacion a los diferentes juegos. Fuera del main ya que lo
+     comparten los distintos HTML que componen los juegos -->
+    <section>
+        <h2>Juegos:</h2>
+        <nav>
+            <a href="memoria.html" accesskey="E" tabindex="8">Memoria</a>
+            <a href="sudoku.html" accesskey="D" tabindex="9">Sudoku</a>
+            <a href="crucigrama.php" accesskey="C" tabindex="10">Crucigrama matemático</a>
+            <a href="api.html" accesskey="P" tabindex="11">Aplicacion con APIs</a>
+            <a href="php/concesionario.php" accesskey="O" tabindex="12">Concesionario</a>
+        </nav>
+    </section>
+
+    <main>
+
+        <h3>Sudoku</h3>
+
+        <!-- Section que alberga el sudoku -->
+        <section>
+            <!-- Titulo header para explicar el contenido (muy útil para accesibilidad). No se muestra
+                de cara al usuario "regular" -->
+            <h4>Tablero de sudoku</h4>
+            <p data-i="0" data-j="0" data-state="blocked">3</p>
+            <p data-i="0" data-j="1">8</p>
+            <p data-i="0" data-j="2" data-state="blocked">4</p>
+            <p data-i="0" data-j="3"></p>
+            <p data-i="0" data-j="4" data-state="blocked">6</p>
+            <p data-i="0" data-j="5" data-state="blocked">9</p>
+            <p data-i="0" data-j="6"></p>
+            <p data-i="0" data-j="7" data-state="blocked">5</p>
+            <p data-i="0" data-j="8"></p>
+            <p data-i="1" data-j="0">1</p>
+            <p data-i="1" data-j="1"></p>
+            <p data-i="1" data-j="2"></p>
+            <p data-i="1" data-j="3" data-state="blocked">2</p>
+            <p data-i="1" data-j="4" data-state="blocked">7</p>
+            <p data-i="1" data-j="5"></p>
+            <p data-i="1" data-j="6"></p>
+            <p data-i="1" data-j="7"></p>
+            <p data-i="1" data-j="8" data-state="blocked">4</p>
+            <p data-i="2" data-j="0" data-state="blocked">9</p>
+            <p data-i="2" data-j="1" data-state="correct">5</p>
+            <p data-i="2" data-j="2" data-state="blocked">2</p>
+            <p data-i="2" data-j="3"></p>
+            <p data-i="2" data-j="4"></p>
+            <p data-i="2" data-j="5" data-state="blocked">4</p>
+            <p data-i="2" data-j="6"></p>
+            <p data-i="2" data-j="7"></p>
+            <p data-i="2" data-j="8"></p>
+            <p data-i="3" data-j="0"></p>
+            <p data-i="3" data-j="1" data-state="blocked">2</p>
+            <p data-i="3" data-j="2"></p>
+            <p data-i="3" data-j="3"></p>
+            <p data-i="3" data-j="4" data-state="blocked">8</p>
+            <p data-i="3" data-j="5" data-state="blocked">5</p>
+            <p data-i="3" data-j="6"></p>
+            <p data-i="3" data-j="7" data-state="blocked">1</p>
+            <p data-i="3" data-j="8" data-state="blocked">9</p>
+            <p data-i="4" data-j="0" data-state="blocked">8</p>
+            <p data-i="4" data-j="1"></p>
+            <p data-i="4" data-j="2" data-state="blocked">9</p>
+            <p data-i="4" data-j="3"></p>
+            <p data-i="4" data-j="4"></p>
+            <p data-i="4" data-j="5"></p>
+            <p data-i="4" data-j="6" data-state="blocked">2</p>
+            <p data-i="4" data-j="7"></p>
+            <p data-i="4" data-j="8" data-state="blocked">5</p>
+            <p data-i="5" data-j="0" data-state="blocked">5</p>
+            <p data-i="5" data-j="1" data-state="blocked">1</p>
+            <p data-i="5" data-j="2"></p>
+            <p data-i="5" data-j="3" data-state="blocked">3</p>
+            <p data-i="5" data-j="4" data-state="blocked">9</p>
+            <p data-i="5" data-j="5"></p>
+            <p data-i="5" data-j="6"></p>
+            <p data-i="5" data-j="7" data-state="blocked">6</p>
+            <p data-i="5" data-j="8"></p>
+            <p data-i="6" data-j="0"></p>
+            <p data-i="6" data-j="1"></p>
+            <p data-i="6" data-j="2"></p>
+            <p data-i="6" data-j="3" data-state="blocked">8</p>
+            <p data-i="6" data-j="4"></p>
+            <p data-i="6" data-j="5"></p>
+            <p data-i="6" data-j="6" data-state="blocked">5</p>
+            <p data-i="6" data-j="7"></p>
+            <p data-i="6" data-j="8" data-state="blocked">3</p>
+            <p data-i="7" data-j="0" data-state="blocked">2</p>
+            <p data-i="7" data-j="1"></p>
+            <p data-i="7" data-j="2"></p>
+            <p data-i="7" data-j="3"></p>
+            <p data-i="7" data-j="4" data-state="blocked">4</p>
+            <p data-i="7" data-j="5" data-state="blocked">6</p>
+            <p data-i="7" data-j="6"></p>
+            <p data-i="7" data-j="7"></p>
+            <p data-i="7" data-j="8"></p>
+            <p data-i="8" data-j="0"></p>
+            <p data-i="8" data-j="1" data-state="blocked">4</p>
+            <p data-i="8" data-j="2"></p>
+            <p data-i="8" data-j="3" data-state="blocked">7</p>
+            <p data-i="8" data-j="4" data-state="blocked">5</p>
+            <p data-i="8" data-j="5"></p>
+            <p data-i="8" data-j="6" data-state="blocked">9</p>
+            <p data-i="8" data-j="7"></p>
+            <p data-i="8" data-j="8" data-state="blocked">6</p>
+        </section>
+
+    </main>
+
+    <script>
+        var sudoku = new Sudoku();
+        sudoku.paintSudoku();
+        window.addEventListener("keydown", (ev) => sudoku.keyUpHandler(ev));
+    </script>
+
+
+
+</body>
+
+</html>

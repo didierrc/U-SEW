@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Datos que describe el documento -->
+    <title>Escritorio Virtual - Inicio</title>
+
+    <meta charset="UTF-8">
+    <meta name="author" content="Didier Yamil Reyes Castro">
+    <meta name="description" content="Página principal de mi Escritorio Virtual">
+    <meta name="keywords" content="escritorio,virtual,proyecto,inicio">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
+    <link rel="stylesheet" type="text/css" href="estilo/layout.css">
+    <link rel="icon" href="multimedia/imagenes/favicon-spidey.ico">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="js/fondo.js"></script>
+</head>
+
+<body
+    style="background: url(&quot;https://live.staticflickr.com/65535/53349518320_f15245ecba_b.jpg&quot;) center center / cover no-repeat fixed;">
+
+    <!-- Seccion Header que agrupa la cabezera de la página web -->
+    <header>
+        <h1>Escritorio Virtual</h1>
+
+        <!-- Seccion Nav que agrupa enlaces a otros documentos -->
+        <nav>
+            <a href="index.html" accesskey="I" tabindex="1">Inicio</a>
+            <a href="sobremi.html" accesskey="S" tabindex="2">Sobre mi</a>
+            <a href="noticias.html" accesskey="N" tabindex="3">Noticias</a>
+            <a href="agenda.html" accesskey="A" tabindex="4">Agenda</a>
+            <a href="meteorologia.html" accesskey="M" tabindex="5">Meteorología</a>
+            <a href="viajes.php" accesskey="V" tabindex="6">Viajes</a>
+            <a href="juegos.html" accesskey="J" tabindex="7">Juegos</a>
+        </nav>
+    </header>
+
+    <!-- Inserta el fondo de pantalla a nuestro escritorio. Se ha usado el 
+        metodo css() de jQuery (el único a lo largo del proyecto). -->
+    <script>fondo.consultaFlickr();</script>
+
+
+
+</body>
+
+</html>

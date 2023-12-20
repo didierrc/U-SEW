@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Datos que describe el documento -->
+    <title>Escritorio Virtual - Agenda</title>
+
+    <meta charset="UTF-8">
+    <meta name="author" content="Didier Yamil Reyes Castro">
+    <meta name="description" content="Documento con el calendario de carreras de la F1.">
+    <meta name="keywords" content="carrera,formula,uno,calendario">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
+    <link rel="stylesheet" type="text/css" href="estilo/layout.css">
+    <link rel="stylesheet" type="text/css" href="estilo/agenda.css">
+    <link rel="icon" href="multimedia/imagenes/favicon-spidey.ico">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="js/agenda.js"></script>
+</head>
+
+<body>
+
+    <!-- Seccion Header que agrupa la cabezera de la página web (Cosas que se repiten en todas las páginas Web) -->
+    <header>
+        <h1>Escritorio Virtual</h1>
+
+        <!-- Seccion Nav que agrupa enlaces a otras páginas web -->
+        <nav>
+            <a href="index.html" accesskey="I" tabindex="1">Inicio</a>
+            <a href="sobremi.html" accesskey="S" tabindex="2">Sobre mi</a>
+            <a href="noticias.html" accesskey="N" tabindex="3">Noticias</a>
+            <a href="agenda.html" accesskey="A" tabindex="4">Agenda</a>
+            <a href="meteorologia.html" accesskey="M" tabindex="5">Meteorología</a>
+            <a href="viajes.php" accesskey="V" tabindex="6">Viajes</a>
+            <a href="juegos.html" accesskey="J" tabindex="7">Juegos</a>
+        </nav>
+    </header>
+
+    <!-- Agrupacion main que agrupa los contenidos principales de la página -->
+    <main>
+        <h2>Agenda</h2>
+        <!-- Boton que una vez accionado muestra todo el calendario de carreras de la F1 -->
+        <button type="button" disabled="disabled">Calendario de F1-2023</button>
+
+        <!-- Añadiendo el metodo de la clase Agenda a llamar una vez se pulsa en el boton. -->
+        <script>
+            $("button").click(m.consultaSchedule.bind(m));
+        </script>
+        <section><img src="multimedia/imagenes/f1.png" alt="Logo de la F1">
+            <h3>Calendario de la Temporada 2023</h3>
+        </section>
+        <section>
+            <h4>R1</h4><img src="multimedia/imagenes/bahrain.png" alt="Bandera de Bahrain">
+            <section>
+                <h5>Información Principal</h5>
+                <p>Horario: 05-03 a las 15:00</p>
+                <p>Nombre: Bahrain Grand Prix</p>
+            </section>
+            <section>
+                <h5>Se celebra en...</h5>
+                <p>Circuito: Bahrain International Circuit</p>
+                <p>Localización: Bahrain - Sakhir</p>
+                <p>Coordenadas: 26.0325,50.5106</p>
+            </section>
+        </section>
+        <section>
+            <h4>R2</h4><img src="multimedia/imagenes/saudi.png" alt="Bandera de Saudi Arabia">
+            <section>
+                <h5>Información Principal</h5>
+                <p>Horario: 19-03 a las 17:00</p>
+                <p>Nombre: Saudi Arabian Grand Prix</p>
+            </section>
+            <section>
+                <h5>Se celebra en...</h5>
+                <p>Circuito: Jeddah Corniche Circuit</p>
+                <p>Localización: Saudi Arabia - Jeddah</p>
+                <p>Coordenadas: 21.6319,39.1044</p>
+            </section>
+        </section>
+        <section>
+            <h4>R3</h4><img src="multimedia/imagenes/australia.webp" alt="Bandera de Australia">
+            <section>
+                <h5>Información Principal</h5>
+                <p>Horario: 02-04 a las 05:00</p>
+                <p>Nombre: Australian Grand Prix</p>
+            </section>
+            <section>
+                <h5>Se celebra en...</h5>
+                <p>Circuito: Albert Park Grand Prix Circuit</p>
+                <p>Localización: Australia - Melbourne</p>
+                <p>Coordenadas: -37.8497,144.968</p>
+            </section>
+        </section>
+        <section>
+            <h4>R4</h4><img src="multimedia/imagenes/azerbaijan.png" alt="Bandera de Azerbaijan">
+            <section>
+                <h5>Información Principal</h5>
+                <p>Horario: 30-04 a las 11:00</p>
+                <p>Nombre: Azerbaijan Grand Prix</p>
+            </section>
+            <section>
+                <h5>Se celebra en...</h5>
+                <p>Circuito: Baku City Circuit</p>
+                <p>Localización: Azerbaijan - Baku</p>
+                <p>Coordenadas: 40.3725,49.8533</p>
+            </section>
+        </section>
+        <section>
+            <h4>R5</h4><img src="multimedia/imagenes/usa.png" alt="Bandera de USA">
+            <section>
+                <h5>Información Principal</h5>
+                <p>Horario: 07-05 a las 19:30</p>
+                <p>Nombre: Miami Grand Prix</p>
+            </section>
+            <section>
+                <h5>Se celebra en...</h5>
+                <p>Circuito: Miami International Autodrome</p>
+                <p>Localización: USA - Miami</p>
+                <p>Coordenadas: 25.9581,-80.2389</p>
+            </section>
+        </section>
+        <section>
+            <h4>R6</h4><img src="multimedia/imagenes/monaco.png" alt="Bandera de Monaco">
+            <section>
+                <h5>Información Principal</h5>
+                <p>Horario: 28-05 a las 13:00</p>
+                <p>Nombre: Monaco Grand Prix</p>
+            </section>
+            <section>
+                <h5>Se celebra en...</h5>
+                <p>Circuito: Circuit de Monaco</p>
+                <p>Localización: Monaco - Monte-Carlo</p>
+                <p>Coordenadas: 43.7347,7.42056</p>
+            </section>
+        </section>
+        <section>
+            <h4>R7</h4><img src="multimedia/imagenes/spain.webp" alt="Bandera de Spain">
+            <section>
+                <h5>Información Principal</h5>
+                <p>Horario: 04-06 a las 13:00</p>
+                <p>Nombre: Spanish Grand Prix</p>
+            </section>
+            <section>
+                <h5>Se celebra en...</h5>
+                <p>Circuito: Circuit de Barcelona-Catalunya</p>
+                <p>Localización: Spain - Montmeló</p>
+                <p>Coordenadas: 41.57,2.26111</p>
+            </section>
+        </section>
+        <section>
+            <h4>R8</h4><img src="multimedia/imagenes/canada.png" alt="Bandera de Canada">
+            <section>
+                <h5>Información Principal</h5>
+                <p>Horario: 18-06 a las 18:00</p>
+                <p>Nombre: Canadian Grand Prix</p>
+            </section>
+            <section>
+                <h5>Se celebra en...</h5>
+                <p>Circuito: Circuit Gilles Villeneuve</p>
+                <p>Localización: Canada - Montreal</p>
+                <p>Coordenadas: 45.5,-73.5228</p>
+            </section>
+        </section>
+        <section>
+            <h4>R9</h4><img src="multimedia/imagenes/austria.webp" alt="Bandera de Austria">
+            <section>
+                <h5>Información Principal</h5>
+                <p>Horario: 02-07 a las 13:00</p>
+                <p>Nombre: Austrian Grand Prix</p>
+            </section>
+            <section>
+                <h5>Se celebra en...</h5>
+                <p>Circuito: Red Bull Ring</p>
+                <p>Localización: Austria - Spielberg</p>
+                <p>Coordenadas: 47.2197,14.7647</p>
+            </section>
+        </section>
+        <section>
+            <h4>R10</h4><img src="multimedia/imagenes/uk.webp" alt="Bandera de UK">
+            <section>
+                <h5>Información Principal</h5>
+                <p>Horario: 09-07 a las 14:00</p>
+                <p>Nombre: British Grand Prix</p>
+            </section>
+            <section>
+                <h5>Se celebra en...</h5>
+                <p>Circuito: Silverstone Circuit</p>
+                <p>Localización: UK - Silverstone</p>
+                <p>Coordenadas: 52.0786,-1.01694</p>
+            </section>
+        </section>
+        <section>
+            <h4>R11</h4><img src="multimedia/imagenes/hungary.webp" alt="Bandera de Hungary">
+            <section>
+                <h5>Información Principal</h5>
+                <p>Horario: 23-07 a las 13:00</p>
+                <p>Nombre: Hungarian Grand Prix</p>
+            </section>
+            <section>
+                <h5>Se celebra en...</h5>
+                <p>Circuito: Hungaroring</p>
+                <p>Localización: Hungary - Budapest</p>
+                <p>Coordenadas: 47.5789,19.2486</p>
+            </section>
+        </section>
+        <section>
+            <h4>R12</h4><img src="multimedia/imagenes/belgium.png" alt="Bandera de Belgium">
+            <section>
+                <h5>Información Principal</h5>
+                <p>Horario: 30-07 a las 13:00</p>
+                <p>Nombre: Belgian Grand Prix</p>
+            </section>
+            <section>
+                <h5>Se celebra en...</h5>
+                <p>Circuito: Circuit de Spa-Francorchamps</p>
+                <p>Localización: Belgium - Spa</p>
+                <p>Coordenadas: 50.4372,5.97139</p>
+            </section>
+        </section>
+        <section>
+            <h4>R13</h4><img src="multimedia/imagenes/netherlands.png" alt="Bandera de Netherlands">
+            <section>
+                <h5>Información Principal</h5>
+                <p>Horario: 27-08 a las 13:00</p>
+                <p>Nombre: Dutch Grand Prix</p>
+            </section>
+            <section>
+                <h5>Se celebra en...</h5>
+                <p>Circuito: Circuit Park Zandvoort</p>
+                <p>Localización: Netherlands - Zandvoort</p>
+                <p>Coordenadas: 52.3888,4.54092</p>
+            </section>
+        </section>
+        <section>
+            <h4>R14</h4><img src="multimedia/imagenes/italy.png" alt="Bandera de Italy">
+            <section>
+                <h5>Información Principal</h5>
+                <p>Horario: 03-09 a las 13:00</p>
+                <p>Nombre: Italian Grand Prix</p>
+            </section>
+            <section>
+                <h5>Se celebra en...</h5>
+                <p>Circuito: Autodromo Nazionale di Monza</p>
+                <p>Localización: Italy - Monza</p>
+                <p>Coordenadas: 45.6156,9.28111</p>
+            </section>
+        </section>
+        <section>
+            <h4>R15</h4><img src="multimedia/imagenes/singapore.png" alt="Bandera de Singapore">
+            <section>
+                <h5>Información Principal</h5>
+                <p>Horario: 17-09 a las 12:00</p>
+                <p>Nombre: Singapore Grand Prix</p>
+            </section>
+            <section>
+                <h5>Se celebra en...</h5>
+                <p>Circuito: Marina Bay Street Circuit</p>
+                <p>Localización: Singapore - Marina Bay</p>
+                <p>Coordenadas: 1.2914,103.864</p>
+            </section>
+        </section>
+        <section>
+            <h4>R16</h4><img src="multimedia/imagenes/japan.png" alt="Bandera de Japan">
+            <section>
+                <h5>Información Principal</h5>
+                <p>Horario: 24-09 a las 05:00</p>
+                <p>Nombre: Japanese Grand Prix</p>
+            </section>
+            <section>
+                <h5>Se celebra en...</h5>
+                <p>Circuito: Suzuka Circuit</p>
+                <p>Localización: Japan - Suzuka</p>
+                <p>Coordenadas: 34.8431,136.541</p>
+            </section>
+        </section>
+        <section>
+            <h4>R17</h4><img src="multimedia/imagenes/qatar.png" alt="Bandera de Qatar">
+            <section>
+                <h5>Información Principal</h5>
+                <p>Horario: 08-10 a las 17:00</p>
+                <p>Nombre: Qatar Grand Prix</p>
+            </section>
+            <section>
+                <h5>Se celebra en...</h5>
+                <p>Circuito: Losail International Circuit</p>
+                <p>Localización: Qatar - Al Daayen</p>
+                <p>Coordenadas: 25.49,51.4542</p>
+            </section>
+        </section>
+        <section>
+            <h4>R18</h4><img src="multimedia/imagenes/usa.png" alt="Bandera de USA">
+            <section>
+                <h5>Información Principal</h5>
+                <p>Horario: 22-10 a las 19:00</p>
+                <p>Nombre: United States Grand Prix</p>
+            </section>
+            <section>
+                <h5>Se celebra en...</h5>
+                <p>Circuito: Circuit of the Americas</p>
+                <p>Localización: USA - Austin</p>
+                <p>Coordenadas: 30.1328,-97.6411</p>
+            </section>
+        </section>
+        <section>
+            <h4>R19</h4><img src="multimedia/imagenes/mexico.webp" alt="Bandera de Mexico">
+            <section>
+                <h5>Información Principal</h5>
+                <p>Horario: 29-10 a las 20:00</p>
+                <p>Nombre: Mexico City Grand Prix</p>
+            </section>
+            <section>
+                <h5>Se celebra en...</h5>
+                <p>Circuito: Autódromo Hermanos Rodríguez</p>
+                <p>Localización: Mexico - Mexico City</p>
+                <p>Coordenadas: 19.4042,-99.0907</p>
+            </section>
+        </section>
+        <section>
+            <h4>R20</h4><img src="multimedia/imagenes/brazil.png" alt="Bandera de Brazil">
+            <section>
+                <h5>Información Principal</h5>
+                <p>Horario: 05-11 a las 17:00</p>
+                <p>Nombre: São Paulo Grand Prix</p>
+            </section>
+            <section>
+                <h5>Se celebra en...</h5>
+                <p>Circuito: Autódromo José Carlos Pace</p>
+                <p>Localización: Brazil - São Paulo</p>
+                <p>Coordenadas: -23.7036,-46.6997</p>
+            </section>
+        </section>
+        <section>
+            <h4>R21</h4><img src="multimedia/imagenes/usa.png" alt="Bandera de United States">
+            <section>
+                <h5>Información Principal</h5>
+                <p>Horario: 19-11 a las 06:00</p>
+                <p>Nombre: Las Vegas Grand Prix</p>
+            </section>
+            <section>
+                <h5>Se celebra en...</h5>
+                <p>Circuito: Las Vegas Strip Street Circuit</p>
+                <p>Localización: United States - Las Vegas</p>
+                <p>Coordenadas: 36.1147,-115.173</p>
+            </section>
+        </section>
+        <section>
+            <h4>R22</h4><img src="multimedia/imagenes/uae.png" alt="Bandera de UAE">
+            <section>
+                <h5>Información Principal</h5>
+                <p>Horario: 26-11 a las 13:00</p>
+                <p>Nombre: Abu Dhabi Grand Prix</p>
+            </section>
+            <section>
+                <h5>Se celebra en...</h5>
+                <p>Circuito: Yas Marina Circuit</p>
+                <p>Localización: UAE - Abu Dhabi</p>
+                <p>Coordenadas: 24.4672,54.6031</p>
+            </section>
+        </section>
+    </main>
+
+
+
+</body>
+
+</html>

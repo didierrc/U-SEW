@@ -1,163 +1,3 @@
-<?php
-
-/* Definicion de la clase Record */
-class Record{
-
-    private $server;
-    private $user;
-    private $pass;
-    private $dbname;
-
-    public function __construct(){
-        $this->server = "localhost";
-        $this->user = "DBUSER2023";
-        $this->pass = "DBPSWD2023";
-        $this->dbname = "records";
-    }
-
-    public function registerNewRecord($userName, $userSurname, $level, $time){
-
-        // Establecemos la conexion con la base de datos
-        $db = new mysqli($this->server, $this->user, $this->pass, $this->dbname);
-        
-        // Comprobamos conexion
-        if($db->connect_error){
-            echo "Error al conectarse a la base de datos";
-        } else{
-            
-            // Preparamos la sentencia para evitar Injecciones de Código
-            $preparedStatement = $db->prepare("INSERT INTO registro (nombre, apellidos, nivel, tiempo) VALUES (?,?,?,?)");
-
-            // Añadimos los parametros
-            $preparedStatement->bind_param("sssi",
-                $userName, $userSurname, $level, $time);
-            
-            // Ejecutamos la sentencia
-            $preparedStatement->execute();
-
-            // Cerramos la sentencia
-            $preparedStatement->close();
-
-        }
-
-        // Cerramos la conexion
-        $db->close();
-
-        // Mostramos los 10 mejores records luego de "intentar" añadir el ultimo record
-        return $this->showBestRecords($level);
-    }
-
-    private function showBestRecords($level){
-
-        // Establecemos la conexion con la base de datos
-        $db = new mysqli($this->server, $this->user, $this->pass, $this->dbname);
-        
-        // Seccion a devolver
-        $sectionToReturn = "<section data-type='record'>";
-
-        // Comprobamos conexion
-        if($db->connect_error){
-            $sectionToReturn .= "<h4>Error al conectarse a la base de datos. No se pueden mostrar los records!</h4>";
-        } else{
-            
-            // Preparamos la sentencia para evitar Injecciones de Código
-            $preparedStatement = $db->prepare("SELECT * FROM registro WHERE nivel=? ORDER BY tiempo");
-
-            // Añadimos los parametros
-            $preparedStatement->bind_param("s", $level);
-            
-            // Ejecutamos la sentencia
-            $preparedStatement->execute();
-
-            // Obtenemos el resultado
-            $resultSet = $preparedStatement->get_result();
-
-            // Titulo de los records
-            $sectionToReturn .= "<h4>Los 10 mejores tiempos para el nivel: " . $level . "</h4>";
-            
-            if($resultSet->fetch_assoc() != NULL){ // Como decir resultSet.next()
-    
-                $sectionToReturn .= "<ol>";
-                $nTiempos = 0;
-
-                $resultSet->data_seek(0); // Nos posicionamos en el inicio del array asociativo
-                while($row = $resultSet->fetch_assoc()){
-                    
-                    if($nTiempos === 10){
-                        break;
-                    }
-                    
-                    $sectionToReturn .= "<li>Nombre: " . $row["nombre"];
-                    $sectionToReturn .= " Apellidos: " . $row["apellidos"];
-                    $sectionToReturn .= " Tiempo: " . $this->timeToString($row["tiempo"]);
-                    $sectionToReturn .= "</li>";
-                    $nTiempos += 1;
-                }
-
-                $sectionToReturn .= "</ol>";
-
-            } else{
-                // No ha conseguido obtener ningun record
-                $sectionToReturn .= "<p>Aún no hay datos para mostrar</p>";
-            }
-
-            $preparedStatement->close();
-        }
-
-        // Cerramos la etiqueta section
-        $sectionToReturn .= "</section>";
-
-        // Cerramos la conexion
-        $db->close();
-
-        return $sectionToReturn;
-
-    }
-
-    private function timeToString($time){
-
-        $elapsedTime = $time;
-
-        $segsDiv = 1000;
-        $minDiv = $segsDiv * 60;
-        $hourDiv = $minDiv * 60;
-
-        $hoursElapsed = floor($elapsedTime / $hourDiv);
-        $elapsedTime -= ($hoursElapsed * $hourDiv);
-
-        $minutesElapsed = floor($elapsedTime / $minDiv);
-        $elapsedTime -= ($minutesElapsed * $minDiv);
-
-        $secondsElapsed = floor($elapsedTime / $segsDiv);
-
-        return ($hoursElapsed / 10 >= 1.0 ? $hoursElapsed : "0" . $hoursElapsed)
-            . ":"
-            . ($minutesElapsed / 10 >= 1.0 ? $minutesElapsed : "0" . $minutesElapsed)
-            . ":"
-            . ($secondsElapsed / 10 >= 1.0 ? $secondsElapsed : "0" . $secondsElapsed);
-    }
-
-}
-
-$recordsToShow = "";
-
-// Comprobamos que el usuario ha enviado los datos correspondientes
-if(count($_POST) > 0){
-    $recordUsuario = new Record(); // Creamos un nuevo record
-    
-    // Obtenemos los datos enviados
-    $userName = $_POST["nombre"];
-    $userSurname = $_POST["apellidos"];
-    $level = $_POST["nivel"];
-    $time = intval($_POST["tiempoDB"]); // Transformamos de String a int
-
-    $recordsToShow = $recordUsuario->registerNewRecord($userName, $userSurname, $level, $time);
-}
-
-?>
-
-
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -307,27 +147,36 @@ if(count($_POST) > 0){
         <button onclick="crucigrama ? crucigrama.introduceElement('/') : alert('Tienes que crear un juego!')">/</button>
     </section>
 
-    <?php
-
-        if($recordsToShow != ""){
-            echo $recordsToShow;
-        }
-
-    ?>
-
+    <section data-type="record">
+        <h4>Los 10 mejores tiempos para el nivel: facil</h4>
+        <ol>
+            <li>Nombre: acc2 Apellidos: acc2 Tiempo: 00:00:10</li>
+            <li>Nombre: AZURE_SEM6 Apellidos: AZURE_SEM6 Tiempo: 00:00:11</li>
+            <li>Nombre: r4r4 Apellidos: r4r4 Tiempo: 00:00:12</li>
+            <li>Nombre: fwfwe Apellidos: fwef Tiempo: 00:00:12</li>
+            <li>Nombre: dewd Apellidos: dee Tiempo: 00:00:13</li>
+            <li>Nombre: trtr Apellidos: trtr Tiempo: 00:00:13</li>
+            <li>Nombre: frfr Apellidos: frfr Tiempo: 00:00:14</li>
+            <li>Nombre: juju Apellidos: juju Tiempo: 00:00:15</li>
+            <li>Nombre: DIDIER_TEST Apellidos: REYES_TEST Tiempo: 00:00:19</li>
+            <li>Nombre: html Apellidos: html Tiempo: 00:00:25</li>
+        </ol>
+    </section>
     <!-- Usabilidad - Usuario quería feedback sonoro para saber las correctas o falsas. -->
 
-    <audio controls>
+    <audio controls="">
         <source src="multimedia/audios/correct.mp3" type="audio/mpeg">
         <source src="multimedia/audios/correct.wav" type="audio/wav">
     </audio>
 
-    <audio controls>
+    <audio controls="">
         <source src="multimedia/audios/wrong.mp3" type="audio/mpeg">
         <source src="multimedia/audios/wrong.wav" type="audio/wav">
     </audio>
 
-</body>
 
+
+
+</body>
 
 </html>
