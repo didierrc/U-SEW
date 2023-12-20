@@ -181,6 +181,10 @@ main>section:nth-of-type(3)>section img {
 
     /* Especificidad: 001 */
     svg {
+        /*Warning: Redefinition of width
+            Se redefine el tamaño de los svgs para que
+            sean adaptables a moviles con muy poca resolucion
+        */
         width: 15em;
     }
 
