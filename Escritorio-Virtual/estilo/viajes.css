@@ -98,7 +98,6 @@ main>section:nth-of-type(3)>section {
     border-radius: 0.5em;
     max-width: 50em;
     background-color: white;
-    flex-wrap: wrap;
     /* Warning en el Validador CSS: "Ningún color establecido pero si un background-color"
         Herencia de color:black para los p. 
         En el caso de los h4,h5,h6 son definidos en esta hoja de estilo. (selector de abajo)
@@ -156,4 +155,18 @@ main>section:nth-of-type(3)>section img {
     width: auto;
     max-height: 30em;
     margin-bottom: 2em;
+}
+
+@media all and (max-width: 650px) {
+
+    main>section:nth-of-type(3)>section * {
+        flex-wrap: wrap;
+    }
+
+    main>section:nth-of-type(3) ul>li {
+        word-break: break-all;
+    }
+
+
+
 }
