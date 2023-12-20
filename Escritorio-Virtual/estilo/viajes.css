@@ -176,3 +176,13 @@ main>section:nth-of-type(3)>section img {
 
 
 }
+
+@media all and (max-width: 450px) {
+
+    /* Especificidad: 001 */
+    svg {
+        width: 15em;
+    }
+
+
+}

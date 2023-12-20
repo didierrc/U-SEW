@@ -163,11 +163,14 @@ $cambio = $moneda->getExchange();
         
         ?>
 
-        <!-- README! Dado a que se usan las librerias de Google Maps estas presentan errores de marcado HTML y de
+        <!-- README! 
+            - Dado a que se usan las librerias de Google Maps estas presentan errores de marcado HTML y de
             accesibilidad. Si simplemente se carga la pagina, se mostraran 2 mapas (posicion actual y KML) que son los que introducen 
             los errores como que algunas etiquetas <img> tienen un atributo alt="" vacío, uso de elementos <div>, 
             uso de <div> como hijos de <button>, etc. 
-            Cabe resaltar, que la importacion de librerias de Google producen errores y warnings en la consola del navegador. Sin
+            - Además, tras utilizar la herramienta LightHouse la adaptabilidad falla pero en los botones
+            de Google!.
+            - Cabe resaltar, que la importacion de librerias de Google producen errores y warnings en la consola del navegador. Sin
             embargo, los mapas se muestran con normalidad.
         -->
 
