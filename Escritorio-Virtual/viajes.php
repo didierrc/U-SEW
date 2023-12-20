@@ -104,7 +104,7 @@ $cambio = $moneda->getExchange();
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
     <link rel="stylesheet" type="text/css" href="estilo/layout.css">
     <link rel="stylesheet" type="text/css" href="estilo/viajes.css">
-    <link rel="icon" href="multimedia/favicon-spidey.ico">
+    <link rel="icon" href="multimedia/imagenes/favicon-spidey.ico">
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -163,6 +163,14 @@ $cambio = $moneda->getExchange();
         
         ?>
 
+        <!-- README! Dado a que se usan las librerias de Google Maps estas presentan errores de marcado HTML y de
+            accesibilidad. Si simplemente se carga la pagina, se mostraran 2 mapas (posicion actual y KML) que son los que introducen 
+            los errores como que algunas etiquetas <img> tienen un atributo alt="" vacío, uso de elementos <div>, 
+            uso de <div> como hijos de <button>, etc. 
+            Cabe resaltar, que la importacion de librerias de Google producen errores y warnings en la consola del navegador. Sin
+            embargo, los mapas se muestran con normalidad.
+        -->
+
         <!--Usando la forma "legacy" de obtener las librerias de la API. Llama a la funcion initMap() declarada
             anteriormente. A partir de ella, la libreria de google ya está lista para su uso por otros metodos 
             (por ejemplo, los archivos KML) -->
@@ -178,12 +186,6 @@ $cambio = $moneda->getExchange();
         -->
 
         <script> var v = new Viajes(); </script>
-
-        <!-- README! Dado a que se usan las librerias de Google Maps estas presentan errores de marcado HTML
-            Si simplemente se carga la pagina, se mostraran 2 mapas que son los que introducen los errores como que
-            algunas etiquetas <img> tienen un atributo alt="" vacío, uso de elementos <div>, uso de <div> como 
-            hijos de <button>, etc. -->
-
 
         <section>
             <h3>3. Esta es tu localización actual (Mapa estático): </h3>

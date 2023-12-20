@@ -157,13 +157,13 @@ class Pais {
 
             // Añadiendo seccion de temperatura maxima
             var t = "<h5>Max: " + forecast["main"]["temp_max"] + "º</h5>";
-            var imageUrl = "multimedia/maxTemp_icon.png";
+            var imageUrl = "multimedia/imagenes/maxTemp_icon.png";
             var imageAlt = "Icono de temperatura maxima";
             insertaSeccionInfo(imageUrl, imageAlt, t);
 
             // Añadiendo seccion de temperatura minima
             t = "<h5>Min: " + forecast["main"]["temp_min"] + "º</h5>";
-            imageUrl = "multimedia/minTemp_icon.png";
+            imageUrl = "multimedia/imagenes/minTemp_icon.png";
             imageAlt = "Icono de temperatura minima";
             insertaSeccionInfo(imageUrl, imageAlt, t);
 
@@ -180,19 +180,19 @@ class Pais {
             }
             t = "<h5>Cantidad de Lluvia: " + (rainAmount === "" ? "0" : rainAmount) + "mm";
             t += "</h5>"
-            imageUrl = "multimedia/rain_icon.png";
+            imageUrl = "multimedia/imagenes/rain_icon.png";
             imageAlt = "Icono de  probabilidad de lluvia";
             insertaSeccionInfo(imageUrl, imageAlt, t);
 
             // Añadiendo seccion de humedad
             t = "<h5>Humedad: " + forecast["main"]["humidity"] + "%</h5>";
-            imageUrl = "multimedia/humidity_icon.png";
+            imageUrl = "multimedia/imagenes/humidity_icon.png";
             imageAlt = "Icono de humedad en ambiente";
             insertaSeccionInfo(imageUrl, imageAlt, t);
 
             // Añadiendo seccion de viento
             t = "<h5>Viento: " + forecast["wind"]["speed"] + "km/h</h5>";
-            imageUrl = "multimedia/wind_icon.png";
+            imageUrl = "multimedia/imagenes/wind_icon.png";
             imageAlt = "Icono de viento";
             insertaSeccionInfo(imageUrl, imageAlt, t);
         }

@@ -180,7 +180,7 @@ if(count($_POST) > 0){
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="js/crucigrama.js"></script>
 
-    <link rel="icon" href="multimedia/favicon-spidey.ico">
+    <link rel="icon" href="multimedia/imagenes/favicon-spidey.ico">
 </head>
 
 <body>
@@ -209,7 +209,7 @@ if(count($_POST) > 0){
             <a href="sudoku.html" accesskey="D" tabindex="9">Sudoku</a>
             <a href="crucigrama.php" accesskey="C" tabindex="10">Crucigrama matemático</a>
             <a href="api.html" accesskey="P" tabindex="11">Aplicacion con APIs</a>
-            <a href="concesionario.php" accesskey="O" tabindex="12">Concesionario</a>
+            <a href="php/concesionario.php" accesskey="O" tabindex="12">Concesionario</a>
         </nav>
     </section>
 

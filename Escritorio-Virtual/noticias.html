@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
     <link rel="stylesheet" type="text/css" href="estilo/layout.css">
     <link rel="stylesheet" type="text/css" href="estilo/noticias.css">
-    <link rel="icon" href="multimedia/favicon-spidey.ico">
+    <link rel="icon" href="multimedia/imagenes/favicon-spidey.ico">
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -42,11 +42,13 @@
     <main>
         <h2>Noticias</h2>
 
+        <!-- Input que nos permite subir el UNICO fichero noticias.txt -->
         <p>
             <label for="noticias">Selecciona tu archivo noticia.txt: </label>
             <input id="noticias" type="file" onchange="n.readInputFile(this.files);" accept=".txt">
         </p>
 
+        <!-- Creacion de la clase noticias -->
         <script> var n = new Noticias(); </script>
     </main>
 

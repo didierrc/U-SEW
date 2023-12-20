@@ -140,7 +140,6 @@ class Concesionario{
 
     // Importa datos a las tablas de la DB
     // Archivo permitido: .csv 
-    // El script buscará en: /php/(Nombre de csv: buys,car,color,dealer,user).csv
     // Hay que tener cuidado al importar datos de tablas ya que unas dependen de otras(FOREIGN KEYS)
     // Si esto pasa, simplemente no se añade la informacion
     public function importData(){
@@ -445,8 +444,8 @@ class Concesionario{
         if($this->checkDBCreated() === FALSE)
             return FALSE;
 
-        // Intentamos exportar todos los datos en la caprtea php
-        $ficheroEnCarpeta = "./php/". $exportFile . ".csv"; 
+        // Intentamos exportar todos los datos en la carpeta php
+        $ficheroEnCarpeta = "./". $exportFile . ".csv"; 
         if(($gestor = fopen($ficheroEnCarpeta, "ab")) !== FALSE){
 
             // Intentamos establecer una conexion
@@ -915,12 +914,12 @@ if($_FILES){
     <meta name="keywords" content="concesionario,coches,venta,lujo">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
-    <link rel="stylesheet" type="text/css" href="estilo/layout.css">
-    <link rel="stylesheet" type="text/css" href="estilo/juegos.css">
-    <link rel="stylesheet" type="text/css" href="php/concesionario.css">
+    <link rel="stylesheet" type="text/css" href="../estilo/estilo.css">
+    <link rel="stylesheet" type="text/css" href="../estilo/layout.css">
+    <link rel="stylesheet" type="text/css" href="../estilo/juegos.css">
+    <link rel="stylesheet" type="text/css" href="../estilo/concesionario.css">
 
-    <link rel="icon" href="multimedia/favicon-spidey.ico">
+    <link rel="icon" href="../multimedia/imagenes/favicon-spidey.ico">
 </head>
 
 <body>
@@ -930,13 +929,13 @@ if($_FILES){
 
         <!-- Seccion Nav que agrupa enlaces a otras páginas web -->
         <nav>
-            <a href="index.html" accesskey="I" tabindex="1">Inicio</a>
-            <a href="sobremi.html" accesskey="S" tabindex="2">Sobre mi</a>
-            <a href="noticias.html" accesskey="N" tabindex="3">Noticias</a>
-            <a href="agenda.html" accesskey="A" tabindex="4">Agenda</a>
-            <a href="meteorologia.html" accesskey="M" tabindex="5">Meteorología</a>
-            <a href="viajes.php" accesskey="V" tabindex="6">Viajes</a>
-            <a href="juegos.html" accesskey="J" tabindex="7">Juegos</a>
+            <a href="../index.html" accesskey="I" tabindex="1">Inicio</a>
+            <a href="../sobremi.html" accesskey="S" tabindex="2">Sobre mi</a>
+            <a href="../noticias.html" accesskey="N" tabindex="3">Noticias</a>
+            <a href="../agenda.html" accesskey="A" tabindex="4">Agenda</a>
+            <a href="../meteorologia.html" accesskey="M" tabindex="5">Meteorología</a>
+            <a href="../viajes.php" accesskey="V" tabindex="6">Viajes</a>
+            <a href="../juegos.html" accesskey="J" tabindex="7">Juegos</a>
         </nav>
     </header>
 
@@ -945,10 +944,10 @@ if($_FILES){
     <section>
         <h2>Juegos:</h2>
         <nav>
-            <a href="memoria.html" accesskey="E" tabindex="8">Memoria</a>
-            <a href="sudoku.html" accesskey="D" tabindex="9">Sudoku</a>
-            <a href="crucigrama.php" accesskey="C" tabindex="10">Crucigrama matemático</a>
-            <a href="api.html" accesskey="P" tabindex="11">Aplicacion con APIs</a>
+            <a href="../memoria.html" accesskey="E" tabindex="8">Memoria</a>
+            <a href="../sudoku.html" accesskey="D" tabindex="9">Sudoku</a>
+            <a href="../crucigrama.php" accesskey="C" tabindex="10">Crucigrama matemático</a>
+            <a href="../api.html" accesskey="P" tabindex="11">Aplicacion con APIs</a>
             <a href="concesionario.php" accesskey="O" tabindex="12">Concesionario</a>
         </nav>
     </section>
@@ -960,6 +959,7 @@ if($_FILES){
         <section>
             <h4>Acciones principales</h4>
             
+            <!-- Boton que permite inicializar la BD, tablas y "algunos" datos -> Necesita Importar!! -->
             <form action="#" method="post" name="crear">
                 <p>
                     <label for="nuevaBD">1. Crea nueva BD: </label>
@@ -968,6 +968,12 @@ if($_FILES){
                 <input type="submit" value="Crear!!">
             </form>
 
+            <!-- Boton que permite Importar los datos: "X.csv". Hay que tener en cuenta que algunos datos
+                depeneden de otros como el car.csv y buys.csv (requieren datos presentes en otras tablas).
+                Si se sube de golpe todos los archivos simplemente se importaran los datos no dependientes.
+                Para ello la importación y correcta inicializacion debe ser: user,dealer,color -> car -> buys 
+                Por ultimo, buys.csv no sería necesario ya que podemos comprar coches en la propia App
+            -->
             <form action="#" method="post" enctype='multipart/form-data'>
                 <p>
                     <label for="importaDatos">2. Importa tus datos: </label>
@@ -977,7 +983,8 @@ if($_FILES){
             </form>
 
             
-
+            <!-- Boton que exporta los datos presentes en la BD. Este lo exporta a la misma carpeta en la que se 
+                encuentra. En este caso la carpeta php -->
             <form action="#" method="post" name="exportar">
                 <p>
                     <label for="exportaDatos">3. Exporta tus datos: </label>
@@ -1081,7 +1088,6 @@ if($_FILES){
     </main>
     
     
-
 </body>
 
 </html>

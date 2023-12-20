@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
     <link rel="stylesheet" type="text/css" href="estilo/layout.css">
     <link rel="stylesheet" type="text/css" href="estilo/agenda.css">
-    <link rel="icon" href="multimedia/favicon-spidey.ico">
+    <link rel="icon" href="multimedia/imagenes/favicon-spidey.ico">
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -42,9 +42,12 @@
     <!-- Agrupacion main que agrupa los contenidos principales de la página -->
     <main>
         <h2>Agenda</h2>
+        <!-- Boton que una vez accionado muestra todo el calendario de carreras de la F1 -->
         <button type="button">Calendario de F1-2023</button>
+
+        <!-- Añadiendo el metodo de la clase Agenda a llamar una vez se pulsa en el boton. -->
         <script>
-            document.querySelector("button").addEventListener("click", () => m.consultaSchedule());
+            $("button").click(m.consultaSchedule.bind(m));
         </script>
     </main>
 
